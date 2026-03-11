@@ -1441,8 +1441,13 @@ function showPage(id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
+// Deep-link via URL hash (e.g. index.html#q1)
+(function() {
+  const hash = window.location.hash.replace('#','');
+  if (hash) showPage(hash);
+})();
 // Keyboard nav (left/right arrows)
-const order = ['home','q1','q2','q3','q4'];
+const order = ['home','q1','q2','q3','q4','eff'];
 document.addEventListener('keydown', function(e) {
   const current = document.querySelector('.page.active');
   if (!current) return;
