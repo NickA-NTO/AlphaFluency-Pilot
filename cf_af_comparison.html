@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearFluency vs AlphaFluency — Effective Score Comparison</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface2: #263348;
+    --border: rgba(255,255,255,0.08);
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --teal: #14b8a6;
+    --teal-lt: #5eead4;
+    --purple: #a78bfa;
+    --purple-lt: #c4b5fd;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --amber-lt: #fcd34d;
+    --red: #dc2626;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem 1.75rem;
+  }
+  .header-inner { max-width: 960px; margin: 0 auto; }
+
+  .breadcrumb {
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+  .breadcrumb a { color: var(--teal); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .page-eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  h1.page-title {
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  h1.page-title span { color: var(--teal); }
+
+  .page-sub {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.18rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+  .badge-amber {
+    background: rgba(245,158,11,0.15);
+    color: var(--amber);
+    border: 1px solid rgba(245,158,11,0.3);
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  /* ── NAV BUTTON ── */
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+    font-size: 0.83rem;
+    text-decoration: none;
+    transition: all 0.15s;
+    margin-bottom: 2rem;
+  }
+  .btn-home:hover { background: var(--surface2); color: var(--text); border-color: rgba(255,255,255,0.14); }
+
+  /* ── INFO BOXES ── */
+  .info-box {
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+    border-left-width: 3px;
+    border-left-style: solid;
+  }
+  .info-box h3 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .info-box p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+    line-height: 1.55;
+  }
+  .info-box p:last-child { margin-bottom: 0; }
+
+  .box-teal {
+    background: rgba(20,184,166,0.06);
+    border: 1px solid rgba(20,184,166,0.18);
+    border-left-color: var(--teal);
+  }
+  .box-teal h3 { color: var(--teal); }
+
+  .box-amber {
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.22);
+    border-left-color: var(--amber);
+  }
+  .box-amber h3 { color: var(--amber); }
+  .box-amber p { color: var(--amber-lt); }
+
+  .formula-chip {
+    display: inline-block;
+    background: rgba(20,184,166,0.1);
+    border: 1px solid rgba(20,184,166,0.22);
+    border-radius: 4px;
+    padding: 0.12rem 0.55rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.83rem;
+    color: var(--teal-lt);
+    margin: 0.2rem 0;
+  }
+
+  /* ── SECTION ── */
+  .section-hd {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+  .section-hd h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+  .section-hd p {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── SUMMARY STAT CARDS ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.15rem 1.25rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-lbl {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+  .c-purple { color: var(--purple); }
+  .c-teal   { color: var(--teal-lt); }
+  .c-muted  { color: var(--muted); }
+  .c-amber  { color: var(--amber); }
+  .c-green  { color: var(--green); }
+  .c-red    { color: #f87171; }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+    font-size: 0.79rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--muted);
+  }
+  .ldot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .ldot-cf   { background: var(--purple); }
+  .ldot-af   { background: var(--teal); }
+  .ldot-par  { background: #475569; }
+  .ldot-excl { background: var(--amber); }
+
+  /* ── TABLE ── */
+  .tbl-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+
+  thead th {
+    background: var(--surface2);
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th.h-cf { color: var(--purple-lt); }
+  thead th.h-af { color: var(--teal-lt); }
+
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.025); }
+  tbody tr.row-excl { opacity: 0.55; }
+
+  td { padding: 0.7rem 0.9rem; vertical-align: middle; }
+
+  .sname  { font-weight: 600; color: #fff; }
+  .glabel { font-size: 0.7rem; color: var(--muted); }
+
+  .eff { font-size: 1.05rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .eff-cf { color: var(--purple-lt); }
+  .eff-af { color: var(--teal-lt); }
+  .eff-warn { color: var(--amber); }
+
+  .eff-detail { font-size: 0.69rem; color: var(--muted); margin-top: 0.08rem; }
+
+  /* Winner badges */
+  .wbadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.22rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .wb-cf  { background: rgba(167,139,250,0.14); color: var(--purple-lt); border: 1px solid rgba(167,139,250,0.28); }
+  .wb-af  { background: rgba(20,184,166,0.12); color: var(--teal-lt); border: 1px solid rgba(20,184,166,0.25); }
+  .wb-par { background: rgba(71,85,105,0.3); color: var(--muted); border: 1px solid rgba(71,85,105,0.4); }
+  .wb-na  { background: rgba(71,85,105,0.18); color: var(--muted); border: 1px solid rgba(71,85,105,0.28); font-style: italic; }
+  .wb-excl{ background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
+
+  .warn-note { font-size: 0.68rem; color: var(--amber); margin-top: 0.2rem; }
+  .nodata    { color: var(--muted); font-style: italic; font-size: 0.83rem; }
+
+  /* Trend */
+  .t-up   { color: var(--green); font-weight: 600; }
+  .t-down { color: #f87171; font-weight: 600; }
+  .t-flat { color: var(--muted); }
+
+  /* Placement */
+  .pl-opt    { color: var(--green); }
+  .pl-cruise { color: var(--teal-lt); }
+  .pl-comp   { color: var(--amber); }
+  .pl-wcpm   { color: #f87171; }
+  .pl-na     { color: var(--muted); font-style: italic; }
+
+  /* ── FINDINGS ── */
+  .findings { list-style: none; margin-bottom: 2.5rem; }
+  .findings li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .findings li strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.9rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      CF vs AF Comparison · AlphaFluency Pilot · March 2026
+    </div>
+    <div class="page-eyebrow">Supplementary Analysis</div>
+    <h1 class="page-title">ClearFluency vs <span>AlphaFluency</span>
+      <span class="badge badge-amber">⚠ Context Required</span>
+    </h1>
+    <p class="page-sub">Effective Score comparison · Alpha Schools Reading Pilot · March 2026</p>
+  </div>
+</div>
+
+<!-- ═══════ MAIN ═══════ -->
+<div class="main">
+
+  <!-- Methodology -->
+  <div class="info-box box-teal">
+    <h3>Methodology — Q5 Effective Score Framework</h3>
+    <p>The <strong>Effective Score</strong> combines reading difficulty (ATOS level) and reading speed (WCPM) into a single number, anchored to Acadience "Exceeds Benchmark" norms (Grade 1: 67 WCPM at ATOS 2.0).</p>
+    <p><span class="formula-chip">Expected WCPM = 67 + 37 × (ATOS − 2.0)</span></p>
+    <p><span class="formula-chip">Effective Score = ( Expected WCPM + Actual WCPM ) ÷ 2</span></p>
+    <p>Both ClearFluency and AlphaFluency use a <strong>heard-first model</strong> — the passage is read aloud before the student reads — making their Effective Scores directly comparable. A score of ~100 corresponds to the Grade 2 "Exceeds" benchmark.</p>
+  </div>
+
+  <!-- Critical caveat -->
+  <div class="info-box box-amber">
+    <h3>⚠ Critical Context — Read Before Interpreting Numbers</h3>
+    <p><strong>ClearFluency = established programme.</strong> Students have been in ClearFluency for an extended period. CF scores reflect settled, calibrated performance.</p>
+    <p><strong>AlphaFluency = one week of pilot use.</strong> AF scores are early-stage, in an unfamiliar tool. Students have not yet reached a stable calibrated level. AF scores are expected to improve materially with continued use.</p>
+    <p>This comparison is informative but not definitive. A fair comparison requires 4–6 weeks of AF use.</p>
+  </div>
+
+  <!-- ── SUMMARY STATS ── -->
+  <div class="section-hd">
+    <h2>At a Glance</h2>
+    <p>8 students with valid data in both platforms. Diego excluded (AF unreliable — 4 min only). Rivers excluded (no CF data).</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num c-purple">5 / 8</div>
+      <div class="stat-lbl">students with higher Effective Score in ClearFluency</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num c-teal">2 / 8</div>
+      <div class="stat-lbl">students with higher Effective Score in AlphaFluency</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num c-muted">1 / 8</div>
+      <div class="stat-lbl">students at effective parity between platforms</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num c-amber">+23</div>
+      <div class="stat-lbl">avg CF advantage (pts) among CF-leading students</div>
+    </div>
+  </div>
+
+  <!-- ── MAIN COMPARISON TABLE ── -->
+  <div class="section-hd">
+    <h2>Student-Level Effective Score Comparison</h2>
+    <p>CF WCPM = student's current average WCPM in ClearFluency (first number in X/Y format). AF WCPM = final AlphaFluency session score.</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="ldot ldot-cf"></div> ClearFluency higher</div>
+    <div class="legend-item"><div class="ldot ldot-af"></div> AlphaFluency higher</div>
+    <div class="legend-item"><div class="ldot ldot-par"></div> Parity (≤ 2 pts)</div>
+    <div class="legend-item"><div class="ldot ldot-excl"></div> Excluded / unreliable</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Grade</th>
+          <th class="h-cf">CF ATOS</th>
+          <th class="h-cf">CF WCPM</th>
+          <th class="h-cf">CF Eff Score</th>
+          <th class="h-af">AF ATOS</th>
+          <th class="h-af">AF WCPM</th>
+          <th class="h-af">AF Eff Score</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Anthem Thomas: AF +7 -->
+        <tr>
+          <td><div class="sname">Anthem Thomas</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td>2.0</td>
+          <td>85</td>
+          <td>
+            <div class="eff eff-cf">76</div>
+            <div class="eff-detail">exp 67, act 85</div>
+          </td>
+          <td>2.5</td>
+          <td>81</td>
+          <td>
+            <div class="eff eff-af">83</div>
+            <div class="eff-detail">exp 86, act 81</div>
+          </td>
+          <td><span class="wbadge wb-af">AF +7</span></td>
+        </tr>
+
+        <!-- Aiden Richardson: CF +19 -->
+        <tr>
+          <td><div class="sname">Aiden Richardson</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td>3.1</td>
+          <td>100</td>
+          <td>
+            <div class="eff eff-cf">104</div>
+            <div class="eff-detail">exp 108, act 100</div>
+          </td>
+          <td>2.5</td>
+          <td>85</td>
+          <td>
+            <div class="eff eff-af">85</div>
+            <div class="eff-detail">exp 86, act 85</div>
+          </td>
+          <td><span class="wbadge wb-cf">CF +19</span></td>
+        </tr>
+
+        <!-- Ellis Kyung: CF +39 -->
+        <tr>
+          <td><div class="sname">Ellis Kyung</div></td>
+          <td><span class="glabel">Grade 1</span></td>
+          <td>1.7</td>
+          <td>104</td>
+          <td>
+            <div class="eff eff-cf">80</div>
+            <div class="eff-detail">exp 56, act 104</div>
+          </td>
+          <td>1.5</td>
+          <td>33</td>
+          <td>
+            <div class="eff eff-af">41</div>
+            <div class="eff-detail">exp 49, act 33</div>
+          </td>
+          <td><span class="wbadge wb-cf">CF +39</span></td>
+        </tr>
+
+        <!-- Diego Bash: excluded -->
+        <tr class="row-excl">
+          <td><div class="sname">Diego Bash</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td>2.4</td>
+          <td>92</td>
+          <td>
+            <div class="eff eff-cf">87</div>
+            <div class="eff-detail">exp 82, act 92</div>
+          </td>
+          <td>2.0</td>
+          <td>82</td>
+          <td>
+            <div class="eff eff-warn">75 ⚠</div>
+            <div class="eff-detail">exp 67, act 82</div>
+          </td>
+          <td>
+            <span class="wbadge wb-excl">Excluded</span>
+            <div class="warn-note">AF unreliable — 4 min only</div>
+          </td>
+        </tr>
+
+        <!-- Alita Sanborn: CF +15 -->
+        <tr>
+          <td><div class="sname">Alita Sanborn</div></td>
+          <td><span class="glabel">Grade 1</span></td>
+          <td>2.1</td>
+          <td>76</td>
+          <td>
+            <div class="eff eff-cf">73</div>
+            <div class="eff-detail">exp 71, act 76</div>
+          </td>
+          <td>1.5</td>
+          <td>68</td>
+          <td>
+            <div class="eff eff-af">58</div>
+            <div class="eff-detail">exp 49, act 68</div>
+          </td>
+          <td><span class="wbadge wb-cf">CF +15</span></td>
+        </tr>
+
+        <!-- Ren Sticker: CF +23 -->
+        <tr>
+          <td><div class="sname">Ren Sticker</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td>2.2</td>
+          <td>113</td>
+          <td>
+            <div class="eff eff-cf">94</div>
+            <div class="eff-detail">exp 74, act 113</div>
+          </td>
+          <td>2.0</td>
+          <td>75</td>
+          <td>
+            <div class="eff eff-af">71</div>
+            <div class="eff-detail">exp 67, act 75</div>
+          </td>
+          <td><span class="wbadge wb-cf">CF +23</span></td>
+        </tr>
+
+        <!-- Blake Price: AF +10 -->
+        <tr>
+          <td><div class="sname">Blake Price</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td>2.0</td>
+          <td>77</td>
+          <td>
+            <div class="eff eff-cf">72</div>
+            <div class="eff-detail">exp 67, act 77</div>
+          </td>
+          <td>2.5</td>
+          <td>78</td>
+          <td>
+            <div class="eff eff-af">82</div>
+            <div class="eff-detail">exp 86, act 78</div>
+          </td>
+          <td><span class="wbadge wb-af">AF +10</span></td>
+        </tr>
+
+        <!-- Hayes Burman: Parity -->
+        <tr>
+          <td><div class="sname">Hayes Burman</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td>2.4</td>
+          <td>98</td>
+          <td>
+            <div class="eff eff-cf">90</div>
+            <div class="eff-detail">exp 82, act 98</div>
+          </td>
+          <td>2.5</td>
+          <td>92</td>
+          <td>
+            <div class="eff eff-af">89</div>
+            <div class="eff-detail">exp 86, act 92</div>
+          </td>
+          <td><span class="wbadge wb-par">Parity (+1)</span></td>
+        </tr>
+
+        <!-- Rivers Yong: no CF data -->
+        <tr>
+          <td><div class="sname">Rivers Yong</div></td>
+          <td><span class="glabel">Grade 2</span></td>
+          <td colspan="3"><span class="nodata">No recent CF data</span></td>
+          <td>2.5</td>
+          <td>75</td>
+          <td>
+            <div class="eff eff-af">80</div>
+            <div class="eff-detail">exp 86, act 75</div>
+          </td>
+          <td><span class="wbadge wb-na">No CF data</span></td>
+        </tr>
+
+        <!-- Riley Rosenberg: CF +21 -->
+        <tr>
+          <td><div class="sname">Riley Rosenberg</div></td>
+          <td><span class="glabel">Grade 1</span></td>
+          <td>2.3</td>
+          <td>61</td>
+          <td>
+            <div class="eff eff-cf">70</div>
+            <div class="eff-detail">exp 78, act 61</div>
+          </td>
+          <td>1.0</td>
+          <td>68</td>
+          <td>
+            <div class="eff eff-af">49</div>
+            <div class="eff-detail">exp 30, act 68</div>
+          </td>
+          <td><span class="wbadge wb-cf">CF +21</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── CF TREND TABLE ── -->
+  <div class="section-hd">
+    <h2>ClearFluency Trend &amp; Placement Notes</h2>
+    <p>Month-over-month student WCPM change within ClearFluency, and teacher placement notes.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th class="h-cf">WCPM Now</th>
+          <th class="h-cf">WCPM 1 Month Ago</th>
+          <th class="h-cf">Change</th>
+          <th>CF Placement Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="sname">Anthem Thomas</div></td>
+          <td>85</td><td>98</td>
+          <td><span class="t-down">−13</span></td>
+          <td><span class="pl-opt">Optimal in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Aiden Richardson</div></td>
+          <td>100</td><td>109</td>
+          <td><span class="t-down">−9</span></td>
+          <td><span class="pl-comp">Struggles with comprehension in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Ellis Kyung</div></td>
+          <td>104</td><td>81</td>
+          <td><span class="t-up">+23</span></td>
+          <td><span class="pl-cruise">Cruising in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Diego Bash</div></td>
+          <td>92</td><td>102</td>
+          <td><span class="t-down">−10</span></td>
+          <td><span class="pl-comp">Struggles with comprehension in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Alita Sanborn</div></td>
+          <td>76</td><td>69</td>
+          <td><span class="t-up">+7</span></td>
+          <td><span class="pl-opt">Optimal in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Ren Sticker</div></td>
+          <td>113</td><td>88</td>
+          <td><span class="t-up">+25</span></td>
+          <td><span class="pl-cruise">Cruising in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Blake Price</div></td>
+          <td>77</td><td>83</td>
+          <td><span class="t-down">−6</span></td>
+          <td><span class="pl-wcpm">Struggles with WCPM in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Hayes Burman</div></td>
+          <td>98</td><td>104</td>
+          <td><span class="t-down">−6</span></td>
+          <td><span class="pl-comp">Struggles with comprehension in CF</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Rivers Yong</div></td>
+          <td colspan="3"><span class="nodata">No recent CF data</span></td>
+          <td><span class="pl-na">No recent CF data</span></td>
+        </tr>
+        <tr>
+          <td><div class="sname">Riley Rosenberg</div></td>
+          <td>61</td><td>60</td>
+          <td><span class="t-flat">+1</span></td>
+          <td><span class="pl-wcpm">Challenged by WCPM — not formally flagged for struggle</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── FINDINGS ── -->
+  <div class="section-hd">
+    <h2>Key Findings</h2>
+  </div>
+
+  <ul class="findings">
+    <li>
+      <strong>🏆 ClearFluency leads on Effective Score for 5 of 8 comparable students.</strong>
+      This is expected. CF is a calibrated, established programme. Students are placed at known difficulty levels and have had time to settle. AF scores reflect a single week of use in an unfamiliar tool.
+    </li>
+    <li>
+      <strong>✅ AlphaFluency outperforms CF for two students — Anthem Thomas (+7) and Blake Price (+10) — despite being brand new.</strong>
+      Both are meaningful. Blake is flagged as "struggles with WCPM" in CF, yet matched her CF difficulty level (ATOS 2.5 vs 2.0) and scored 10 points higher on Effective Score in AlphaFluency. This suggests AF may be a better fit for students who are WCPM-limited but reading above CF placement.
+    </li>
+    <li>
+      <strong>📌 Hayes Burman is at effective parity (+1) — CF and AF are producing nearly identical results.</strong>
+      Hayes is flagged for comprehension struggles in CF. The near-identical Effective Score suggests AF is meeting him where CF does, without the comprehension friction.
+    </li>
+    <li>
+      <strong>📉 Ellis Kyung shows the largest CF gap (+39), but context requires caution.</strong>
+      Ellis "cruises" in CF at ATOS 1.7 / 104 WCPM — well below ceiling. In AF's first week, Ellis landed at appropriate Grade 1 difficulty (ATOS 1.5) but with a low WCPM of 33. The gap likely reflects adjustment to a new format, not a ceiling difference.
+    </li>
+    <li>
+      <strong>📊 5 of 9 students (56%) show declining WCPM within ClearFluency month-over-month.</strong>
+      Anthem (−13), Aiden (−9), Diego (−10), Blake (−6), and Hayes (−6) are all reading slower than a month ago. This may reflect intentional difficulty increases in CF, but it is worth monitoring as a sign of plateau or over-placement.
+    </li>
+    <li>
+      <strong>🔁 Re-run this comparison after 4–6 weeks of AlphaFluency use.</strong>
+      A fair evaluation requires students to be fully calibrated in AF and accumulate comparable reading volume. This snapshot is early signal only — not a verdict on which platform produces better reading outcomes.
+    </li>
+  </ul>
+
+  <div class="footer">
+    AlphaFluency Pilot · Alpha Schools · March 2026 · Confidential
+  </div>
+
+</div>
+</body>
+</html>
