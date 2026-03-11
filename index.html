@@ -231,6 +231,7 @@ body {
 }
 .sn-green  { color: var(--green);  }
 .sn-amber  { color: var(--amber);  }
+.sn-red    { color: #dc2626;       }
 .sn-cyan   { color: var(--cyan);   }
 .sn-teal   { color: var(--teal);   }
 .stat-lbl {
@@ -289,12 +290,11 @@ body {
         <span class="verdict-pill pill-green">&#9679; Strong</span>
       </div>
       <div class="rc-title">Did AlphaFluency quickly reach each student's correct difficulty level?</div>
-      <div class="rc-summary">Starting from the lowest possible difficulty, the adaptive engine reached each student's assessed level in an <strong>average of 26 minutes of practice</strong> for 8 of 10 students. The 2 exceptions are fully explained by insufficient usage time and one student being the highest reader in the cohort.</div>
     </div>
     <div class="rc-stats">
       <div class="rc-stats-row">
         <div class="stat-item"><div class="stat-num sn-green">8/10</div><div class="stat-lbl">at correct level</div></div>
-        <div class="stat-item"><div class="stat-num sn-green">&minus;0.35</div><div class="stat-lbl">mean gap remaining (ATOS)</div></div>
+        <div class="stat-item"><div class="stat-num sn-green">26 min</div><div class="stat-lbl">avg time to reach target</div></div>
       </div>
       <span class="rc-view-btn">View full analysis &rarr;</span>
     </div>
@@ -308,7 +308,6 @@ body {
         <span class="verdict-pill pill-green">&#9679; Positive</span>
       </div>
       <div class="rc-title">Did students improve from their own AlphaFluency starting scores?</div>
-      <div class="rc-summary">After correcting for harder texts and AlphaFluency's heard-first format, <strong>8 of 10 students showed genuine fluency growth</strong>. Hayes Burman improved by +46 WCPM while reading texts two difficulty levels harder than at week start.</div>
     </div>
     <div class="rc-stats">
       <div class="rc-stats-row">
@@ -324,15 +323,14 @@ body {
     <div class="rc-left">
       <div class="rc-top">
         <span class="rc-num">Q3 &mdash; Growth vs. Literably Baseline</span>
-        <span class="verdict-pill pill-amber">&#9679; Mixed — Data Gap</span>
+        <span class="verdict-pill pill-amber">&#9679; Mixed — Incomplete Data</span>
       </div>
       <div class="rc-title">Did students improve compared to their cold-read Literably scores?</div>
-      <div class="rc-summary">Only <strong>3 of 10 show verified gains</strong> after stripping out the heard-first format advantage (worth ~17 WCPM). Most negative results are explained by the system not yet reaching each student's full difficulty level — not by fluency declining. <strong>A post-pilot Literably assessment is the critical missing data point.</strong></div>
     </div>
     <div class="rc-stats">
       <div class="rc-stats-row">
-        <div class="stat-item"><div class="stat-num sn-cyan">3/10</div><div class="stat-lbl">verified gains</div></div>
-        <div class="stat-item"><div class="stat-num sn-amber">&minus;17</div><div class="stat-lbl">avg heard-first inflation (WCPM)</div></div>
+        <div class="stat-item"><div class="stat-num sn-red">3/10</div><div class="stat-lbl">verified gains</div></div>
+        <div class="stat-item"><div class="stat-num sn-amber">&minus;17</div><div class="stat-lbl">avg format inflation (WCPM)</div></div>
       </div>
       <span class="rc-view-btn">View full analysis &rarr;</span>
     </div>
@@ -343,15 +341,14 @@ body {
     <div class="rc-left">
       <div class="rc-top">
         <span class="rc-num">Q4 &mdash; Grade Target Progress</span>
-        <span class="verdict-pill pill-amber">&#9679; On Track</span>
+        <span class="verdict-pill pill-green">&#9679; On Track</span>
       </div>
       <div class="rc-title">Are students moving toward their grade-level reading benchmarks?</div>
-      <div class="rc-summary"><strong>7 of 10 students closed their WCPM gap to grade target</strong>, and 6 covered 69–81% of the required difficulty range in a single week. No Grade 2 student has reached ATOS 3.0 yet — expected given all sessions started at 0.4 — but several are one week away from that mark.</div>
     </div>
     <div class="rc-stats">
       <div class="rc-stats-row">
-        <div class="stat-item"><div class="stat-num sn-amber">7/10</div><div class="stat-lbl">closing gap to target</div></div>
-        <div class="stat-item"><div class="stat-num sn-amber">81%</div><div class="stat-lbl">max ATOS range covered</div></div>
+        <div class="stat-item"><div class="stat-num sn-green">7/10</div><div class="stat-lbl">closing gap to target</div></div>
+        <div class="stat-item"><div class="stat-num sn-green">81%</div><div class="stat-lbl">max difficulty range covered</div></div>
       </div>
       <span class="rc-view-btn">View full analysis &rarr;</span>
     </div>
@@ -365,11 +362,10 @@ body {
         <span class="verdict-pill pill-teal">&#9679; Framework</span>
       </div>
       <div class="rc-title">A difficulty-neutral metric for comparing AlphaFluency, AlphaLit, and ClearFluency</div>
-      <div class="rc-summary">The Effective Score formula normalises student performance across different text difficulty levels, enabling a <strong>direct, fair comparison between all three programs</strong> on a single scale — regardless of what difficulty text each student is reading in each system.</div>
     </div>
     <div class="rc-stats">
       <div class="rc-stats-row">
-        <div class="stat-item"><div class="stat-num sn-teal">3</div><div class="stat-lbl">programs comparable on one scale</div></div>
+        <div class="stat-item"><div class="stat-num sn-teal">3</div><div class="stat-lbl">programs on one scale</div></div>
       </div>
       <span class="rc-view-btn">View full analysis &rarr;</span>
     </div>
