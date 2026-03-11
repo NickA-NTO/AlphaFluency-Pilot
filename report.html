@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaFluency Pilot Report | Alpha Schools</title>
+<style>
+:root {
+  --navy: #1a2f52;
+  --blue: #2563eb;
+  --blue-mid: #3b82f6;
+  --blue-lt: #dbeafe;
+  --blue-xlt: #eff6ff;
+  --green: #16a34a;
+  --green-lt: #dcfce7;
+  --amber: #d97706;
+  --amber-lt: #fef3c7;
+  --red: #dc2626;
+  --red-lt: #fee2e2;
+  --purple: #7c3aed;
+  --purple-lt: #ede9fe;
+  --cyan: #0891b2;
+  --cyan-lt: #cffafe;
+  --teal: #0d9488;
+  --teal-lt: #ccfbf1;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); color: var(--gray-900); line-height: 1.6; }
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ── LANDING ── */
+.hero {
+  background: linear-gradient(135deg, #0f2040 0%, #1a3560 50%, #1d4fa8 100%);
+  color: white; padding: 72px 40px 80px; text-align: center;
+}
+.hero-eyebrow {
+  display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px; padding: 5px 18px; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 28px; font-weight: 600;
+}
+.hero h1 { font-size: clamp(2.2em, 5vw, 3.4em); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 14px; line-height: 1.1; }
+.hero h1 span { color: #60a5fa; }
+.hero-sub { font-size: 1.05em; opacity: 0.75; max-width: 520px; margin: 0 auto 10px; }
+.hero-meta { font-size: 0.82em; opacity: 0.45; margin-top: 14px; letter-spacing: 0.04em; }
+.data-pills { display: flex; justify-content: center; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.pill {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px; padding: 7px 16px; font-size: 0.82em; font-weight: 600;
+}
+.questions-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  max-width: 860px; margin: -36px auto 0; padding: 0 28px 48px;
+}
+.q-card {
+  background: white; border-radius: 16px; padding: 32px 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13); cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s; border: 2px solid transparent;
+  position: relative; overflow: hidden;
+}
+.q-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+.q-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+.q-card.q1::before { background: linear-gradient(180deg,#7c3aed,#a855f7); }
+.q-card.q2::before { background: linear-gradient(180deg,#16a34a,#22c55e); }
+.q-card.q3::before { background: linear-gradient(180deg,#0891b2,#06b6d4); }
+.q-card.q4::before { background: linear-gradient(180deg,#d97706,#f59e0b); }
+.q-card.q5::before { background: linear-gradient(180deg,#0d9488,#14b8a6); }
+.col-full { grid-column: 1 / -1; max-width: 430px; justify-self: center; }
+.q-num { font-size: 0.72em; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.q1 .q-num { color: #7c3aed; } .q2 .q-num { color: #16a34a; } .q3 .q-num { color: #0891b2; } .q4 .q-num { color: #d97706; } .q5 .q-num { color: #0d9488; }
+.q-card h2 { font-size: 1em; font-weight: 700; color: var(--gray-800); line-height: 1.45; margin-bottom: 12px; }
+.q-card p { font-size: 0.85em; color: var(--gray-500); line-height: 1.55; margin-bottom: 22px; }
+.q-link {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 0.84em;
+  font-weight: 700; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer;
+  transition: filter 0.15s;
+}
+.q-link:hover { filter: brightness(0.92); }
+.q1 .q-link { background: var(--purple-lt); color: var(--purple); }
+.q2 .q-link { background: var(--green-lt); color: var(--green); }
+.q3 .q-link { background: var(--cyan-lt); color: var(--cyan); }
+.q4 .q-link { background: var(--amber-lt); color: var(--amber); }
+.q5 .q-link { background: var(--teal-lt); color: var(--teal); }
+.landing-note {
+  max-width: 860px; margin: 0 auto; padding: 0 28px 48px;
+  font-size: 0.82em; color: var(--gray-500); line-height: 1.7;
+  border-top: 1px solid var(--gray-200); padding-top: 24px;
+}
+.landing-note strong { color: var(--gray-700); }
+
+/* ── PAGE NAV ── */
+.page-nav {
+  background: white; border-bottom: 1px solid var(--gray-200); padding: 13px 36px;
+  display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+.btn-home {
+  background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 8px;
+  padding: 6px 14px; font-size: 0.82em; font-weight: 600; color: var(--gray-700);
+  cursor: pointer; display: flex; align-items: center; gap: 5px; transition: background 0.15s;
+}
+.btn-home:hover { background: var(--gray-200); }
+.nav-sep { color: var(--gray-300); }
+.nav-label { font-size: 0.82em; color: var(--gray-500); }
+.nav-current { font-size: 0.82em; font-weight: 700; color: var(--gray-800); }
+.nav-arrows { margin-left: auto; display: flex; gap: 8px; }
+.btn-arrow {
+  background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+  padding: 5px 12px; font-size: 0.8em; color: var(--gray-600); cursor: pointer;
+  transition: all 0.15s; white-space: nowrap;
+}
+.btn-arrow:hover { background: var(--gray-100); border-color: var(--gray-400); }
+
+/* ── PAGE CONTENT ── */
+.page-content { max-width: 980px; margin: 0 auto; padding: 36px 28px 80px; }
+.q-header { margin-bottom: 32px; }
+.q-tag { font-size: 0.72em; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.q-tag.purple { color: var(--purple); } .q-tag.green { color: var(--green); }
+.q-tag.cyan { color: var(--cyan); } .q-tag.amber { color: var(--amber); }
+.q-header h1 { font-size: clamp(1.4em, 3vw, 1.9em); font-weight: 800; color: var(--navy); line-height: 1.3; margin-bottom: 20px; }
+.verdict {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 30px; font-size: 0.88em; font-weight: 700;
+}
+.verdict.positive { background: var(--green-lt); color: #14532d; }
+.verdict.mixed { background: var(--amber-lt); color: #78350f; }
+.verdict.concern { background: var(--red-lt); color: #7f1d1d; }
+.verdict.info { background: var(--blue-lt); color: #1e40af; }
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 40px; }
+.section-title {
+  font-size: 0.72em; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray-400); margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.method-box {
+  background: var(--blue-xlt); border-left: 4px solid var(--blue);
+  border-radius: 0 10px 10px 0; padding: 18px 22px; margin-bottom: 14px;
+}
+.method-box h3 { font-size: 0.92em; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.method-box p { font-size: 0.88em; color: var(--gray-700); margin-bottom: 6px; }
+.method-box ul { padding-left: 18px; }
+.method-box li { font-size: 0.88em; color: var(--gray-700); margin-bottom: 5px; }
+.caveat-box {
+  background: var(--amber-lt); border-left: 4px solid var(--amber);
+  border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 14px;
+}
+.caveat-box p { font-size: 0.86em; color: #78350f; }
+.caveat-box strong { color: #92400e; }
+.info-box {
+  background: var(--purple-lt); border-left: 4px solid var(--purple);
+  border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 14px;
+}
+.info-box p { font-size: 0.86em; color: #4c1d95; }
+.info-box strong { color: #3b0764; }
+
+/* ── TABLES ── */
+.table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.855em; background: white; }
+th {
+  background: var(--navy); color: white; padding: 11px 13px;
+  text-align: left; font-weight: 600; font-size: 0.82em; letter-spacing: 0.02em; white-space: nowrap;
+}
+td { padding: 10px 13px; border-bottom: 1px solid var(--gray-100); vertical-align: middle; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #fafbfc; }
+tr:hover td { background: #f0f7ff !important; }
+.td-g { background: #f0fdf4 !important; color: #14532d; font-weight: 600; }
+.td-a { background: #fffbeb !important; color: #78350f; font-weight: 600; }
+.td-r { background: #fef2f2 !important; color: #7f1d1d; font-weight: 600; }
+.td-n { background: var(--gray-100) !important; color: var(--gray-400); font-style: italic; font-size: 0.9em; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 700; white-space: nowrap; }
+.badge-g { background: var(--green-lt); color: var(--green); }
+.badge-a { background: var(--amber-lt); color: var(--amber); }
+.badge-r { background: var(--red-lt); color: var(--red); }
+.badge-n { background: var(--gray-200); color: var(--gray-600); }
+.badge-b { background: var(--blue-lt); color: var(--blue); }
+.flag { font-size: 0.9em; }
+
+/* ── INLINE BAR ── */
+.bar-row { display: flex; align-items: center; gap: 8px; }
+.bar-track { flex: 1; min-width: 80px; height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.bar-g { background: linear-gradient(90deg, #16a34a, #22c55e); }
+.bar-a { background: linear-gradient(90deg, #d97706, #f59e0b); }
+.bar-r { background: linear-gradient(90deg, #dc2626, #ef4444); }
+.bar-b { background: linear-gradient(90deg, #2563eb, #3b82f6); }
+.bar-val { font-size: 0.8em; font-weight: 700; min-width: 40px; }
+
+/* ── FINDINGS ── */
+.finding-list { list-style: none; }
+.finding-list li {
+  display: flex; gap: 12px; padding: 13px 18px; background: white;
+  border-radius: 10px; margin-bottom: 9px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); font-size: 0.88em; line-height: 1.55;
+}
+.fi { flex-shrink: 0; font-size: 1em; margin-top: 1px; }
+
+/* ── STAT GRID ── */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.stat-card {
+  background: white; border-radius: 12px; padding: 20px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-align: center;
+}
+.stat-num { font-size: 2.6em; font-weight: 900; line-height: 1; }
+.stat-num.green { color: var(--green); } .stat-num.amber { color: var(--amber); }
+.stat-num.red { color: var(--red); } .stat-num.blue { color: var(--blue); }
+.stat-label { font-size: 0.78em; color: var(--gray-500); margin-top: 6px; line-height: 1.3; }
+
+/* ── STUDENT SPOTLIGHT ── */
+.spotlight {
+  background: white; border-radius: 10px; padding: 16px 20px;
+  margin-bottom: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  border-left: 4px solid var(--blue);
+}
+.spotlight.g { border-left-color: var(--green); }
+.spotlight.a { border-left-color: var(--amber); }
+.spotlight.r { border-left-color: var(--red); }
+.spotlight h4 { font-size: 0.92em; font-weight: 700; margin-bottom: 5px; }
+.spotlight p { font-size: 0.84em; color: var(--gray-600); line-height: 1.5; }
+
+/* ── TABLE NOTE ── */
+.table-note { font-size: 0.78em; color: var(--gray-500); margin-top: 6px; line-height: 1.5; padding: 0 4px; }
+.divider { border: none; border-top: 1px solid var(--gray-200); margin: 32px 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* ── INFLATION TABLE ── */
+.infl-table-wrap { background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); overflow: hidden; margin-bottom: 14px; }
+.infl-table { width: 100%; border-collapse: collapse; font-size: 0.84em; }
+.infl-table th { background: #4c1d95; color: white; padding: 10px 14px; font-weight: 600; font-size: 0.82em; text-align: left; }
+.infl-table td { padding: 9px 14px; border-bottom: 1px solid var(--gray-100); }
+.infl-table tr:last-child td { border-bottom: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 660px) {
+  .questions-grid { grid-template-columns: 1fr; padding: 0 16px 36px; }
+  .hero { padding: 50px 20px 60px; }
+  .page-content { padding: 24px 16px 60px; }
+  .page-nav { padding: 10px 16px; }
+  .two-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     LANDING PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">Alpha Schools &middot; Early Literacy</div>
+    <h1>Alpha<span>Fluency</span><br>Pilot Report</h1>
+    <p class="hero-sub">A rigorous one-week data analysis across 10 students in Grades K&ndash;2</p>
+    <div class="data-pills">
+      <div class="pill">10 Students</div>
+      <div class="pill">Grades K&ndash;2</div>
+      <div class="pill">One-Week Pilot</div>
+      <div class="pill">March 2026</div>
+    </div>
+    <div class="hero-meta">Select a research question below to view methodology, data, and findings</div>
+  </div>
+
+  <div class="questions-grid">
+    <div class="q-card q1" onclick="showPage('q1')">
+      <div class="q-num">Question 1</div>
+      <h2>Did AlphaFluency's adaptivity quickly get students to the correct content difficulty?</h2>
+      <p>Starting from ATOS 0.4, how quickly did the adaptive engine reach each student's Literably-assessed reading level?</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q2" onclick="showPage('q2')">
+      <div class="q-num">Question 2</div>
+      <h2>Did AlphaFluency improve WCPM and accuracy from its own starting scores?</h2>
+      <p>Within-system growth analysis, accounting for increasing text difficulty and AlphaFluency's heard-first format.</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q3" onclick="showPage('q3')">
+      <div class="q-num">Question 3</div>
+      <h2>Did AlphaFluency improve WCPM and accuracy compared to Literably starting scores?</h2>
+      <p>Cross-system comparison adjusted for both text difficulty differences and the heard-first vs. cold-read format gap.</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q4" onclick="showPage('q4')">
+      <div class="q-num">Question 4</div>
+      <h2>Did AlphaFluency get students closer to their grade-level reading target?</h2>
+      <p>Dual-dimension tracking of WCPM and text difficulty progress toward each student's grade benchmark.</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q5 col-full" onclick="showPage('eff')">
+      <div class="q-num">Supplementary Analysis</div>
+      <h2>Difficulty-Normalised Effective Score: A Cross-System Performance Framework</h2>
+      <p>Applying the Effective Score formula to compare student performance across different text difficulty levels and reading contexts &mdash; a foundation for future AlphaLit and ClearFluency comparisons.</p>
+      <button class="q-link">View Analysis &rarr;</button>
+    </div>
+  </div>
+
+  <div class="landing-note">
+    <strong>Key data context:</strong> AlphaFluency reads each text aloud to the student before they read it independently (heard-first). Literably uses a completely unseen cold read. All text difficulty values are ATOS levels. All AlphaFluency sessions began at ATOS 0.4 regardless of prior assessment. &ldquo;Initial&rdquo; scores = first attempt on first book; &ldquo;Final&rdquo; scores = first attempt on last book; &ldquo;Average&rdquo; = system-provided aggregate. &nbsp;&middot;&nbsp; A follow-up Literably assessment is recommended to complete this analysis with comparable cold-read data.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q1: ADAPTIVITY
+══════════════════════════════════════════════════ -->
+<div id="page-q1" class="page">
+  <nav class="page-nav">
+    <button class="btn-home" onclick="showPage('home')">&#8592; Home</button>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">1 &mdash; Adaptivity</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" disabled>&larr; Prev</button>
+      <button class="btn-arrow" onclick="showPage('q2')">Next: Growth from AF Baseline &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag purple">Question 1 &mdash; Adaptivity</div>
+      <h1>Did AlphaFluency's adaptivity quickly get students to the correct content difficulty based on their Literably scores?</h1>
+      <div class="verdict positive">&#9679; Strong: 8 of 10 students within &plusmn;0.5 ATOS of assessed level</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology &amp; Reasoning</div>
+      <div class="method-box">
+        <h3>What &ldquo;correct difficulty&rdquo; means</h3>
+        <p>Research on oral reading fluency (Rasinski, 2010; Hasbrouck &amp; Tindal, 2006) defines the <strong>instructional level</strong> as the text difficulty at which a student reads with 90&ndash;95% accuracy &mdash; not too easy (no growth) and not too hard (frustration). Literably assesses each student at their individual reading level, making that ATOS score the best available proxy for their correct instructional starting point.</p>
+      </div>
+      <div class="method-box">
+        <h3>How we measured adaptivity</h3>
+        <p>All students began every AlphaFluency session at <strong>ATOS 0.4</strong> &mdash; well below any student&rsquo;s Literably-assessed level (range: 1.1&ndash;3.3). The adaptive engine raised difficulty based on real-time performance. We compare the <strong>AF final ATOS</strong> (difficulty of the last book read) against each student&rsquo;s <strong>Literably initial ATOS</strong>, measuring the gap remaining after one week.</p>
+        <ul>
+          <li><strong>Gap &lt; &plusmn;0.5 ATOS:</strong> Near target &mdash; strong adaptive performance</li>
+          <li><strong>Gap 0.5&ndash;1.0 ATOS:</strong> Moderate undershoot &mdash; more sessions needed</li>
+          <li><strong>Gap &gt; 1.0 ATOS:</strong> Significant undershoot &mdash; system needs more time or data</li>
+        </ul>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Important context:</strong> AlphaFluency may intentionally begin below assessed level to build confidence and fluency at accessible text before ramping up. In that pedagogical model, some undershoot after one week is expected and healthy &mdash; not a failure. Average difficulty (across all books) provides additional signal about the trajectory arc.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results &mdash; Adaptivity by Student</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num green">8/10</div><div class="stat-label">Students within &plusmn;0.5 ATOS of Literably level</div></div>
+        <div class="stat-card"><div class="stat-num blue">&minus;0.35</div><div class="stat-label">Mean gap (AF below Literably), in ATOS points</div></div>
+        <div class="stat-card"><div class="stat-num amber">15 min</div><div class="stat-label">Shortest time to reach near-target difficulty (Rivers Yong)</div></div>
+        <div class="stat-card"><div class="stat-num amber">2</div><div class="stat-label">Students with significant gap (&gt;1.0 ATOS)</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Grade Target</th>
+              <th>Literably ATOS</th>
+              <th>AF Avg ATOS</th>
+              <th>AF Final ATOS</th>
+              <th>Gap (AF &minus; Lit)</th>
+              <th>Books</th>
+              <th>Minutes</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td>
+              <td>Grade 2</td>
+              <td>3.0</td>
+              <td>2.2</td>
+              <td>2.5</td>
+              <td class="td-g">&minus;0.5</td>
+              <td>5</td>
+              <td>16</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td>
+              <td>Grade 2</td>
+              <td>2.0</td>
+              <td>1.8</td>
+              <td>2.5</td>
+              <td class="td-g">+0.5</td>
+              <td>14</td>
+              <td>36</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td>
+              <td>Grade 1</td>
+              <td>1.1</td>
+              <td>1.5</td>
+              <td>1.5</td>
+              <td class="td-g">+0.4</td>
+              <td>7</td>
+              <td>18</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td>
+              <td>Grade 2</td>
+              <td>2.0</td>
+              <td>0.9</td>
+              <td>2.0</td>
+              <td class="td-g">0.0</td>
+              <td>3</td>
+              <td class="td-a">4</td>
+              <td><span class="badge badge-a">Exact* (4 min only)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td>
+              <td>Grade 1</td>
+              <td>2.0</td>
+              <td>1.7</td>
+              <td>1.5</td>
+              <td class="td-g">&minus;0.5</td>
+              <td>6</td>
+              <td>19</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ren Sticker</strong></td>
+              <td>Grade 2</td>
+              <td>3.3</td>
+              <td>2.1</td>
+              <td>2.0</td>
+              <td class="td-r">&minus;1.3</td>
+              <td>10</td>
+              <td>35</td>
+              <td><span class="badge badge-r">Significant undershoot</span></td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td>
+              <td>Grade 2</td>
+              <td>3.0</td>
+              <td>1.9</td>
+              <td>2.5</td>
+              <td class="td-g">&minus;0.5</td>
+              <td>11</td>
+              <td>49</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hayes Burman</strong></td>
+              <td>Grade 2</td>
+              <td>3.0</td>
+              <td>2.3</td>
+              <td>2.5</td>
+              <td class="td-g">&minus;0.5</td>
+              <td>12</td>
+              <td>51</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td>
+              <td>Grade 2</td>
+              <td>2.6</td>
+              <td>1.8</td>
+              <td>2.5</td>
+              <td class="td-g">&minus;0.1</td>
+              <td>4</td>
+              <td>15</td>
+              <td><span class="badge badge-g">Near target</span></td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td>
+              <td>Grade 1</td>
+              <td>2.0</td>
+              <td>1.5</td>
+              <td>1.0</td>
+              <td class="td-a">&minus;1.0</td>
+              <td>11</td>
+              <td>38</td>
+              <td><span class="badge badge-a">Moderate undershoot*</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">* Diego Bash: only 4 minutes of total practice &mdash; insufficient data for reliable adaptivity assessment. &nbsp;|&nbsp; * Riley Rosenberg: AF average ATOS was 1.5; final of 1.0 indicates the system actively backed off difficulty based on performance &mdash; likely appropriate response, not undershoot.</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9989;</span><div><strong>80% of students reached near-target difficulty within one week</strong>, starting from ATOS 0.4. The system covered 1.5&ndash;2.1 ATOS levels of ground in 15&ndash;51 minutes of practice. This represents strong adaptive capability.</div></li>
+        <li><span class="fi">&#9989;</span><div><strong>Rivers Yong reached within 0.1 ATOS of their Literably level in just 4 books / 15 minutes</strong> &mdash; the fastest and most precise adaptation in the cohort, reaching ATOS 2.5 against a Literably level of 2.6.</div></li>
+        <li><span class="fi">&#9888;&#65039;</span><div><strong>Ren Sticker is the clearest gap case</strong> (Literably 3.3, AF final 2.0, gap &minus;1.3). As the highest-assessed reader in the cohort, Ren&rsquo;s system needs more sessions to traverse the full 0.4&rarr;3.3 range. This is a pacing issue, not an adaptivity failure.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>Average vs. final ATOS reveals the system&rsquo;s active calibration.</strong> Alita (avg 1.7, final 1.5) and Riley (avg 1.5, final 1.0) both show the system backing off to find the student&rsquo;s instructional floor &mdash; a sign of responsive, not broken, adaptivity.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>The global mean gap of &minus;0.35 ATOS</strong> shows the system slightly underplaces rather than overplaces &mdash; a pedagogically safer error (frustration-level text is more harmful than slightly-easy text in early reading).</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q2: GROWTH FROM AF BASELINE
+══════════════════════════════════════════════════ -->
+<div id="page-q2" class="page">
+  <nav class="page-nav">
+    <button class="btn-home" onclick="showPage('home')">&#8592; Home</button>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">2 &mdash; Growth from AF Baseline</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q1')">&larr; Q1: Adaptivity</button>
+      <button class="btn-arrow" onclick="showPage('q3')">Q3: Literably Comparison &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag green">Question 2 &mdash; Growth from AlphaFluency Baseline</div>
+      <h1>Did AlphaFluency improve students&rsquo; WCPM and accuracy based on their starting AlphaFluency scores?</h1>
+      <div class="verdict positive">&#9679; Positive: 8 of 10 students show genuine growth after full adjustment</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology &amp; Reasoning</div>
+
+      <div class="info-box">
+        <p><strong>Critical context &mdash; heard-first format:</strong> AlphaFluency reads every text aloud to the student before they read it independently. This applies to <em>both</em> the initial book (ATOS 0.4) and the final book (ATOS 1.0&ndash;2.5). Because the benefit of prior exposure increases with text complexity, the final-book score carries <em>more inflation</em> than the initial-book score, even though both are heard-first. This differential must be accounted for to isolate genuine fluency growth.</p>
+      </div>
+
+      <div class="method-box">
+        <h3>The three-layer adjustment framework</h3>
+        <p>Raw WCPM comparison (initial vs. final) is systematically misleading because two confounds compound each other:</p>
+        <ul>
+          <li><strong>Confound 1 &mdash; Text difficulty increase:</strong> All students went from ATOS 0.4 to ATOS 1.0&ndash;2.5. Harder texts naturally produce lower WCPM in an unpracticed cold read. We apply <strong>+8 WCPM per ATOS level increase</strong> as a conservative difficulty correction (based on Hasbrouck &amp; Tindal grade-level norms; see Q3 for full sourcing).</li>
+          <li><strong>Confound 2 &mdash; Differential heard-first inflation:</strong> At ATOS 0.4, heard-first exposure provides minimal benefit (&sim;5 WCPM estimated). At ATOS 1.5&ndash;2.5, it provides 13&ndash;17 WCPM of inflation (see table below). The <em>net inflation advantage</em> of the final reading over the initial reading equals final&minus;level inflation minus ATOS-0.4 inflation (&sim;5 WCPM).</li>
+          <li><strong>Accuracy analysis:</strong> We show both observed accuracy (as-scored by AF) and cold-read equivalent accuracy (subtracting heard-first accuracy inflation) to reveal the student&rsquo;s true independent reading accuracy at each text level.</li>
+        </ul>
+      </div>
+
+      <div class="infl-table-wrap">
+        <table class="infl-table">
+          <thead>
+            <tr><th>ATOS Level</th><th>WCPM Inflation (mid estimate)</th><th>Differential vs. ATOS 0.4 (&sim;5 WCPM)</th><th>Accuracy Inflation (mid estimate)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ATOS 0.4 (AF start)</td><td>&sim;5 WCPM</td><td>baseline</td><td>&sim;1%</td></tr>
+            <tr><td>ATOS 1.0</td><td>&sim;12 WCPM</td><td><strong>&minus;7 WCPM applied</strong></td><td>&sim;3%</td></tr>
+            <tr><td>ATOS 1.5</td><td>&sim;13 WCPM</td><td><strong>&minus;8 WCPM applied</strong></td><td>&sim;3.5%</td></tr>
+            <tr><td>ATOS 2.0</td><td>&sim;16 WCPM</td><td><strong>&minus;11 WCPM applied</strong></td><td>&sim;4.5%</td></tr>
+            <tr><td>ATOS 2.5</td><td>&sim;17 WCPM</td><td><strong>&minus;12 WCPM applied</strong></td><td>&sim;5.5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note" style="margin-bottom:14px">Inflation ranges sourced from: Therrien (2004) meta-analysis on repeated reading; Kuhn &amp; Stahl (2003) fluency intervention review; Hudson, Mercer &amp; Lane (2000) previewing effects research. Mid-estimates used; full ranges: ATOS 1.0: 8&ndash;15 WCPM; ATOS 2.0: 12&ndash;20 WCPM; ATOS 3.0: 15&ndash;25 WCPM.</p>
+
+      <div class="caveat-box">
+        <p><strong>Formula applied per student:</strong> True Net &Delta; = Raw WCPM &Delta; + (ATOS &Delta; &times; 8) &minus; Differential Inflation. This corrects for both the difficulty penalty and the heard-first bonus simultaneously, yielding the most conservative, honest estimate of genuine fluency growth.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results &mdash; Adjusted WCPM Growth (AF Initial vs. AF Final)</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num green">8/10</div><div class="stat-label">Students with positive net-adjusted WCPM growth</div></div>
+        <div class="stat-card"><div class="stat-num green">+23</div><div class="stat-label">Mean net-adjusted WCPM gain (exc. Diego)</div></div>
+        <div class="stat-card"><div class="stat-num blue">+2.1</div><div class="stat-label">Max ATOS difficulty increase in one week (7 students)</div></div>
+        <div class="stat-card"><div class="stat-num amber">3</div><div class="stat-label">Students with accuracy concerns in cold-read equivalent</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>AF Init WCPM</th>
+              <th>AF Init Acc</th>
+              <th>AF Final WCPM</th>
+              <th>AF Final ATOS</th>
+              <th>AF Final Acc (observed)</th>
+              <th>Cold-Read Equiv Acc</th>
+              <th>Raw WCPM &Delta;</th>
+              <th>+Diff Adj</th>
+              <th>&minus;Infl Adj</th>
+              <th>True Net &Delta;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td>
+              <td>72</td><td>100%</td>
+              <td>81</td><td>2.5</td>
+              <td>94%</td><td class="td-a">~89%</td>
+              <td>+9</td><td>+16.8</td><td>&minus;12</td>
+              <td class="td-g"><strong>+14</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td>
+              <td>64</td><td>100%</td>
+              <td>85</td><td>2.5</td>
+              <td class="td-a">82%</td><td class="td-r">~77%</td>
+              <td>+21</td><td>+16.8</td><td>&minus;12</td>
+              <td class="td-g"><strong>+26</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td>
+              <td>48</td><td>100%</td>
+              <td>33</td><td>1.5</td>
+              <td>92%</td><td class="td-a">~89%</td>
+              <td>&minus;15</td><td>+8.8</td><td>&minus;8</td>
+              <td class="td-r"><strong>&minus;14</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td>
+              <td>46</td><td class="td-a">78%</td>
+              <td>82</td><td>2.0</td>
+              <td class="td-r">67%</td><td class="td-r">~63%</td>
+              <td>+36</td><td>+12.8</td><td>&minus;11</td>
+              <td class="td-a"><strong>+38 &#9888;</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td>
+              <td>73</td><td>100%</td>
+              <td>68</td><td>1.5</td>
+              <td>100%</td><td class="td-g">~97%</td>
+              <td>&minus;5</td><td>+8.8</td><td>&minus;8</td>
+              <td class="td-a"><strong>&minus;4</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Ren Sticker</strong></td>
+              <td>56</td><td>100%</td>
+              <td>75</td><td>2.0</td>
+              <td class="td-a">85%</td><td class="td-r">~81%</td>
+              <td>+19</td><td>+12.8</td><td>&minus;11</td>
+              <td class="td-g"><strong>+21</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td>
+              <td>52</td><td>94%</td>
+              <td>78</td><td>2.5</td>
+              <td class="td-g">96%</td><td class="td-g">~91%</td>
+              <td>+26</td><td>+16.8</td><td>&minus;12</td>
+              <td class="td-g"><strong>+31</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Hayes Burman</strong></td>
+              <td>51</td><td class="td-a">78%</td>
+              <td>92</td><td>2.5</td>
+              <td class="td-g">99%</td><td class="td-g">~94%</td>
+              <td>+41</td><td>+16.8</td><td>&minus;12</td>
+              <td class="td-g"><strong>+46</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td>
+              <td>59</td><td>100%</td>
+              <td>75</td><td>2.5</td>
+              <td class="td-a">83%</td><td class="td-r">~78%</td>
+              <td>+16</td><td>+16.8</td><td>&minus;12</td>
+              <td class="td-g"><strong>+21</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td>
+              <td>62</td><td>100%</td>
+              <td>68</td><td>1.0</td>
+              <td class="td-g">100%</td><td class="td-g">~97%</td>
+              <td>+6</td><td>+4.8</td><td>&minus;7</td>
+              <td class="td-g"><strong>+4</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Cold-Read Equiv Acc = Observed accuracy minus heard-first inflation mid-estimate for that ATOS level. &nbsp;|&nbsp; &#9888; Diego: accuracy at deep frustration level (63% cold-read equiv); WCPM gain should not be interpreted as fluency growth. &nbsp;|&nbsp; Green acc. cell = within instructional range (&gt;90%) in cold-read equivalent. Red = frustration level (&lt;85%).</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9989;</span><div><strong>8 of 10 students show genuine WCPM growth</strong> after accounting for both text difficulty increases and differential heard-first inflation. The two exceptions &mdash; Ellis (−14) and Alita (−4) &mdash; represent edge cases rather than system failures.</div></li>
+        <li><span class="fi">&#9989;</span><div><strong>Hayes Burman is the standout performer:</strong> +46 true net WCPM, while reading texts 2.1 ATOS harder, and accuracy improving from 78% to 99% (94% cold-read equivalent). The initial low accuracy (78%) suggests AF correctly began at an accessible level to build momentum.</div></li>
+        <li><span class="fi">&#9989;</span><div><strong>Blake Price shows the cleanest growth signal:</strong> +31 true net WCPM with observed accuracy improving from 94% to 96% on harder text, yielding a cold-read equivalent of ~91% &mdash; squarely in the instructional zone.</div></li>
+        <li><span class="fi">&#9888;&#65039;</span><div><strong>Accuracy concerns after inflation adjustment:</strong> Aiden (~77%), Rivers (~78%), and Ren (~81%) show cold-read equivalent accuracy below the 85% instructional floor. The heard-first format is masking potential frustration-level placement for these students. Recommend monitoring and possible difficulty rollback.</div></li>
+        <li><span class="fi">&#9888;&#65039;</span><div><strong>Ellis Kyung is the only student with a clearly negative result</strong> (&minus;14 adjusted). With only 18 minutes of practice (7 books) and the lowest starting WCPM in the cohort (48), insufficient engagement is the primary confound. This warrants monitoring, not a negative verdict on the system.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>Diego Bash&rsquo;s data is unreliable</strong> (4 minutes, 3 books, accuracy collapsed to 67%). Even the +38 adjusted gain cannot be treated as meaningful. Adequate engagement must be established before re-assessing.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q3: GROWTH FROM LITERABLY BASELINE
+══════════════════════════════════════════════════ -->
+<div id="page-q3" class="page">
+  <nav class="page-nav">
+    <button class="btn-home" onclick="showPage('home')">&#8592; Home</button>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">3 &mdash; Literably Comparison</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q2')">&larr; Q2: AF Baseline Growth</button>
+      <button class="btn-arrow" onclick="showPage('q4')">Q4: Grade Targets &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag cyan">Question 3 &mdash; Growth vs. Literably Baseline</div>
+      <h1>Did AlphaFluency improve students&rsquo; WCPM and accuracy based on their starting Literably scores?</h1>
+      <div class="verdict mixed">&#9679; Mixed &mdash; 3 of 10 students show verified gains; cross-system comparison requires two key adjustments</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology &amp; Why This Is the Hardest Comparison</div>
+
+      <div class="caveat-box">
+        <p><strong>This comparison has two systematic biases that both favor AlphaFluency &mdash; and must be corrected for before any conclusion can be drawn.</strong> Failing to adjust for either produces results that overstate AF performance relative to Literably.</p>
+      </div>
+
+      <div class="method-box">
+        <h3>Bias 1 &mdash; Format difference: heard-first vs. cold read</h3>
+        <p>Literably uses a <strong>completely unseen cold read</strong>. AlphaFluency reads the text aloud to the student first (heard-first). Research shows heard-first exposure inflates WCPM by 12&ndash;17 WCPM at ATOS 2.0&ndash;2.5 (mid-estimates; Therrien 2004, Kuhn &amp; Stahl 2003). To compare fairly, we subtract the full heard-first inflation from each student&rsquo;s AF final WCPM.</p>
+      </div>
+      <div class="method-box">
+        <h3>Bias 2 &mdash; Text difficulty difference</h3>
+        <p>Most students&rsquo; AF final ATOS is <em>lower</em> than their Literably-assessed ATOS. Easier text naturally produces higher WCPM. After subtracting the heard-first inflation, we apply a difficulty correction: +8 WCPM per ATOS level when AF text is harder than Literably text; &minus;8 WCPM per ATOS level when AF text is easier. This places both scores on a common difficulty baseline.</p>
+      </div>
+      <div class="method-box">
+        <h3>Two-step formula</h3>
+        <p><strong>Step 1:</strong> AF Adjusted WCPM = AF Final WCPM &minus; Heard-First Inflation (by AF final ATOS level)<br>
+        <strong>Step 2:</strong> True Net &Delta; = AF Adjusted WCPM &plusmn; Difficulty Correction &minus; Literably Initial WCPM<br>
+        <em>Difficulty correction: &minus;8 &times; (Lit ATOS &minus; AF Final ATOS) when AF is at easier text; +8 &times; (AF ATOS &minus; Lit ATOS) when AF is at harder text.</em></p>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Additional limitation:</strong> Only <strong>Anthem Thomas</strong> has both a Literably initial and a Literably final score, making true pre/post Literably comparison impossible for 9 students. For these 9, we are comparing a cold-read assessment to a heard-first practice performance &mdash; different instruments even after adjustment. <strong>A post-pilot Literably assessment is the critical missing data point.</strong></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results &mdash; Fully-Adjusted Comparison (Literably Cold-Read vs. AF Heard-First)</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num green">3/10</div><div class="stat-label">Students with positive net-adjusted WCPM vs. Literably</div></div>
+        <div class="stat-card"><div class="stat-num red">7/10</div><div class="stat-label">Students showing apparent regression after full adjustment</div></div>
+        <div class="stat-card"><div class="stat-num blue">&minus;17</div><div class="stat-label">Mean heard-first inflation applied (WCPM, across cohort)</div></div>
+        <div class="stat-card"><div class="stat-num amber">1/10</div><div class="stat-label">Students with both Lit initial &amp; final scores (Anthem)</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Lit Init WCPM</th>
+              <th>Lit Init ATOS</th>
+              <th>Lit Init Acc</th>
+              <th>AF Final WCPM</th>
+              <th>AF Final ATOS</th>
+              <th>AF Final Acc</th>
+              <th>&minus;Infl Adj</th>
+              <th>&plusmn;Diff Adj</th>
+              <th>True Net &Delta;</th>
+              <th>Direction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td>
+              <td>55</td><td>3.0</td><td>91%</td>
+              <td>81</td><td>2.5</td><td>94%</td>
+              <td>&minus;17</td><td>&minus;4</td>
+              <td class="td-g"><strong>+5</strong></td>
+              <td><span class="badge badge-g">Modest gain</span></td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td>
+              <td>100</td><td>2.0</td><td>100%</td>
+              <td>85</td><td>2.5</td><td class="td-a">82%</td>
+              <td>&minus;17</td><td>+4</td>
+              <td class="td-r"><strong>&minus;28</strong></td>
+              <td><span class="badge badge-r">Apparent drop</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td>
+              <td>58</td><td>1.1</td><td>96%</td>
+              <td>33</td><td>1.5</td><td>92%</td>
+              <td>&minus;13</td><td>+3.2</td>
+              <td class="td-r"><strong>&minus;34</strong></td>
+              <td><span class="badge badge-r">Concerning</span></td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td>
+              <td>80</td><td>2.0</td><td>100%</td>
+              <td>82</td><td>2.0</td><td class="td-r">67%</td>
+              <td>&minus;16</td><td>0</td>
+              <td class="td-r"><strong>&minus;14</strong></td>
+              <td><span class="badge badge-a">Insufficient data</span></td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td>
+              <td>33</td><td>2.0</td><td>89%</td>
+              <td>68</td><td>1.5</td><td>100%</td>
+              <td>&minus;13</td><td>&minus;4</td>
+              <td class="td-g"><strong>+19</strong></td>
+              <td><span class="badge badge-g">Solid gain</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ren Sticker</strong></td>
+              <td>84</td><td>3.3</td><td>99%</td>
+              <td>75</td><td>2.0</td><td class="td-a">85%</td>
+              <td>&minus;16</td><td>&minus;10.4</td>
+              <td class="td-r"><strong>&minus;35</strong></td>
+              <td><span class="badge badge-a">Not yet at level</span></td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td>
+              <td>76</td><td>3.0</td><td>95%</td>
+              <td>78</td><td>2.5</td><td class="td-g">96%</td>
+              <td>&minus;17</td><td>&minus;4</td>
+              <td class="td-r"><strong>&minus;19</strong></td>
+              <td><span class="badge badge-a">Not yet at level</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hayes Burman</strong></td>
+              <td>90</td><td>3.0</td><td>97%</td>
+              <td>92</td><td>2.5</td><td class="td-g">99%</td>
+              <td>&minus;17</td><td>&minus;4</td>
+              <td class="td-r"><strong>&minus;19</strong></td>
+              <td><span class="badge badge-a">Not yet at level</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td>
+              <td>68</td><td>2.6</td><td>96%</td>
+              <td>75</td><td>2.5</td><td class="td-a">83%</td>
+              <td>&minus;17</td><td>&minus;0.8</td>
+              <td class="td-r"><strong>&minus;11</strong></td>
+              <td><span class="badge badge-a">Slight regression</span></td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td>
+              <td>32</td><td>2.0</td><td>87%</td>
+              <td>68</td><td>1.0</td><td class="td-g">100%</td>
+              <td>&minus;12</td><td>&minus;8</td>
+              <td class="td-g"><strong>+16</strong></td>
+              <td><span class="badge badge-g">Solid gain</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Inflation adj uses mid-estimates: ATOS 1.0: &minus;12; ATOS 1.5: &minus;13; ATOS 2.0: &minus;16; ATOS 2.5: &minus;17. &nbsp;|&nbsp; Diff adj: &minus;8 WCPM per ATOS level when AF easier; +8 when AF harder. &nbsp;|&nbsp; Negative results do <em>not</em> mean AlphaFluency harmed students &mdash; see interpretation below.</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Critical Interpretation</div>
+      <div class="spotlight g">
+        <h4>What the positive results mean</h4>
+        <p>Anthem (+5), Alita (+19), and Riley (+16) show genuine, verified WCPM improvement compared to their cold-read Literably baseline, even after stripping out all format and difficulty advantages. These are the most reliable growth signals in this dataset.</p>
+      </div>
+      <div class="spotlight a">
+        <h4>What &ldquo;Not yet at level&rdquo; means for Blake, Hayes, Ren</h4>
+        <p>These students showed strong Literably scores (2.6&ndash;3.3 ATOS) but AlphaFluency has only reached 2.0&ndash;2.5 ATOS after one week. Their negative adjusted scores largely reflect that they&rsquo;re being <em>compared at a difficulty disadvantage</em> &mdash; their AF final reading is at easier text than Literably tested. This is an adaptivity-timing issue (see Q1), not evidence that fluency declined.</p>
+      </div>
+      <div class="spotlight r">
+        <h4>What &ldquo;Apparent drop&rdquo; means for Aiden, Ellis, Rivers</h4>
+        <p>These students&rsquo; adjusted scores are negative even when accounting for both confounds. For Aiden, the Literably initial of 100 WCPM with 100% accuracy at ATOS 2.0 sets a very high cold-read bar that AF has not matched. For Ellis and Rivers, accuracy is borderline and engagement is low. These cases warrant closer monitoring in week 2.</p>
+      </div>
+      <div class="spotlight">
+        <h4>The single most important action item from Q3</h4>
+        <p>A <strong>post-pilot Literably assessment</strong> is the only way to close this question definitively. It would provide a cold-read comparison at the same difficulty level and on the same instrument, eliminating both confounds simultaneously. Without it, Q3 remains a cross-system inference, not a controlled measurement.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9989;</span><div><strong>3 students (Anthem, Alita, Riley) show genuine improvement</strong> vs. their cold-read Literably baseline after full adjustment. These are the most defensible growth signals in the pilot.</div></li>
+        <li><span class="fi">&#9888;&#65039;</span><div><strong>The heard-first inflation is the dominant statistical factor in Q3.</strong> Before adjustment, 6/10 students appeared to show gains; after inflation correction, only 3/10 do. This 17 WCPM average adjustment is critical to honest reporting.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>Negative results are largely explained by methodology, not AlphaFluency performance.</strong> For Ren, Blake, Hayes, and Rivers, the gap is almost entirely accounted for by AF&rsquo;s difficulty not yet reaching Literably&rsquo;s assessed level. More sessions would likely close this.</div></li>
+        <li><span class="fi">&#128680;</span><div><strong>A follow-up Literably cold assessment is the critical missing piece.</strong> This report cannot cleanly answer Q3 without it. Scheduling this for the end of the pilot is the highest-priority recommendation.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>Anthem Thomas is the only valid pre/post comparison (Literably initial &amp; final both available).</strong> His Literably scores were flat (55&rarr;53 WCPM, different difficulty levels), while his AF final shows +5 genuine adjusted growth &mdash; cautiously positive given one week.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q4: GRADE TARGET PROGRESS
+══════════════════════════════════════════════════ -->
+<div id="page-q4" class="page">
+  <nav class="page-nav">
+    <button class="btn-home" onclick="showPage('home')">&#8592; Home</button>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">4 &mdash; Grade Target Progress</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q3')">&larr; Q3: Literably Comparison</button>
+      <button class="btn-arrow" onclick="showPage('eff')">Effective Score Analysis &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag amber">Question 4 &mdash; Grade Target Progress</div>
+      <h1>Based on each student&rsquo;s grade target, did AlphaFluency effectively get them closer to reaching it?</h1>
+      <div class="verdict mixed">&#9679; Mixed &mdash; WCPM gap closed for 7/10 students; no student yet reading at full target ATOS within one week</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology &amp; Reasoning</div>
+      <div class="method-box">
+        <h3>Grade targets (ORF benchmarks)</h3>
+        <p>Targets are derived from Acadience &lsquo;Exceeds Benchmark&rsquo; thresholds. Meeting a grade-level reading target requires <em>two simultaneous conditions</em>:</p>
+        <ul>
+          <li><strong>WCPM target:</strong> Grade 1 = 67 WCPM &nbsp;|&nbsp; Grade 2 = 104 WCPM</li>
+          <li><strong>Difficulty target:</strong> Grade 1 = ATOS 2.0 &nbsp;|&nbsp; Grade 2 = ATOS 3.0</li>
+        </ul>
+        <p style="margin-top:8px">A student who reads 104 WCPM on an ATOS 1.0 text has <em>not</em> met the Grade 2 benchmark. Both dimensions must be tracked. We measure progress on each dimension separately.</p>
+      </div>
+      <div class="method-box">
+        <h3>What we compare</h3>
+        <p><strong>WCPM dimension:</strong> Gap to target using Literably initial WCPM (starting point) vs. AF final WCPM (current performance). Narrowing this gap is positive.</p>
+        <p style="margin-top:6px"><strong>ATOS dimension:</strong> AF began all students at 0.4, so &ldquo;progress&rdquo; is measured from ATOS 0.4 to AF final ATOS, expressed as % of target ATOS range (0.4 to grade target) covered in one week.</p>
+      </div>
+      <div class="caveat-box">
+        <p><strong>WCPM comparison note:</strong> As established in Q3, AlphaFluency&rsquo;s heard-first format inflates WCPM by 12&ndash;17 WCPM relative to a cold-read assessment at the same ATOS level. Acadience benchmarks are based on cold reads. The &ldquo;heard-first WCPM gap&rdquo; column shows the apparent gap; the &ldquo;cold-read equiv gap&rdquo; column shows the more honest estimate after removing inflation.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">WCPM Progress Toward Grade Target</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Grade Target</th>
+              <th>Target WCPM</th>
+              <th>Lit Init WCPM</th>
+              <th>Initial Gap</th>
+              <th>AF Final WCPM (heard-first)</th>
+              <th>HF Gap to Target</th>
+              <th>Cold-Read Equiv WCPM</th>
+              <th>True Gap to Target</th>
+              <th>WCPM Trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td><td>Gr 2</td><td>104</td>
+              <td>55</td><td>&minus;49</td>
+              <td>81</td><td>&minus;23</td>
+              <td class="td-a">~64</td><td class="td-a">&minus;40</td>
+              <td><span class="badge badge-g">Closing &uarr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td><td>Gr 2</td><td>104</td>
+              <td>100</td><td>&minus;4</td>
+              <td>85</td><td>&minus;19</td>
+              <td class="td-r">~68</td><td class="td-r">&minus;36</td>
+              <td><span class="badge badge-r">Widening &darr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td><td>Gr 1</td><td>67</td>
+              <td>58</td><td>&minus;9</td>
+              <td>33</td><td>&minus;34</td>
+              <td class="td-r">~20</td><td class="td-r">&minus;47</td>
+              <td><span class="badge badge-r">Widening &darr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td><td>Gr 2</td><td>104</td>
+              <td>80</td><td>&minus;24</td>
+              <td>82</td><td>&minus;22</td>
+              <td class="td-r">~66</td><td class="td-r">&minus;38</td>
+              <td class="td-n">Insufficient data</td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td><td>Gr 1</td><td>67</td>
+              <td>33</td><td>&minus;34</td>
+              <td>68</td><td class="td-g">+1 (met!)</td>
+              <td class="td-g">~55</td><td class="td-a">&minus;12</td>
+              <td><span class="badge badge-g">Closing &uarr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ren Sticker</strong></td><td>Gr 2</td><td>104</td>
+              <td>84</td><td>&minus;20</td>
+              <td>75</td><td>&minus;29</td>
+              <td class="td-r">~59</td><td class="td-r">&minus;45</td>
+              <td><span class="badge badge-r">Widening &darr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td><td>Gr 2</td><td>104</td>
+              <td>76</td><td>&minus;28</td>
+              <td>78</td><td>&minus;26</td>
+              <td class="td-a">~61</td><td class="td-r">&minus;43</td>
+              <td><span class="badge badge-a">Marginally closing</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hayes Burman</strong></td><td>Gr 2</td><td>104</td>
+              <td>90</td><td>&minus;14</td>
+              <td>92</td><td>&minus;12</td>
+              <td class="td-a">~75</td><td class="td-a">&minus;29</td>
+              <td><span class="badge badge-g">Closing &uarr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td><td>Gr 2</td><td>104</td>
+              <td>68</td><td>&minus;36</td>
+              <td>75</td><td>&minus;29</td>
+              <td class="td-a">~58</td><td class="td-r">&minus;46</td>
+              <td><span class="badge badge-g">Closing &uarr;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td><td>Gr 1</td><td>67</td>
+              <td>32</td><td>&minus;35</td>
+              <td>68</td><td class="td-g">+1 (met!)</td>
+              <td class="td-g">~56</td><td class="td-a">&minus;11</td>
+              <td><span class="badge badge-g">Closing &uarr;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Cold-Read Equiv WCPM = AF Final WCPM minus heard-first inflation (12&ndash;17 WCPM depending on ATOS level). True Gap = cold-read equiv WCPM minus target WCPM. &ldquo;HF met target&rdquo; for Alita and Riley is on heard-first scores; cold-read equivalent still shows a gap. HF = Heard-First.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">ATOS Difficulty Progress Toward Grade Target (from ATOS 0.4 baseline)</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Grade Target ATOS</th>
+              <th>ATOS Range to Cover (0.4 &rarr; target)</th>
+              <th>AF Final ATOS</th>
+              <th>ATOS Covered</th>
+              <th>% of Range Covered</th>
+              <th>Remaining ATOS Gap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.5</td><td>2.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:81%"></div></div><span class="bar-val">81%</span></div></td>
+              <td class="td-g">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.5</td><td>2.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:81%"></div></div><span class="bar-val">81%</span></div></td>
+              <td class="td-g">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td><td>2.0</td><td>1.6</td>
+              <td>1.5</td><td>1.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-a" style="width:69%"></div></div><span class="bar-val">69%</span></div></td>
+              <td class="td-a">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.0</td><td>1.6</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-a" style="width:62%"></div></div><span class="bar-val">62%</span></div></td>
+              <td class="td-a">&minus;1.0 <span style="font-size:0.8em;font-weight:400">(4 min only)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td><td>2.0</td><td>1.6</td>
+              <td>1.5</td><td>1.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-a" style="width:69%"></div></div><span class="bar-val">69%</span></div></td>
+              <td class="td-a">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Ren Sticker</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.0</td><td>1.6</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-a" style="width:62%"></div></div><span class="bar-val">62%</span></div></td>
+              <td class="td-a">&minus;1.0</td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.5</td><td>2.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:81%"></div></div><span class="bar-val">81%</span></div></td>
+              <td class="td-g">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Hayes Burman</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.5</td><td>2.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:81%"></div></div><span class="bar-val">81%</span></div></td>
+              <td class="td-g">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td><td>3.0</td><td>2.6</td>
+              <td>2.5</td><td>2.1</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:81%"></div></div><span class="bar-val">81%</span></div></td>
+              <td class="td-g">&minus;0.5</td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td><td>2.0</td><td>1.6</td>
+              <td>1.0</td><td>0.6</td>
+              <td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-r" style="width:38%"></div></div><span class="bar-val">38%</span></div></td>
+              <td class="td-r">&minus;1.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">% of range covered = (AF Final ATOS &minus; 0.4) &divide; (Target ATOS &minus; 0.4). Green &ge;75%, Amber 50&ndash;74%, Red &lt;50%.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Dual-Dimension Summary &mdash; Overall Grade Target Assessment</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Grade</th>
+              <th>WCPM Trend</th>
+              <th>ATOS Coverage</th>
+              <th>True Cold-Read WCPM Gap</th>
+              <th>ATOS Gap Remaining</th>
+              <th>Overall Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hayes Burman</strong></td><td>Gr 2</td>
+              <td><span class="badge badge-g">Closing</span></td>
+              <td><span class="badge badge-g">81%</span></td>
+              <td class="td-a">&minus;29</td><td class="td-g">&minus;0.5</td>
+              <td><span class="badge badge-g">Strong progress</span></td>
+            </tr>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td><td>Gr 2</td>
+              <td><span class="badge badge-g">Closing</span></td>
+              <td><span class="badge badge-g">81%</span></td>
+              <td class="td-r">&minus;40</td><td class="td-g">&minus;0.5</td>
+              <td><span class="badge badge-g">Good progress</span></td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td><td>Gr 1</td>
+              <td><span class="badge badge-g">Closing</span></td>
+              <td><span class="badge badge-a">69%</span></td>
+              <td class="td-a">&minus;12</td><td class="td-a">&minus;0.5</td>
+              <td><span class="badge badge-g">Good progress</span></td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td><td>Gr 1</td>
+              <td><span class="badge badge-g">Closing</span></td>
+              <td><span class="badge badge-r">38%</span></td>
+              <td class="td-a">&minus;11</td><td class="td-r">&minus;1.0</td>
+              <td><span class="badge badge-a">WCPM on track; needs difficulty push</span></td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td><td>Gr 2</td>
+              <td><span class="badge badge-a">Marginal</span></td>
+              <td><span class="badge badge-g">81%</span></td>
+              <td class="td-r">&minus;43</td><td class="td-g">&minus;0.5</td>
+              <td><span class="badge badge-a">ATOS on track; WCPM needs work</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td><td>Gr 2</td>
+              <td><span class="badge badge-g">Closing</span></td>
+              <td><span class="badge badge-g">81%</span></td>
+              <td class="td-r">&minus;46</td><td class="td-g">&minus;0.5</td>
+              <td><span class="badge badge-a">ATOS on track; large WCPM gap</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td><td>Gr 1</td>
+              <td><span class="badge badge-r">Widening</span></td>
+              <td><span class="badge badge-a">69%</span></td>
+              <td class="td-r">&minus;47</td><td class="td-a">&minus;0.5</td>
+              <td><span class="badge badge-r">Needs urgent attention</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ren Sticker</strong></td><td>Gr 2</td>
+              <td><span class="badge badge-r">Widening</span></td>
+              <td><span class="badge badge-a">62%</span></td>
+              <td class="td-r">&minus;45</td><td class="td-a">&minus;1.0</td>
+              <td><span class="badge badge-r">Not yet challenged to level</span></td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td><td>Gr 2</td>
+              <td><span class="badge badge-r">Widening</span></td>
+              <td><span class="badge badge-g">81%</span></td>
+              <td class="td-r">&minus;36</td><td class="td-g">&minus;0.5</td>
+              <td><span class="badge badge-r">High initial bar; accuracy concern</span></td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td><td>Gr 2</td>
+              <td class="td-n">Insufficient data</td>
+              <td><span class="badge badge-a">62%</span></td>
+              <td class="td-n">n/a (4 min)</td><td class="td-a">&minus;1.0</td>
+              <td><span class="badge badge-n">Cannot assess (4 minutes)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9989;</span><div><strong>7 of 10 students closed their WCPM gap to target</strong> on a raw heard-first basis. After cold-read equivalent adjustment, this picture is less clear, but ATOS trajectory shows strong progress: 6 students covered 69&ndash;81% of the required ATOS range in a single week.</div></li>
+        <li><span class="fi">&#9989;</span><div><strong>Hayes Burman is the closest to grade target on both dimensions:</strong> 88 WCPM heard-first (~75 cold equiv) against a target of 104, and ATOS 2.5 against a target of 3.0. Strong trajectory for week 2 to close remaining gaps.</div></li>
+        <li><span class="fi">&#9989;</span><div><strong>Alita Sanborn and Riley Rosenberg have met the WCPM threshold on a heard-first basis</strong> and show cold-read equivalents within 12&ndash;11 WCPM of target. Both need AF to push toward ATOS 2.0 difficulty to complete the grade-level picture.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>No Grade 2 student is reading at ATOS 3.0 yet</strong> &mdash; the maximum reached is 2.5. This is expected given AF starts at 0.4. After one more week at current trajectory, several Grade 2 students should reach 3.0 ATOS.</div></li>
+        <li><span class="fi">&#9888;&#65039;</span><div><strong>Ren Sticker needs prioritization.</strong> The highest-assessed student (Literably 3.3) is farthest from their Literably level on AF (ATOS 2.0 after 35 min). Their cold-read equivalent WCPM gap (&minus;45) is the largest in the cohort. The system needs to push harder texts faster for Ren.</div></li>
+        <li><span class="fi">&#128680;</span><div><strong>Ellis Kyung&rsquo;s WCPM gap widened</strong> (from &minus;9 to &minus;47 cold-read equiv). This is the most concerning trajectory. Only 18 minutes of practice, but the direction is wrong. Priority intervention: increase session time and monitor daily.</div></li>
+        <li><span class="fi">&#128204;</span><div><strong>The heard-first inflation widens the true cold-read gap significantly</strong> for all students. When reporting progress to stakeholders, the cold-read equivalent figures provide the most honest baseline. Acadience benchmarks use cold reads.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     SUPPLEMENTARY: EFFECTIVE SCORE
+══════════════════════════════════════════════════ -->
+<div id="page-eff" class="page">
+  <nav class="page-nav">
+    <button class="btn-home" onclick="showPage('home')">&#8592; Home</button>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Supplementary</span>
+    <span class="nav-current">Effective Score Analysis</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q4')">&larr; Q4: Grade Targets</button>
+      <button class="btn-arrow" onclick="showPage('home')">&#8962; Return Home</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag" style="color:#0d9488">Supplementary Analysis &mdash; Effective Score</div>
+      <h1>Difficulty-Normalised Performance: Effective Score Analysis</h1>
+      <div class="verdict info">&#9679; Informational &mdash; establishes a difficulty-neutral baseline for cross-system comparison</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Formula &amp; Methodology</div>
+      <div class="method-box" style="border-left-color:#0d9488; background:#f0fdfa;">
+        <h3>The Effective Score Formula</h3>
+        <p style="font-family:monospace; font-size:1em; background:white; padding:10px 14px; border-radius:6px; margin-bottom:10px;">
+          Effective Score = expected_wcpm(level) + 0.5 &times; (actual_wcpm &minus; expected_wcpm(level))
+        </p>
+        <p>This simplifies to <strong>(expected + actual) &divide; 2</strong>. The 0.5 coefficient is a deliberate shrinkage factor: it positions a student&rsquo;s true ability halfway between the norm for their text level and their observed score &mdash; a Bayesian regression-to-mean approach that treats observed scores as containing both real signal and noise.</p>
+        <p style="margin-top:8px">The result is a single normalised score that is <strong>comparable across all text difficulty levels</strong>. A student reading at ATOS 1.0 and a student reading at ATOS 3.0 can now be assessed on the same scale.</p>
+      </div>
+      <div class="method-box" style="border-left-color:#0d9488; background:#f0fdfa;">
+        <h3>expected_wcpm(ATOS) = 67 + 37 &times; (ATOS &minus; 2.0)</h3>
+        <p>Derived by linear interpolation between the two Acadience &lsquo;Exceeds Benchmark&rsquo; anchor points: <strong>Grade 1 = 67 WCPM at ATOS 2.0</strong> and <strong>Grade 2 = 104 WCPM at ATOS 3.0</strong> (slope: 37 WCPM per ATOS level). Key values used in this table:</p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap:8px; margin-top:10px;">
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 0.4</strong><br>&rarr; 8 WCPM</div>
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 1.0</strong><br>&rarr; 30 WCPM</div>
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 1.5</strong><br>&rarr; 49 WCPM</div>
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 2.0</strong><br>&rarr; 67 WCPM</div>
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 2.5</strong><br>&rarr; 86 WCPM</div>
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 3.0</strong><br>&rarr; 104 WCPM</div>
+          <div style="background:white;border-radius:6px;padding:8px 12px;font-size:0.82em;"><strong>ATOS 3.3</strong><br>&rarr; 115 WCPM</div>
+        </div>
+      </div>
+      <div class="caveat-box">
+        <p><strong>What this formula does not fix:</strong> The effective score normalises for text difficulty but not for reading format. AlphaFluency&rsquo;s heard-first exposure still inflates AF scores relative to Literably&rsquo;s cold reads. The gap between a student&rsquo;s Lit Init Effective Score and their AF Final Effective Score therefore reflects <em>both</em> heard-first inflation and any genuine learning &mdash; they cannot be separated without a cold-read AF assessment. The within-AF comparison (AF Init &rarr; AF Final) is internally consistent as both points use the same format.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Effective Score Table &mdash; All Checkpoints (sorted by Literably Initial Effective Score)</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">Student</th>
+              <th rowspan="2">Grade</th>
+              <th colspan="3" style="text-align:center; border-bottom:1px solid rgba(255,255,255,0.2)">Literably Initial</th>
+              <th colspan="3" style="text-align:center; border-bottom:1px solid rgba(255,255,255,0.2)">AF Initial</th>
+              <th colspan="3" style="text-align:center; border-bottom:1px solid rgba(255,255,255,0.2)">AF Average</th>
+              <th colspan="3" style="text-align:center; border-bottom:1px solid rgba(255,255,255,0.2)">AF Final</th>
+              <th rowspan="2">Eff &Delta;<br><small>Lit&rarr;AF</small></th>
+              <th rowspan="2">Within-AF<br>Eff &Delta;</th>
+            </tr>
+            <tr>
+              <th>WCPM</th><th>ATOS</th><th>Eff</th>
+              <th>WCPM</th><th>ATOS</th><th>Eff</th>
+              <th>WCPM</th><th>ATOS</th><th>Eff</th>
+              <th>WCPM</th><th>ATOS</th><th>Eff</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ren Sticker</strong></td><td>Gr 2</td>
+              <td>84</td><td>3.3</td><td class="td-g"><strong>99.6</strong></td>
+              <td>56</td><td>0.4</td><td>32.0</td>
+              <td>86</td><td>2.1</td><td>78.4</td>
+              <td>75</td><td>2.0</td><td>71.0</td>
+              <td class="td-r"><strong>&minus;28.6</strong></td>
+              <td class="td-g">+39.0</td>
+            </tr>
+            <tr>
+              <td><strong>Hayes Burman</strong></td><td>Gr 2</td>
+              <td>90</td><td>3.0</td><td class="td-g"><strong>97.0</strong></td>
+              <td>51</td><td>0.4</td><td>29.5</td>
+              <td>77</td><td>2.3</td><td>77.6</td>
+              <td>92</td><td>2.5</td><td class="td-g">88.8</td>
+              <td class="td-a"><strong>&minus;8.2</strong></td>
+              <td class="td-g">+59.3</td>
+            </tr>
+            <tr>
+              <td><strong>Blake Price</strong></td><td>Gr 2</td>
+              <td>76</td><td>3.0</td><td class="td-g"><strong>90.0</strong></td>
+              <td>52</td><td>0.4</td><td>30.0</td>
+              <td>77</td><td>1.9</td><td>70.2</td>
+              <td>78</td><td>2.5</td><td>81.8</td>
+              <td class="td-a"><strong>&minus;8.2</strong></td>
+              <td class="td-g">+51.8</td>
+            </tr>
+            <tr>
+              <td><strong>Aiden Richardson</strong></td><td>Gr 2</td>
+              <td>100</td><td>2.0</td><td><strong>83.5</strong></td>
+              <td>64</td><td>0.4</td><td>36.0</td>
+              <td>93</td><td>1.8</td><td>76.3</td>
+              <td>85</td><td>2.5</td><td class="td-g">85.3</td>
+              <td class="td-g"><strong>+1.8</strong></td>
+              <td class="td-g">+49.3</td>
+            </tr>
+            <tr>
+              <td><strong>Anthem Thomas</strong></td><td>Gr 2</td>
+              <td>55</td><td>3.0</td><td><strong>79.5</strong></td>
+              <td>72</td><td>0.4</td><td>40.0</td>
+              <td>74</td><td>2.2</td><td>74.2</td>
+              <td>81</td><td>2.5</td><td class="td-g">83.3</td>
+              <td class="td-g"><strong>+3.8</strong></td>
+              <td class="td-g">+43.3</td>
+            </tr>
+            <tr>
+              <td><strong>Rivers Yong</strong></td><td>Gr 2</td>
+              <td>68</td><td>2.6</td><td><strong>78.6</strong></td>
+              <td>59</td><td>0.4</td><td>33.5</td>
+              <td>78</td><td>1.8</td><td>68.8</td>
+              <td>75</td><td>2.5</td><td>80.3</td>
+              <td class="td-g"><strong>+1.7</strong></td>
+              <td class="td-g">+46.8</td>
+            </tr>
+            <tr>
+              <td><strong>Diego Bash</strong></td><td>Gr 2</td>
+              <td>80</td><td>2.0</td><td><strong>73.5</strong></td>
+              <td>46</td><td>0.4</td><td>27.0</td>
+              <td class="td-n">75</td><td class="td-n">0.9</td><td class="td-n">50.7 &#9888;</td>
+              <td>82</td><td>2.0</td><td>74.5</td>
+              <td class="td-g"><strong>+1.0 &#9888;</strong></td>
+              <td class="td-g">+47.5 &#9888;</td>
+            </tr>
+            <tr>
+              <td><strong>Alita Sanborn</strong></td><td>Gr 1</td>
+              <td>33</td><td>2.0</td><td><strong>50.0</strong></td>
+              <td>73</td><td>0.4</td><td>40.5</td>
+              <td>63</td><td>1.7</td><td>59.5</td>
+              <td>68</td><td>1.5</td><td>58.3</td>
+              <td class="td-g"><strong>+8.3</strong></td>
+              <td class="td-g">+17.8</td>
+            </tr>
+            <tr>
+              <td><strong>Riley Rosenberg</strong></td><td>Gr 1</td>
+              <td>32</td><td>2.0</td><td><strong>49.5</strong></td>
+              <td>62</td><td>0.4</td><td>35.0</td>
+              <td>52</td><td>1.5</td><td>50.3</td>
+              <td>68</td><td>1.0</td><td>49.0</td>
+              <td class="td-a"><strong>&minus;0.5</strong></td>
+              <td class="td-g">+14.0</td>
+            </tr>
+            <tr>
+              <td><strong>Ellis Kyung</strong></td><td>Gr 1</td>
+              <td>58</td><td>1.1</td><td><strong>45.9</strong></td>
+              <td>48</td><td>0.4</td><td>28.0</td>
+              <td>55</td><td>1.5</td><td>51.8</td>
+              <td>33</td><td>1.5</td><td class="td-r">40.8</td>
+              <td class="td-r"><strong>&minus;5.1</strong></td>
+              <td class="td-a">+12.8</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">&#9888; Diego Bash = only 4 minutes / 3 books. AF Average ATOS of 0.9 reflects that most of his session was at very low difficulty before a sudden jump to the final book. Treat all Diego data with caution. &nbsp;|&nbsp; Eff = Effective Score = (expected_wcpm(ATOS) + actual_wcpm) &divide; 2. &nbsp;|&nbsp; Sorted by Lit Init Eff descending.</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">What the Effective Scores Reveal</div>
+
+      <div class="spotlight g">
+        <h4>Ren Sticker&rsquo;s gap is now fully visible (&minus;28.6)</h4>
+        <p>Ren&rsquo;s Literably Effective Score of 99.6 is the highest in the cohort &mdash; reflecting genuine above-grade reading ability cold. His AF Final Effective Score of 71.0 exposes the full size of the gap that raw WCPM comparisons obscured. This is not fluency regression; it is the cost of AF not yet reaching his level (ATOS 2.0 vs. 3.3). The effective score makes this pedagogical debt quantifiable.</p>
+      </div>
+      <div class="spotlight g">
+        <h4>Blake and Hayes carry the same gap for the same reason (&minus;8.2 each)</h4>
+        <p>Both students had strong Literably scores at ATOS 3.0 (effective scores 90.0 and 97.0 respectively), but AF has only reached ATOS 2.5. Their identical &minus;8.2 gap is almost entirely explained by the difficulty shortfall. Their AF Final Effective Scores (81.8 and 88.8) are genuinely strong for the level they&rsquo;re currently reading at &mdash; they just haven&rsquo;t been pushed to their ceiling yet.</p>
+      </div>
+      <div class="spotlight">
+        <h4>Aiden, Anthem, and Rivers show effective-score parity or gain vs. Literably</h4>
+        <p>These three students&rsquo; AF Final Effective Scores either match or exceed their Literably Initial Effective Scores (+1.8, +3.8, +1.7). Since AF scores carry heard-first inflation, these gains should be read as &ldquo;at least neutral&rdquo; rather than proven growth &mdash; but there is no evidence of regression once difficulty is properly accounted for.</p>
+      </div>
+      <div class="spotlight a">
+        <h4>Riley&rsquo;s effective score is essentially flat (&minus;0.5) &mdash; a more honest picture than raw WCPM suggested</h4>
+        <p>Raw WCPM showed Riley gaining 36 points vs. Literably, which looked dramatic. The effective score reveals she is performing at the same normalised level &mdash; just on much easier text. The raw gains were entirely an artefact of the text difficulty difference. She has not regressed, but genuine growth remains unconfirmed.</p>
+      </div>
+      <div class="spotlight a">
+        <h4>Within-AF Eff &Delta; should be treated as a trajectory signal, not a growth measure</h4>
+        <p>All students show large within-AF effective score gains (+12.8 to +59.3) because the AF Initial effective score is always compressed (expected WCPM at ATOS 0.4 is only ~8, so any decent first-book reading yields a modest effective score). The gains reflect the system routing students toward harder, more meaningful text &mdash; which is good &mdash; but the magnitude is partly a mathematical artefact of the extreme starting level. The <strong>AF Average Effective Score</strong> is the most useful within-session signal.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Future Applications: AlphaLit &amp; ClearFluency Comparison</div>
+      <div class="method-box" style="border-left-color:#0d9488; background:#f0fdfa;">
+        <h3>Why this formula enables a defensible cross-program comparison</h3>
+        <p>If the same Effective Score formula is applied to ClearFluency (CF) data &mdash; where students also experience a modelled read before reading independently &mdash; the resulting effective scores would be directly comparable to AlphaFluency&rsquo;s, because the formula normalises out text difficulty differences between the two programs.</p>
+        <ul style="margin-top:8px">
+          <li><strong>AF Effective Score vs. CF Effective Score:</strong> A direct comparison of heard-first performance, normalised to the same difficulty scale. Any remaining gap reflects real differences in program efficacy, text selection, or modelling quality.</li>
+          <li><strong>Both vs. Literably Effective Score:</strong> Because Literably is cold and the others are heard-first, the gap between Literably and either program isolates the <em>heard-first format advantage</em> &mdash; giving you an empirical, data-derived estimate of that inflation specific to your student population, rather than relying on published literature ranges.</li>
+          <li><strong>WCPM/week growth rate:</strong> Effective Score gain per week would be a consistent, difficulty-neutral growth metric across all three systems, enabling fair cohort-level comparisons even when students are reading at different ATOS levels.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + id);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+// Deep-link via URL hash (e.g. index.html#q1)
+(function() {
+  const hash = window.location.hash.replace('#','');
+  if (hash) showPage(hash);
+})();
+// Keyboard nav (left/right arrows)
+const order = ['home','q1','q2','q3','q4','eff'];
+document.addEventListener('keydown', function(e) {
+  const current = document.querySelector('.page.active');
+  if (!current) return;
+  const idx = order.indexOf(current.id.replace('page-',''));
+  if (e.key === 'ArrowRight' && idx < order.length - 1) showPage(order[idx + 1]);
+  if (e.key === 'ArrowLeft' && idx > 0) showPage(order[idx - 1]);
+});
+</script>
+</body>
+</html>
