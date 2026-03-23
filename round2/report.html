@@ -327,9 +327,13 @@ tr:hover td{background:#f0f7ff !important;}
       <div class="section-title">Results</div>
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-num green">25</div><div class="stat-label">of 32 students with positive gain</div></div>
-        <div class="stat-card"><div class="stat-num green">+13</div><div class="stat-label">average WCPM gain (among gainers)</div></div>
+        <div class="stat-card"><div class="stat-num green">+13</div><div class="stat-label">avg normalized WCPM gain (gainers)</div></div>
+        <div class="stat-card"><div class="stat-num green">+7</div><div class="stat-label">avg raw WCPM gain (gainers)</div></div>
         <div class="stat-card"><div class="stat-num amber">7</div><div class="stat-label">students with no/negative gain</div></div>
+      </div>
 
+      <div class="caveat-box" style="margin-bottom:18px;">
+        <p><strong>Note on the +13 WCPM figure:</strong> This is a <em>normalized</em> gain that includes credit for reading progressively harder texts. On average, about half (+7 WCPM) comes from raw fluency speed improvement; the other half (+6 WCPM) reflects difficulty progression credit — students reading at higher ATOS levels by the end of the pilot. Students who moved to harder texts but read at a similar speed still show a normalized gain.</p>
       </div>
 
       <div class="table-wrap">
@@ -413,8 +417,12 @@ tr:hover td{background:#f0f7ff !important;}
       <div class="section-title">Results</div>
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-num green">6</div><div class="stat-label">of 30 students with verified gains (above format threshold)</div></div>
-        <div class="stat-card"><div class="stat-num amber">5&ndash;17</div><div class="stat-label">WCPM heard-first inflation, scaled by reading difficulty</div></div>
+        <div class="stat-card"><div class="stat-num amber">5&ndash;16</div><div class="stat-label">WCPM heard-first inflation, scaled by reading difficulty</div></div>
         <div class="stat-card"><div class="stat-num amber">24</div><div class="stat-label">students not yet verified (mostly due to difficulty gap)</div></div>
+      </div>
+
+      <div class="caveat-box" style="margin-bottom:18px;">
+        <p><strong>Methodology note:</strong> Literably scores are normalized to each student&rsquo;s AlphaFluency <em>average</em> ATOS level (not final), and compared against the student&rsquo;s AlphaFluency average WCPM. Using the average rather than the final session reduces variance from single-session anomalies. A student is &ldquo;verified&rdquo; if their AlphaFluency average WCPM exceeds their Literably score (normalized to the same ATOS reference) by more than the format inflation estimate.</p>
       </div>
 
       <div class="table-wrap">
@@ -424,8 +432,8 @@ tr:hover td{background:#f0f7ff !important;}
               <th>Student</th>
               <th>Lit WCPM</th>
               <th>Lit ATOS</th>
-              <th>AF Final WCPM</th>
-              <th>AF Final ATOS</th>
+              <th>AF Avg WCPM</th>
+              <th>AF Avg ATOS</th>
               <th>Lit (Norm)</th>
               <th>Threshold</th>
               <th>Result</th>
@@ -433,38 +441,38 @@ tr:hover td{background:#f0f7ff !important;}
           </thead>
           <tbody>
             <tr><td colspan="8" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Verified Gains &mdash; 6 students</td></tr>
-            <tr><td><strong>Thomas Nolan</strong></td><td>11</td><td>0.8</td><td class="td-g">70.4</td><td>0.4</td><td>25.8</td><td>30.8</td><td><span class="badge badge-g">Verified</span></td></tr>
-            <tr><td><strong>Ella Clark</strong></td><td>37</td><td>2.0</td><td class="td-g">61.8</td><td>2.5</td><td>18.5</td><td>35.5</td><td><span class="badge badge-g">Verified</span></td></tr>
-            <tr><td><strong>Aleiah Jenkins</strong></td><td>24</td><td>2.0</td><td class="td-g">60.0</td><td>2.0</td><td>24.0</td><td>40.0</td><td><span class="badge badge-g">Verified</span></td></tr>
-            <tr><td><strong>Ellis Kyung</strong></td><td>58</td><td>1.1</td><td class="td-g">69.7</td><td>1.2</td><td>54.3</td><td>66.3</td><td><span class="badge badge-g">Verified</span></td></tr>
-            <tr><td><strong>Enzo Estrada</strong></td><td>7</td><td>0.8</td><td class="td-g">28.2</td><td>0.4</td><td>21.8</td><td>26.8</td><td><span class="badge badge-g">Verified</span></td></tr>
-            <tr><td><strong>Justin Wooley</strong></td><td>14</td><td>0.2</td><td class="td-g">11.5</td><td>0.5</td><td>2.9</td><td>9.9</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Thomas Nolan</strong></td><td>11</td><td>0.8</td><td class="td-g">40.8</td><td>0.44</td><td>24.3</td><td>29.3</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Ella Clark</strong></td><td>37</td><td>2.0</td><td class="td-g">75.9</td><td>1.57</td><td>52.9</td><td>66.9</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>4</td><td>0.5</td><td class="td-g">22.6</td><td>0.43</td><td>6.6</td><td>11.6</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Jamie Theunissen</strong></td><td>15</td><td>0.8</td><td class="td-g">38.5</td><td>0.44</td><td>28.3</td><td>33.3</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Enzo Estrada</strong></td><td>7</td><td>0.8</td><td class="td-g">26.5</td><td>0.47</td><td>19.2</td><td>25.2</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Justin Wooley</strong></td><td>14</td><td>0.2</td><td class="td-g">38.3</td><td>0.41</td><td>6.2</td><td>11.2</td><td><span class="badge badge-g">Verified</span></td></tr>
 
             <tr><td colspan="8" style="background:#fafbfc;font-size:.76em;font-weight:700;color:var(--gray-500);letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Not Yet Verified &mdash; 24 students</td></tr>
-            <tr><td><strong>Rivers Yong</strong></td><td>68</td><td>2.6</td><td>74.5</td><td>2.5</td><td>71.7</td><td>88.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Riley Rosenberg</strong></td><td>32</td><td>2.0</td><td>43.8</td><td>1.8</td><td>39.4</td><td>54.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Alita Sanborn</strong></td><td>33</td><td>2.0</td><td>61.9</td><td>1.5</td><td>51.5</td><td>64.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Bandon Peterson</strong></td><td>46</td><td>2.0</td><td>81.2</td><td>1.0</td><td>83.0</td><td>95.0</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Aiden Richardson</strong></td><td>100</td><td>2.0</td><td>87.2</td><td>2.3</td><td>88.9</td><td>104.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Diego Bash</strong></td><td>80</td><td>2.0</td><td>68.5</td><td>2.6</td><td>57.8</td><td>74.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Victoria Leal</strong></td><td>53</td><td>2.0</td><td>46.4</td><td>1.6</td><td>67.8</td><td>81.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Nash Niccolls</strong></td><td>42</td><td>2.0</td><td>69.8</td><td>1.0</td><td>79.0</td><td>91.0</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Asaph Park</strong></td><td>44</td><td>2.0</td><td>59.4</td><td>1.5</td><td>62.5</td><td>75.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Theodore Dipaola</strong></td><td>39</td><td>2.0</td><td>90.5</td><td>0.4</td><td>98.2</td><td>103.2</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Anthem Thomas</strong></td><td>55</td><td>3.0</td><td>62.1</td><td>2.2</td><td>84.6</td><td>100.6</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Hayes Burman</strong></td><td>90</td><td>3.0</td><td>95.2</td><td>2.3</td><td>115.9</td><td>131.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Blake Price</strong></td><td>76</td><td>3.0</td><td>75.7</td><td>2.3</td><td>101.9</td><td>117.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Mya Hadnot</strong></td><td>59</td><td>3.0</td><td>69.8</td><td>1.7</td><td>107.1</td><td>122.1</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Ren Sticker</strong></td><td>84</td><td>3.3</td><td>74.8</td><td>2.1</td><td>128.4</td><td>144.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Alessia Kriete</strong></td><td>21</td><td>0.8</td><td>20.2</td><td>0.4</td><td>35.8</td><td>40.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Emma Garcia Lerma</strong></td><td>14</td><td>0.8</td><td>13.8</td><td>0.5</td><td>25.1</td><td>32.1</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Elliott Rudnicki</strong></td><td>33</td><td>0.8</td><td>25.4</td><td>0.6</td><td>40.4</td><td>49.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Anthonella Ochoa</strong></td><td>11</td><td>0.8</td><td>14.9</td><td>0.4</td><td>25.8</td><td>30.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>9</td><td>0.8</td><td>3.6</td><td>0.6</td><td>16.4</td><td>25.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Hayden Jones</strong></td><td>8</td><td>0.8</td><td>5.8</td><td>0.4</td><td>22.8</td><td>27.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>4</td><td>0.5</td><td>3.4</td><td>0.4</td><td>7.7</td><td>12.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Jamie Theunissen</strong></td><td>15</td><td>0.8</td><td>17.9</td><td>0.4</td><td>29.8</td><td>34.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
-            <tr><td><strong>Lila Dawson</strong></td><td>23</td><td>0.6</td><td>6.3</td><td>0.6</td><td>23.0</td><td>32.0</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Aleiah Jenkins</strong></td><td>24</td><td>2.0</td><td>56.3</td><td>1.3</td><td>49.9</td><td>61.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Ellis Kyung</strong></td><td>58</td><td>1.1</td><td>47.8</td><td>1.12</td><td>57.3</td><td>69.3</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Rivers Yong</strong></td><td>68</td><td>2.6</td><td>71.8</td><td>1.85</td><td>95.8</td><td>110.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Riley Rosenberg</strong></td><td>32</td><td>2.0</td><td>38.5</td><td>1.61</td><td>46.4</td><td>60.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Alita Sanborn</strong></td><td>33</td><td>2.0</td><td>51.3</td><td>1.69</td><td>44.5</td><td>59.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Bandon Peterson</strong></td><td>46</td><td>2.0</td><td>60.4</td><td>0.8</td><td>90.4</td><td>101.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Aiden Richardson</strong></td><td>100</td><td>2.0</td><td>84.6</td><td>1.68</td><td>111.8</td><td>126.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Diego Bash</strong></td><td>80</td><td>2.0</td><td>71.0</td><td>1.99</td><td>80.4</td><td>96.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Victoria Leal</strong></td><td>53</td><td>2.0</td><td>52.8</td><td>1.05</td><td>88.2</td><td>100.2</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Nash Niccolls</strong></td><td>42</td><td>2.0</td><td>50.3</td><td>1.43</td><td>63.1</td><td>76.1</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Asaph Park</strong></td><td>44</td><td>2.0</td><td>70.2</td><td>1.49</td><td>62.9</td><td>75.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Theodore Dipaola</strong></td><td>39</td><td>2.0</td><td>68.6</td><td>0.96</td><td>77.5</td><td>89.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Anthem Thomas</strong></td><td>55</td><td>3.0</td><td>69.7</td><td>2.09</td><td>88.7</td><td>104.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Hayes Burman</strong></td><td>90</td><td>3.0</td><td>73.3</td><td>2.39</td><td>112.6</td><td>128.6</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Blake Price</strong></td><td>76</td><td>3.0</td><td>70.1</td><td>2.09</td><td>109.7</td><td>125.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Mya Hadnot</strong></td><td>59</td><td>3.0</td><td>54.8</td><td>1.5</td><td>114.5</td><td>127.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Ren Sticker</strong></td><td>84</td><td>3.3</td><td>69.0</td><td>2.23</td><td>123.6</td><td>139.6</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Alessia Kriete</strong></td><td>21</td><td>0.8</td><td>29.4</td><td>0.5</td><td>32.1</td><td>39.1</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Emma Garcia Lerma</strong></td><td>14</td><td>0.8</td><td>20.7</td><td>0.43</td><td>27.7</td><td>32.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Elliott Rudnicki</strong></td><td>33</td><td>0.8</td><td>40.3</td><td>0.7</td><td>36.7</td><td>46.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Anthonella Ochoa</strong></td><td>11</td><td>0.8</td><td>21.0</td><td>0.4</td><td>25.8</td><td>30.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>9</td><td>0.8</td><td>24.7</td><td>0.43</td><td>22.7</td><td>27.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Hayden Jones</strong></td><td>8</td><td>0.8</td><td>19.6</td><td>0.43</td><td>21.7</td><td>26.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Lila Dawson</strong></td><td>23</td><td>0.6</td><td>18.1</td><td>0.45</td><td>28.6</td><td>33.6</td><td><span class="badge badge-n">Not verified</span></td></tr>
           </tbody>
         </table>
       </div>
