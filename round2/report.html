@@ -573,25 +573,6 @@ tr:hover td{background:#f0f7ff !important;}
     </div>
 
     <div class="section">
-      <div class="section-title">Methodology</div>
-      <div class="method-box">
-        <h3>The Effective Score formula</h3>
-        <p>Raw WCPM cannot be compared across different text difficulty levels &mdash; a student reading 80 WCPM at ATOS 0.4 and one reading 80 WCPM at ATOS 2.5 are performing very differently. The Effective Score places every observation on a single normalised scale:</p>
-        <p><strong>Effective Score = (expected&thinsp;WCPM(ATOS) + actual&thinsp;WCPM) &divide; 2</strong></p>
-        <p>where <strong>expected&thinsp;WCPM(ATOS) = 37 &times; ATOS + 16</strong> (derived from Acadience ORF norms: 37 WCPM per 1.0 ATOS level, anchored at ATOS 1.0 = 53 WCPM). The 0.5 shrinkage factor positions a student&rsquo;s ability halfway between the norm and their observed score &mdash; a Bayesian regression-to-mean approach that reduces noise from single-session variance.</p>
-      </div>
-      <div class="method-box">
-        <h3>Gain calculation</h3>
-        <p><strong>AF Effective Score Gain</strong> = ES(AF Final ATOS, Adj. Final WCPM) &minus; ES(0.4, Init WCPM)<br>
-        <strong>CF Effective Score Gain</strong> = ES(CF Last ATOS, CF Last WCPM) &minus; ES(CF Prior ATOS, CF Prior WCPM)</p>
-        <p>Both AlphaFluency and ClearFluency use a warm-read format (text read aloud before the student reads it). No format-inflation adjustment is needed between the two systems &mdash; they are directly comparable on this metric.</p>
-      </div>
-      <div class="caveat-box">
-        <p><strong>Time window note:</strong> The AF comparison covers the Round 2 pilot period (~3 weeks). The CF comparison uses each student&rsquo;s most recent reading versus the reading approximately 1 month prior. AF gains are therefore achieved in a shorter window &mdash; this favours AlphaFluency in rate-of-gain terms. Only the 20 students with usable data in both systems are included.</p>
-      </div>
-    </div>
-
-    <div class="section">
       <div class="section-title">Results</div>
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-num" style="color:var(--teal);">17/20</div><div class="stat-label">students: AlphaFluency outperformed ClearFluency</div></div>
@@ -638,66 +619,63 @@ tr:hover td{background:#f0f7ff !important;}
             </tr>
           </thead>
           <tbody>
-            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade K — 16 students &nbsp;(2 with CF comparison)</td></tr>
-            <tr><td><strong>Elliott Rudnicki</strong></td><td>K</td><td class="td-g">+24.3</td><td class="td-r">&minus;2.5</td><td class="td-g">+26.8</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>K</td><td class="td-g">+6.1</td><td class="td-g">+11.1</td><td class="td-r">&minus;5.0</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade K &mdash; 16 students</td></tr>
+            <tr><td>Elliott Rudnicki</td><td>K</td><td class="td-g">+24.3</td><td class="td-r">&minus;2.5</td><td class="td-g">+26.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Faustina Ngambo-Kialengele</td><td>K</td><td class="td-g">+6.1</td><td class="td-g">+11.1</td><td class="td-r">&minus;5.0</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
             <tr style="background:#f8fafc;font-size:.85em;font-weight:700;">
-              <td colspan="2" style="padding-left:13px;">Grade K CF Comparison Avg (2 students)</td>
+              <td colspan="2" style="padding-left:13px;">CF Comparison Avg &mdash; 2 students</td>
               <td class="td-g">+15.2</td><td class="td-g">+4.3</td><td class="td-g">+10.9</td><td></td>
             </tr>
-            <tr><td colspan="6" style="background:#f8fafc;font-size:.74em;font-weight:700;color:#475569;letter-spacing:.05em;text-transform:uppercase;padding:6px 13px;">Grade K — AF only (no ClearFluency data)</td></tr>
-            <tr><td><strong>Emma Schipper</strong></td><td>K</td><td class="td-g">+27.4</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Thomas Nolan</strong></td><td>K</td><td class="td-g">+14.1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Rylan Joseph</strong></td><td>K</td><td class="td-g">+12.7</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Lila Dawson</strong></td><td>K</td><td class="td-g">+5.6</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>K</td><td class="td-g">+5.4</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Enzo Estrada</strong></td><td>K</td><td class="td-g">+4.5</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Emma Garcia Lerma</strong></td><td>K</td><td class="td-g">+1.0</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Justin Wooley</strong></td><td>K</td><td class="td-g">+0.3</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Jamie Theunissen</strong></td><td>K</td><td class="td-r">&minus;2.5</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Anthonella Ochoa</strong></td><td>K</td><td class="td-r">&minus;4.4</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Hayden Jones</strong></td><td>K</td><td class="td-r">&minus;5.7</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr style="opacity:.55;"><td><strong>Rafaela Almanza</strong></td><td>K</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
-            <tr style="opacity:.55;"><td><strong>Alana Marin Barrios</strong></td><td>K</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
-            <tr style="opacity:.55;"><td><strong>Shailene Ferrebus</strong></td><td>K</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
+            <tr><td>Emma Schipper</td><td>K</td><td class="td-g">+27.4</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Thomas Nolan</td><td>K</td><td class="td-g">+14.1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Rylan Joseph</td><td>K</td><td class="td-g">+12.7</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Lila Dawson</td><td>K</td><td class="td-g">+5.6</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Gael Gonzalez-Romero</td><td>K</td><td class="td-g">+5.4</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Enzo Estrada</td><td>K</td><td class="td-g">+4.5</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Emma Garcia Lerma</td><td>K</td><td class="td-g">+1.0</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Justin Wooley</td><td>K</td><td class="td-g">+0.3</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Jamie Theunissen</td><td>K</td><td class="td-r">&minus;2.5</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Anthonella Ochoa</td><td>K</td><td class="td-r">&minus;4.4</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Hayden Jones</td><td>K</td><td class="td-r">&minus;5.7</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr style="opacity:.55;"><td>Rafaela Almanza</td><td>K</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
+            <tr style="opacity:.55;"><td>Alana Marin Barrios</td><td>K</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
+            <tr style="opacity:.55;"><td>Shailene Ferrebus</td><td>K</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
 
-            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade 1 — 15 students &nbsp;(11 with CF comparison)</td></tr>
-            <tr><td><strong>Ellis Kyung</strong></td><td>1</td><td class="td-g">+25.4</td><td class="td-g">+8.8</td><td class="td-g">+16.7</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Alita Sanborn</strong></td><td>1</td><td class="td-g">+15.0</td><td class="td-g">+4.6</td><td class="td-g">+10.4</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Riley Rosenberg</strong></td><td>1</td><td class="td-g">+16.6</td><td class="td-g">+33.1</td><td class="td-r">&minus;16.5</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
-            <tr><td><strong>Ella Clark</strong></td><td>1</td><td class="td-g">+38.9</td><td class="td-g">+9.4</td><td class="td-g">+29.5</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Bandon Peterson</strong></td><td>1</td><td class="td-g">+37.9</td><td class="td-g">+2.1</td><td class="td-g">+35.8</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Theodore Dipaola</strong></td><td>1</td><td class="td-g">+26.0</td><td class="td-g">+13.0</td><td class="td-g">+13.0</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Victoria Leal</strong></td><td>1</td><td class="td-g">+4.2</td><td class="td-g">+15.3</td><td class="td-r">&minus;11.1</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
-            <tr><td><strong>Alessia Kriete</strong></td><td>1</td><td class="td-g">+6.9</td><td class="td-r">&minus;8.1</td><td class="td-g">+15.0</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Nash Niccolls</strong></td><td>1</td><td class="td-g">+34.5</td><td class="td-g">+24.6</td><td class="td-g">+9.9</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Asaph Park</strong></td><td>1</td><td class="td-g">+13.7</td><td class="td-r">&minus;18.1</td><td class="td-g">+31.8</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Aleiah Jenkins</strong></td><td>1</td><td class="td-g">+28.2</td><td class="td-r">&minus;22.1</td><td class="td-g">+50.3</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade 1 &mdash; 15 students</td></tr>
+            <tr><td>Ellis Kyung</td><td>1</td><td class="td-g">+25.4</td><td class="td-g">+8.8</td><td class="td-g">+16.7</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Alita Sanborn</td><td>1</td><td class="td-g">+15.0</td><td class="td-g">+4.6</td><td class="td-g">+10.4</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Riley Rosenberg</td><td>1</td><td class="td-g">+16.6</td><td class="td-g">+33.1</td><td class="td-r">&minus;16.5</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
+            <tr><td>Ella Clark</td><td>1</td><td class="td-g">+38.9</td><td class="td-g">+9.4</td><td class="td-g">+29.5</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Bandon Peterson</td><td>1</td><td class="td-g">+37.9</td><td class="td-g">+2.1</td><td class="td-g">+35.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Theodore Dipaola</td><td>1</td><td class="td-g">+26.0</td><td class="td-g">+13.0</td><td class="td-g">+13.0</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Victoria Leal</td><td>1</td><td class="td-g">+4.2</td><td class="td-g">+15.3</td><td class="td-r">&minus;11.1</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
+            <tr><td>Alessia Kriete</td><td>1</td><td class="td-g">+6.9</td><td class="td-r">&minus;8.1</td><td class="td-g">+15.0</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Nash Niccolls</td><td>1</td><td class="td-g">+34.5</td><td class="td-g">+24.6</td><td class="td-g">+9.9</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Asaph Park</td><td>1</td><td class="td-g">+13.7</td><td class="td-r">&minus;18.1</td><td class="td-g">+31.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Aleiah Jenkins</td><td>1</td><td class="td-g">+28.2</td><td class="td-r">&minus;22.1</td><td class="td-g">+50.3</td><td><span class="badge badge-g">AF</span></td></tr>
             <tr style="background:#f8fafc;font-size:.85em;font-weight:700;">
-              <td colspan="2" style="padding-left:13px;">Grade 1 CF Comparison Avg (11 students)</td>
+              <td colspan="2" style="padding-left:13px;">CF Comparison Avg &mdash; 11 students</td>
               <td class="td-g">+22.5</td><td class="td-g">+5.7</td><td class="td-g">+16.8</td><td></td>
             </tr>
-            <tr><td colspan="6" style="background:#f8fafc;font-size:.74em;font-weight:700;color:#475569;letter-spacing:.05em;text-transform:uppercase;padding:6px 13px;">Grade 1 — AF only (no ClearFluency data)</td></tr>
-            <tr><td><strong>Geraldine Gurrola</strong></td><td>1</td><td class="td-g">+21.1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Scarlett Meyer</strong></td><td>1</td><td class="td-g">+20.2</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr style="opacity:.55;"><td><strong>Nico Blanco</strong></td><td>1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
-            <tr style="opacity:.55;"><td><strong>Savi Richardson</strong></td><td>1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
+            <tr><td>Geraldine Gurrola</td><td>1</td><td class="td-g">+21.1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Scarlett Meyer</td><td>1</td><td class="td-g">+20.2</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr style="opacity:.55;"><td>Nico Blanco</td><td>1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
+            <tr style="opacity:.55;"><td>Savi Richardson</td><td>1</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#f1f5f9;color:#64748b;">Insuf.</span></td></tr>
 
-            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade 2 — 9 students &nbsp;(7 with CF comparison)</td></tr>
-            <tr><td><strong>Anthem Thomas</strong></td><td>2</td><td class="td-g">+31.7</td><td class="td-r">&minus;6.0</td><td class="td-g">+37.7</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Aiden Richardson</strong></td><td>2</td><td class="td-g">+46.9</td><td class="td-g">+37.8</td><td class="td-g">+9.1</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Diego Bash</strong></td><td>2</td><td class="td-g">+52.2</td><td class="td-g">+4.7</td><td class="td-g">+47.5</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Ren Sticker</strong></td><td>2</td><td class="td-g">+40.7</td><td class="td-r">&minus;9.7</td><td class="td-g">+50.4</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Blake Price</strong></td><td>2</td><td class="td-g">+47.1</td><td class="td-r">&minus;0.7</td><td class="td-g">+47.8</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Hayes Burman</strong></td><td>2</td><td class="td-g">+57.5</td><td class="td-g">+8.2</td><td class="td-g">+49.3</td><td><span class="badge badge-g">AF</span></td></tr>
-            <tr><td><strong>Mya Hadnot</strong></td><td>2</td><td class="td-g">+46.6</td><td class="td-r">&minus;15.0</td><td class="td-g">+61.6</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade 2 &mdash; 9 students</td></tr>
+            <tr><td>Anthem Thomas</td><td>2</td><td class="td-g">+31.7</td><td class="td-r">&minus;6.0</td><td class="td-g">+37.7</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Aiden Richardson</td><td>2</td><td class="td-g">+46.9</td><td class="td-g">+37.8</td><td class="td-g">+9.1</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Diego Bash</td><td>2</td><td class="td-g">+52.2</td><td class="td-g">+4.7</td><td class="td-g">+47.5</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Ren Sticker</td><td>2</td><td class="td-g">+40.7</td><td class="td-r">&minus;9.7</td><td class="td-g">+50.4</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Blake Price</td><td>2</td><td class="td-g">+47.1</td><td class="td-r">&minus;0.7</td><td class="td-g">+47.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Hayes Burman</td><td>2</td><td class="td-g">+57.5</td><td class="td-g">+8.2</td><td class="td-g">+49.3</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td>Mya Hadnot</td><td>2</td><td class="td-g">+46.6</td><td class="td-r">&minus;15.0</td><td class="td-g">+61.6</td><td><span class="badge badge-g">AF</span></td></tr>
             <tr style="background:#f8fafc;font-size:.85em;font-weight:700;">
-              <td colspan="2" style="padding-left:13px;">Grade 2 CF Comparison Avg (7 students)</td>
+              <td colspan="2" style="padding-left:13px;">CF Comparison Avg &mdash; 7 students</td>
               <td class="td-g">+46.1</td><td class="td-g">+2.8</td><td class="td-g">+43.3</td><td></td>
             </tr>
-            <tr><td colspan="6" style="background:#f8fafc;font-size:.74em;font-weight:700;color:#475569;letter-spacing:.05em;text-transform:uppercase;padding:6px 13px;">Grade 2 — AF only (no ClearFluency data)</td></tr>
-            <tr><td><strong>Rivers Yong</strong></td><td>2</td><td class="td-g">+46.6</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
-            <tr><td><strong>Megan Chukwura</strong></td><td>2</td><td class="td-g">+40.2</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Rivers Yong</td><td>2</td><td class="td-g">+46.6</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
+            <tr><td>Megan Chukwura</td><td>2</td><td class="td-g">+40.2</td><td style="color:var(--gray-400);">&mdash;</td><td style="color:var(--gray-400);">&mdash;</td><td><span class="badge" style="background:#e0f2fe;color:#0369a1;">AF only</span></td></tr>
 
             <tr style="background:#f0fdf4;font-size:.88em;font-weight:800;border-top:2px solid var(--green);">
               <td colspan="2" style="padding:10px 13px;">Overall CF Comparison Average (20 students)</td>
@@ -706,18 +684,6 @@ tr:hover td{background:#f0f7ff !important;}
           </tbody>
         </table>
       </div>
-      <p class="table-note">AF ES Gain = ES(AF Final ATOS, Adj. Final WCPM) &minus; ES(0.4, Init WCPM). CF ES Gain = ES(CF Last ATOS, CF Last WCPM) &minus; ES(CF Prior ATOS, CF Prior WCPM). ES(atos, wcpm) = (37 &times; atos + 16 + wcpm) &div; 2. CF prior = reading ~1 month before last. Grade assigned by Literably ORF grade target (20 WCPM = K, 67 WCPM = Grade 1, 104 WCPM = Grade 2). &ldquo;Insuf.&rdquo; = &le;3 books or &lt;5 minutes of AF usage; no meaningful gain can be calculated. &ldquo;AF only&rdquo; = student did not have a ClearFluency comparison reading.</p>
-    </div>
-
-    <hr class="divider">
-    <div class="section">
-      <div class="section-title">Key Findings</div>
-      <ul class="finding-list">
-        <li><span class="fi">&#9679;</span><div><strong>AlphaFluency outperforms ClearFluency across all three grade bands,</strong> with the advantage growing at higher grade levels. At Grade 2 (9 students, 7 in CF comparison), the 7 vs CF average +46.1 vs ClearFluency&rsquo;s +2.8 &mdash; a 16&times; difference. At Grade 1 (13 students, 11 in CF comparison), the margin is +22.5 vs +5.7 (4&times;). At Grade K (15 students, 2 in CF comparison), the 2 vs CF shows AF +15.2 vs CF +4.3.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>5 of 7 Grade 2 ClearFluency students showed flat or declining effective scores</strong> despite progressing to harder text. Ren Sticker (127 &rarr; 104 WCPM at ATOS 2.1&ndash;2.2), Anthem Thomas (101 &rarr; 89 WCPM, same ATOS level), and Mya Hadnot (99 &rarr; 69 WCPM at same ATOS 2.4) all declined on CF. In contrast, all 9 Grade 2 students with AF data showed strong gains (average +45.5), including Rivers Yong (+46.6) and Megan Chukwura (+40.2) who had no CF comparison.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>The 3 ClearFluency wins involve specific circumstances:</strong> Riley Rosenberg made a large ATOS jump in CF (1.0 &rarr; 2.3) that inflates the ES gain via normalisation; Victoria Leal had an unusually high AF initial WCPM at ATOS 0.4 that compresses her AF gain; Faustina Ngambo-Kialengele shows limited AF progress (stuck at ATOS 0.4) while CF progressed to ATOS 1.2. None represent CF as a systematically superior outcome.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>The time-window difference favours AlphaFluency further.</strong> AF gains are achieved over approximately 3 weeks of pilot usage; CF gains are measured over approximately 1 month. On a per-week basis, AF&rsquo;s effective score gain rate is roughly twice that of ClearFluency across the matched cohort.</div></li>
-      </ul>
     </div>
   </div>
 </div>
