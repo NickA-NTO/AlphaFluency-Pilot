@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaFluency Pilot Report — Round 2 | Alpha Schools</title>
+<style>
+:root {
+  --navy:#1a2f52;--blue:#2563eb;--blue-mid:#3b82f6;--blue-lt:#dbeafe;--blue-xlt:#eff6ff;
+  --green:#16a34a;--green-lt:#dcfce7;--amber:#d97706;--amber-lt:#fef3c7;
+  --red:#dc2626;--red-lt:#fee2e2;--purple:#7c3aed;--purple-lt:#ede9fe;
+  --cyan:#0891b2;--cyan-lt:#cffafe;--teal:#0d9488;--teal-lt:#ccfbf1;
+  --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-300:#cbd5e1;
+  --gray-400:#94a3b8;--gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;
+  --gray-800:#1e293b;--gray-900:#0f172a;--white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--gray-50);color:var(--gray-900);line-height:1.6;}
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* LANDING */
+.hero{background:linear-gradient(135deg,#0f2040 0%,#1a3560 50%,#1d4fa8 100%);color:white;padding:72px 40px 80px;text-align:center;}
+.hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:5px 18px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px;font-weight:600;}
+.hero h1{font-size:clamp(2.2em,5vw,3.4em);font-weight:900;letter-spacing:-.03em;margin-bottom:14px;line-height:1.1;}
+.hero h1 span{color:#60a5fa;}
+.hero-sub{font-size:1.05em;opacity:.75;max-width:520px;margin:0 auto 10px;}
+.hero-meta{font-size:.82em;opacity:.45;margin-top:14px;letter-spacing:.04em;}
+.data-pills{display:flex;justify-content:center;gap:12px;margin-top:28px;flex-wrap:wrap;}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:30px;padding:7px 16px;font-size:.82em;font-weight:600;}
+.questions-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:-36px auto 0;padding:0 28px 48px;}
+.q-card{background:white;border-radius:16px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,.13);cursor:pointer;transition:transform .18s,box-shadow .18s;border:2px solid transparent;position:relative;overflow:hidden;}
+.q-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
+.q-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;}
+.q-card.q1::before{background:linear-gradient(180deg,#7c3aed,#a855f7);}
+.q-card.q2::before{background:linear-gradient(180deg,#16a34a,#22c55e);}
+.q-card.q3::before{background:linear-gradient(180deg,#0891b2,#06b6d4);}
+.q-card.q4::before{background:linear-gradient(180deg,#d97706,#f59e0b);}
+.q-num{font-size:.72em;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.q1 .q-num{color:#7c3aed;}.q2 .q-num{color:#16a34a;}.q3 .q-num{color:#0891b2;}.q4 .q-num{color:#d97706;}
+.q-card h2{font-size:1em;font-weight:700;color:var(--gray-800);line-height:1.45;margin-bottom:12px;}
+.q-card p{font-size:.85em;color:var(--gray-500);line-height:1.55;margin-bottom:22px;}
+.q-link{display:inline-flex;align-items:center;gap:6px;font-size:.84em;font-weight:700;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;transition:filter .15s;}
+.q-link:hover{filter:brightness(.92);}
+.q1 .q-link{background:var(--purple-lt);color:var(--purple);}
+.q2 .q-link{background:var(--green-lt);color:var(--green);}
+.q3 .q-link{background:var(--cyan-lt);color:var(--cyan);}
+.q4 .q-link{background:var(--amber-lt);color:var(--amber);}
+.landing-note{max-width:860px;margin:0 auto;padding:24px 28px 48px;font-size:.82em;color:var(--gray-500);line-height:1.7;border-top:1px solid var(--gray-200);}
+.landing-note strong{color:var(--gray-700);}
+
+/* PAGE NAV */
+.page-nav{background:white;border-bottom:1px solid var(--gray-200);padding:13px 36px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.btn-home{background:var(--gray-100);border:1px solid var(--gray-200);border-radius:8px;padding:6px 14px;font-size:.82em;font-weight:600;color:var(--gray-700);cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s;text-decoration:none;}
+.btn-home:hover{background:var(--gray-200);}
+.nav-sep{color:var(--gray-300);}
+.nav-label{font-size:.82em;color:var(--gray-500);}
+.nav-current{font-size:.82em;font-weight:700;color:var(--gray-800);}
+.nav-arrows{margin-left:auto;display:flex;gap:8px;}
+.btn-arrow{background:none;border:1px solid var(--gray-200);border-radius:8px;padding:5px 12px;font-size:.8em;color:var(--gray-600);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn-arrow:hover{background:var(--gray-100);border-color:var(--gray-400);}
+.btn-arrow:disabled{opacity:.35;cursor:default;}
+
+/* PAGE CONTENT */
+.page-content{max-width:980px;margin:0 auto;padding:36px 28px 80px;}
+.q-header{margin-bottom:32px;}
+.q-tag{font-size:.72em;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.q-tag.purple{color:var(--purple);}.q-tag.green{color:var(--green);}.q-tag.cyan{color:var(--cyan);}.q-tag.amber{color:var(--amber);}
+.q-header h1{font-size:clamp(1.4em,3vw,1.9em);font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:20px;}
+.verdict{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;font-size:.88em;font-weight:700;}
+.verdict.positive{background:var(--green-lt);color:#14532d;}
+.verdict.mixed{background:var(--amber-lt);color:#78350f;}
+.verdict.concern{background:var(--red-lt);color:#7f1d1d;}
+.verdict.info{background:var(--blue-lt);color:#1e40af;}
+
+/* SECTIONS */
+.section{margin-bottom:40px;}
+.section-title{font-size:.72em;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--gray-200);}
+.method-box{background:var(--blue-xlt);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:18px 22px;margin-bottom:14px;}
+.method-box h3{font-size:.92em;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.method-box p{font-size:.88em;color:var(--gray-700);margin-bottom:6px;}
+.method-box ul{padding-left:18px;}
+.method-box li{font-size:.88em;color:var(--gray-700);margin-bottom:5px;}
+.caveat-box{background:var(--amber-lt);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:14px;}
+.caveat-box p{font-size:.86em;color:#78350f;}
+.caveat-box strong{color:#92400e;}
+.info-box{background:var(--purple-lt);border-left:4px solid var(--purple);border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:14px;}
+.info-box p{font-size:.86em;color:#4c1d95;}
+.info-box strong{color:#3b0764;}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);margin-bottom:8px;}
+table{width:100%;border-collapse:collapse;font-size:.855em;background:white;}
+th{background:var(--navy);color:white;padding:11px 13px;text-align:left;font-weight:600;font-size:.82em;letter-spacing:.02em;white-space:nowrap;}
+td{padding:10px 13px;border-bottom:1px solid var(--gray-100);vertical-align:middle;white-space:nowrap;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:#fafbfc;}
+tr:hover td{background:#f0f7ff !important;}
+.td-g{background:#f0fdf4 !important;color:#14532d;font-weight:600;}
+.td-a{background:#fffbeb !important;color:#78350f;font-weight:600;}
+.td-r{background:#fef2f2 !important;color:#7f1d1d;font-weight:600;}
+.td-n{background:var(--gray-100) !important;color:var(--gray-400);font-style:italic;font-size:.9em;}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.8em;font-weight:700;white-space:nowrap;}
+.badge-g{background:var(--green-lt);color:var(--green);}
+.badge-a{background:var(--amber-lt);color:var(--amber);}
+.badge-r{background:var(--red-lt);color:var(--red);}
+.badge-n{background:var(--gray-200);color:var(--gray-600);}
+
+/* INLINE BAR */
+.bar-row{display:flex;align-items:center;gap:8px;}
+.bar-track{flex:1;min-width:60px;height:7px;background:var(--gray-200);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;}
+.bar-g{background:linear-gradient(90deg,#16a34a,#22c55e);}
+.bar-a{background:linear-gradient(90deg,#d97706,#f59e0b);}
+.bar-r{background:linear-gradient(90deg,#dc2626,#ef4444);}
+.bar-b{background:linear-gradient(90deg,#2563eb,#3b82f6);}
+.bar-val{font-size:.8em;font-weight:700;min-width:44px;text-align:right;}
+
+/* FINDINGS */
+.finding-list{list-style:none;}
+.finding-list li{display:flex;gap:12px;padding:13px 18px;background:white;border-radius:10px;margin-bottom:9px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:.88em;line-height:1.55;}
+.fi{flex-shrink:0;font-size:1em;margin-top:1px;}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:24px;}
+.stat-card{background:white;border-radius:12px;padding:20px 16px;box-shadow:0 2px 8px rgba(0,0,0,.07);text-align:center;}
+.stat-num{font-size:2.6em;font-weight:900;line-height:1;}
+.stat-num.green{color:var(--green);}.stat-num.amber{color:var(--amber);}.stat-num.red{color:var(--red);}.stat-num.blue{color:var(--blue);}
+.stat-label{font-size:.78em;color:var(--gray-500);margin-top:6px;line-height:1.3;}
+
+.table-note{font-size:.78em;color:var(--gray-500);margin-top:6px;line-height:1.5;padding:0 4px;}
+.divider{border:none;border-top:1px solid var(--gray-200);margin:32px 0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.excl-box{background:var(--gray-100);border-radius:10px;padding:14px 18px;margin-top:10px;}
+.excl-box h4{font-size:.78em;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
+.excl-box p{font-size:.82em;color:var(--gray-500);line-height:1.6;}
+
+@media(max-width:660px){
+  .questions-grid{grid-template-columns:1fr;padding:0 16px 36px;}
+  .hero{padding:50px 20px 60px;}
+  .page-content{padding:24px 16px 60px;}
+  .page-nav{padding:10px 16px;}
+  .two-col{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     LANDING
+══════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">Alpha Schools &middot; Early Literacy &middot; Round 2</div>
+    <h1>Alpha<span>Fluency</span><br>Pilot Report</h1>
+    <p class="hero-sub">Multi-campus data analysis across 40 students in Grades K&ndash;2</p>
+    <div class="data-pills">
+      <div class="pill">40 Students</div>
+      <div class="pill">5 Campuses</div>
+      <div class="pill">Grades K&ndash;2</div>
+      <div class="pill">March 2026</div>
+    </div>
+    <div class="hero-meta">Select a research question below to view methodology, data, and findings</div>
+  </div>
+
+  <div class="questions-grid">
+    <div class="q-card q1" onclick="showPage('q1')">
+      <div class="q-num">Question 1</div>
+      <h2>Did AlphaFluency place students at the correct reading difficulty?</h2>
+      <p>Starting from ATOS 0.4, how far has the adaptive engine progressed each student toward their grade-level reading target?</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q2" onclick="showPage('q2')">
+      <div class="q-num">Question 2</div>
+      <h2>Did students improve from their own AlphaFluency starting scores?</h2>
+      <p>Within-system growth: WCPM gains normalised to a common difficulty level, accounting for AlphaFluency&rsquo;s heard-first format and increasing text difficulty.</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q3" onclick="showPage('q3')">
+      <div class="q-num">Question 3</div>
+      <h2>Did students improve compared to their Literably baseline scores?</h2>
+      <p>Cross-system comparison adjusted for text difficulty and the heard-first vs. cold-read format gap (&sim;17 WCPM inflation).</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q4" onclick="showPage('q4')">
+      <div class="q-num">Question 4</div>
+      <h2>Are students closing the gap toward their grade-level reading target?</h2>
+      <p>Comparing each student&rsquo;s current AF WCPM against their Literably baseline, normalised to the same difficulty level.</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+  </div>
+
+  <div class="landing-note">
+    <strong>Key data context:</strong> AlphaFluency reads each text aloud before the student reads it (heard-first). Literably uses a cold read. All difficulty values are ATOS levels. All AF sessions began at ATOS 0.4. &ldquo;Initial&rdquo; = first attempt on first AF book; &ldquo;Final&rdquo; = first attempt on last AF book; &ldquo;Average&rdquo; = system-provided aggregate across all sessions. Students with fewer than 10 total AF minutes are excluded from analysis as unreliable. A follow-up Literably assessment is recommended to complete this analysis.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q1: PLACEMENT ACCURACY
+══════════════════════════════════════════════════ -->
+<div id="page-q1" class="page">
+  <nav class="page-nav">
+    <a class="btn-home" href="index.html">&#8592; Home</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">1 &mdash; Placement Accuracy</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" disabled>&larr; Prev</button>
+      <button class="btn-arrow" onclick="showPage('q2')">Next: Growth from AF Baseline &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag purple">Question 1 &mdash; Placement Accuracy</div>
+      <h1>Did AlphaFluency place students at the correct reading difficulty?</h1>
+      <div class="verdict mixed">&#9679; In Progress: 13 of 30 assessable students within &plusmn;0.5 ATOS of grade target</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology</div>
+      <div class="method-box">
+        <h3>Definition of &ldquo;correct difficulty&rdquo;</h3>
+        <p>A placement is considered <strong>near-target</strong> if the student&rsquo;s AF Final ATOS is within &plusmn;0.5 of their grade reading target ATOS. All sessions begin at ATOS 0.4; the adaptive engine raises difficulty based on real-time performance.</p>
+        <ul>
+          <li><strong>Gap &le; &plusmn;0.5:</strong> Near target &mdash; green</li>
+          <li><strong>Gap 0.5&ndash;1.0:</strong> Still progressing &mdash; amber</li>
+          <li><strong>Gap &gt; 1.0:</strong> Significant gap &mdash; red</li>
+        </ul>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Early-stage caveat:</strong> Most students started between 4&ndash;20 March 2026, giving many fewer than two weeks of practice. AF begins conservatively at ATOS 0.4 for all students regardless of prior assessment. Some undershoot at this stage is expected and normal &mdash; it reflects the ramp-up arc, not a failure of the adaptive engine.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num amber">13</div><div class="stat-label">of 30 at near-target difficulty (&le;&plusmn;0.5 ATOS)</div></div>
+        <div class="stat-card"><div class="stat-num amber">12</div><div class="stat-label">of 30 still progressing (gap 0.5&ndash;1.0)</div></div>
+        <div class="stat-card"><div class="stat-num red">5</div><div class="stat-label">of 30 with significant gap (&gt;1.0 ATOS)</div></div>
+        <div class="stat-card"><div class="stat-num blue">8</div><div class="stat-label">students excluded (insufficient session time)</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Campus</th>
+              <th>Target ATOS</th>
+              <th>AF Final ATOS</th>
+              <th>AF Avg ATOS</th>
+              <th>Gap</th>
+              <th>Min</th>
+              <th>Books</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="9" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Near Target (&le; &plusmn;0.5 ATOS) &mdash; 13 students</td></tr>
+            <tr><td><strong>Aleiah Jenkins</strong></td><td>Nova Austin</td><td>2.0</td><td>2.0</td><td>1.3</td><td class="td-g">0.0</td><td>26</td><td>13</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Riley Rosenberg</strong></td><td>Austin</td><td>2.0</td><td>1.8</td><td>1.61</td><td class="td-g">&minus;0.2</td><td>144</td><td>28</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Diego Bash</strong></td><td>Austin</td><td>3.0</td><td>2.6</td><td>1.99</td><td class="td-g">&minus;0.4</td><td>41</td><td>12</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Victoria Leal</strong></td><td>Brownsville</td><td>2.0</td><td>1.6</td><td>1.05</td><td class="td-g">&minus;0.4</td><td>100</td><td>40</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Elliott Rudnicki</strong></td><td>Scottsdale</td><td>1.0</td><td>0.6</td><td>0.7</td><td class="td-g">&minus;0.4</td><td>31</td><td>17</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>Nova Austin</td><td>1.0</td><td>0.6</td><td>0.43</td><td class="td-g">&minus;0.4</td><td>76</td><td>40</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Lila Dawson</strong></td><td>Austin</td><td>1.0</td><td>0.6</td><td>0.45</td><td class="td-g">&minus;0.4</td><td>57</td><td>17</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Alita Sanborn</strong></td><td>Austin</td><td>2.0</td><td>1.5</td><td>1.69</td><td class="td-g">&minus;0.5</td><td>42</td><td>10</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Asaph Park</strong></td><td>Miami</td><td>2.0</td><td>1.5</td><td>1.49</td><td class="td-g">&minus;0.5</td><td>48</td><td>16</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Rivers Yong</strong></td><td>Austin</td><td>3.0</td><td>2.5</td><td>1.85</td><td class="td-g">&minus;0.5</td><td>15</td><td>4</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Emma Garcia Lerma</strong></td><td>Brownsville</td><td>1.0</td><td>0.5</td><td>0.43</td><td class="td-g">&minus;0.5</td><td>55</td><td>20</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Justin Wooley</strong></td><td>Nova Austin</td><td>1.0</td><td>0.5</td><td>0.41</td><td class="td-g">&minus;0.5</td><td>53</td><td>36</td><td><span class="badge badge-g">Near target</span></td></tr>
+            <tr><td><strong>Ella Clark</strong></td><td>Austin</td><td>2.0</td><td>2.5</td><td>1.57</td><td class="td-g">+0.5</td><td>68</td><td>23</td><td><span class="badge badge-g">Near target</span></td></tr>
+
+            <tr><td colspan="9" style="background:#fffbeb;font-size:.76em;font-weight:700;color:#92400e;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Still Progressing (gap 0.5&ndash;1.0) &mdash; 12 students</td></tr>
+            <tr><td><strong>Hayes Burman</strong> †</td><td>Austin</td><td>3.0</td><td>2.4 †</td><td>2.39</td><td class="td-a">&minus;0.6</td><td>120</td><td>26</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Aiden Richardson</strong></td><td>Austin</td><td>3.0</td><td>2.3</td><td>1.68</td><td class="td-a">&minus;0.7</td><td>100</td><td>37</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Blake Price</strong></td><td>Austin</td><td>3.0</td><td>2.3</td><td>2.09</td><td class="td-a">&minus;0.7</td><td>177</td><td>31</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Anthem Thomas</strong></td><td>Austin</td><td>3.0</td><td>2.2</td><td>2.09</td><td class="td-a">&minus;0.8</td><td>136</td><td>28</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Ellis Kyung</strong></td><td>Austin</td><td>2.0</td><td>1.2</td><td>1.12</td><td class="td-a">&minus;0.8</td><td>67</td><td>26</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Ren Sticker</strong></td><td>Austin</td><td>3.0</td><td>2.1</td><td>2.23</td><td class="td-a">&minus;0.9</td><td>132</td><td>27</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Hayden Jones</strong></td><td>Austin</td><td>1.0</td><td>0.4</td><td>0.43</td><td class="td-a">&minus;0.6</td><td>52</td><td>23</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Thomas Nolan</strong></td><td>Austin</td><td>1.0</td><td>0.4</td><td>0.44</td><td class="td-a">&minus;0.6</td><td>31</td><td>25</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Anthonella Ochoa</strong></td><td>Nova Austin</td><td>1.0</td><td>0.4</td><td>0.4</td><td class="td-a">&minus;0.6</td><td>22</td><td>12</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Enzo Estrada</strong></td><td>Miami</td><td>1.0</td><td>0.4</td><td>0.47</td><td class="td-a">&minus;0.6</td><td>10</td><td>6</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Jamie Theunissen</strong></td><td>Austin</td><td>1.0</td><td>0.4</td><td>0.44</td><td class="td-a">&minus;0.6</td><td>13</td><td>9</td><td><span class="badge badge-a">Progressing</span></td></tr>
+            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>Nova Austin</td><td>1.0</td><td>0.4</td><td>0.43</td><td class="td-a">&minus;0.6</td><td>63</td><td>22</td><td><span class="badge badge-a">Progressing</span></td></tr>
+
+            <tr><td colspan="9" style="background:#fef2f2;font-size:.76em;font-weight:700;color:#7f1d1d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Significant Gap (&gt;1.0 ATOS) &mdash; 5 students</td></tr>
+            <tr><td><strong>Nash Niccolls</strong></td><td>Miami</td><td>2.0</td><td>1.0</td><td>1.43</td><td class="td-r">&minus;1.0</td><td>64</td><td>19</td><td><span class="badge badge-r">Significant gap</span></td></tr>
+            <tr><td><strong>Bandon Peterson</strong></td><td>Austin</td><td>2.0</td><td>1.0</td><td>0.8</td><td class="td-r">&minus;1.0</td><td>11</td><td>9</td><td><span class="badge badge-r">Significant gap</span></td></tr>
+            <tr><td><strong>Mya Hadnot</strong></td><td>Nova Austin</td><td>3.0</td><td>1.7</td><td>1.5</td><td class="td-r">&minus;1.3</td><td>123</td><td>34</td><td><span class="badge badge-r">Significant gap</span></td></tr>
+            <tr><td><strong>Theodore Dipaola</strong></td><td>Austin</td><td>2.0</td><td>0.4</td><td>0.96</td><td class="td-r">&minus;1.6</td><td>35</td><td>19</td><td><span class="badge badge-r">Significant gap</span></td></tr>
+            <tr><td><strong>Alessia Kriete</strong></td><td>Miami</td><td>2.0</td><td>0.4</td><td>0.5</td><td class="td-r">&minus;1.6</td><td>21</td><td>11</td><td><span class="badge badge-r">Significant gap</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">† Hayes Burman: Final ATOS not recorded in source data; Average ATOS (2.39) used as proxy. &nbsp;|&nbsp; Gap = AF Final ATOS &minus; Grade Target ATOS. Negative = AF below target.</p>
+
+      <div class="excl-box">
+        <h4>Excluded from analysis (insufficient AF session time &lt; 10 min)</h4>
+        <p>Alana Marin Barrios (8.1 min) &middot; Rylan Joseph (8.3 min) &middot; Megan Chukwura (6.1 min) &middot; Scarlett Meyer (7.2 min) &middot; Shailene Ferrebus (3.8 min) &middot; Nico Blanco (2.7 min) &middot; Savi Richardson (1.8 min) &middot; Rafaela Almanza (0.7 min)</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9679;</span><div><strong>Grade 2-target students are closest to reaching level.</strong> Aiden Richardson (2.3), Blake Price (2.3), Anthem Thomas (2.2), Ren Sticker (2.1), Hayes Burman (2.4) are all within 0.6&ndash;0.9 ATOS of the 3.0 target with 100&ndash;177 minutes invested. Continued practice should close remaining gaps.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Rivers Yong reached near-target in just 15 minutes and 4 books</strong> &mdash; the fastest adapter in the cohort. Starting at ATOS 0.4, they reached 2.5 against a 3.0 target, suggesting strong underlying fluency that the system detected quickly.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>A cluster of 6 students (target ATOS 1.0) are stuck at Final ATOS 0.4</strong> despite 13&ndash;63 minutes of practice (Hayden Jones, Thomas Nolan, Jamie Theunissen, Anthonella Ochoa, Enzo Estrada, Faustina Ngambo-Kialengele). Their average ATOS is also very low (0.4&ndash;0.5), indicating consistent low accuracy preventing advancement. These students warrant individual review.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Theodore Dipaola and Alessia Kriete show an interesting split.</strong> Theodore has high Final WCPM (90.5) at ATOS 0.4 &mdash; possibly mastering easy books but not advancing in difficulty. Alessia has genuinely low scores throughout. Different interventions likely needed.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>The pilot is too young for a definitive placement verdict.</strong> With most students fewer than three weeks in, re-assessment at 6 weeks is needed before drawing conclusions about AF&rsquo;s adaptive ceiling.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q2: GROWTH FROM AF BASELINE
+══════════════════════════════════════════════════ -->
+<div id="page-q2" class="page">
+  <nav class="page-nav">
+    <a class="btn-home" href="index.html">&#8592; Home</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">2 &mdash; Growth from AF Baseline</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q1')">&larr; Prev: Placement Accuracy</button>
+      <button class="btn-arrow" onclick="showPage('q3')">Next: Growth vs. Literably &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag green">Question 2 &mdash; Growth from AF Baseline</div>
+      <h1>Did students improve from their own AlphaFluency starting scores?</h1>
+      <div class="verdict positive">&#9679; Positive: 25 of 32 students showed genuine normalised WCPM gains</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology</div>
+      <div class="method-box">
+        <h3>Why raw WCPM cannot be compared directly</h3>
+        <p>Every student starts AF at ATOS 0.4 and progresses to harder texts. A student whose WCPM drops from 80 (at ATOS 0.4) to 60 (at ATOS 2.5) has not regressed &mdash; harder text naturally reduces WCPM. We normalise both scores to ATOS 1.0 using the slope of <strong>37 WCPM per 1.0 ATOS level</strong>.</p>
+      </div>
+      <div class="method-box">
+        <h3>Normalisation formula</h3>
+        <p><strong>Normalised WCPM = Actual WCPM + 37 &times; (Actual ATOS &minus; 1.0)</strong></p>
+        <p>Since all initial scores are at ATOS 0.4:</p>
+        <p><strong>Initial Norm = Initial WCPM &minus; 22.2</strong> &nbsp;|&nbsp; <strong>Final Norm = Final WCPM + 37 &times; (Final ATOS &minus; 1.0)</strong></p>
+        <p>A positive difference (Final Norm &minus; Initial Norm) means genuine fluency growth above and beyond difficulty increase.</p>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Note on non-gainers:</strong> All 7 students with negative gains ended at Final ATOS 0.4 with lower WCPM than they started. This typically indicates accuracy issues that prevented AF from advancing them in difficulty. Their normalised gain will be negative whenever Final WCPM &lt; Initial WCPM at the same difficulty level.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num green">25</div><div class="stat-label">of 32 students with positive normalised gain</div></div>
+        <div class="stat-card"><div class="stat-num green">+54</div><div class="stat-label">average normalised gain (WCPM) among gainers</div></div>
+        <div class="stat-card"><div class="stat-num amber">7</div><div class="stat-label">students with negative gain (all stuck at ATOS 0.4)</div></div>
+        <div class="stat-card"><div class="stat-num blue">+118</div><div class="stat-label">highest individual gain (Hayes Burman)</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Init WCPM</th>
+              <th>Final WCPM</th>
+              <th>Final ATOS</th>
+              <th>Adj. Gain (WCPM)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Positive Gains &mdash; 25 students</td></tr>
+            <tr><td><strong>Hayes Burman</strong> †</td><td>50.7</td><td>95.2</td><td>2.39 †</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:98%"></div></div><span class="bar-val td-g">+118.1</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Diego Bash</strong></td><td>45.6</td><td>68.5</td><td>2.6</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:87%"></div></div><span class="bar-val td-g">+104.3</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Blake Price</strong></td><td>51.9</td><td>75.7</td><td>2.3</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:78%"></div></div><span class="bar-val td-g">+94.1</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Aiden Richardson</strong></td><td>63.8</td><td>87.2</td><td>2.3</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:78%"></div></div><span class="bar-val td-g">+93.7</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Mya Hadnot</strong></td><td>24.8</td><td>69.8</td><td>1.7</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:78%"></div></div><span class="bar-val td-g">+93.1</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Rivers Yong</strong></td><td>59.1</td><td>74.5</td><td>2.5</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:78%"></div></div><span class="bar-val td-g">+93.1</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Ren Sticker</strong></td><td>56.4</td><td>74.8</td><td>2.1</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:68%"></div></div><span class="bar-val td-g">+81.3</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Bandon Peterson</strong></td><td>27.7</td><td>81.2</td><td>1.0</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:63%"></div></div><span class="bar-val td-g">+75.7</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Ella Clark</strong></td><td>68.4</td><td>61.8</td><td>2.5</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:59%"></div></div><span class="bar-val td-g">+71.1</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Nash Niccolls</strong></td><td>23.0</td><td>69.8</td><td>1.0</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:58%"></div></div><span class="bar-val td-g">+69.0</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Anthem Thomas</strong></td><td>72.1</td><td>62.1</td><td>2.2</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:47%"></div></div><span class="bar-val td-g">+56.6</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Aleiah Jenkins</strong></td><td>62.9</td><td>60.0</td><td>2.0</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:47%"></div></div><span class="bar-val td-g">+56.3</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Theodore Dipaola</strong></td><td>38.5</td><td>90.5</td><td>0.4</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:43%"></div></div><span class="bar-val td-g">+52.0</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Ellis Kyung</strong></td><td>48.5</td><td>69.7</td><td>1.2</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:42%"></div></div><span class="bar-val td-g">+50.8</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Emma Schipper</strong> ‡</td><td>2.7</td><td>24.7</td><td>1.0</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:37%"></div></div><span class="bar-val td-g">+44.2</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Geraldine Gurrola</strong> ‡</td><td>56.8</td><td>48.9</td><td>1.6</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:30%"></div></div><span class="bar-val td-g">+36.5</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Riley Rosenberg</strong></td><td>62.4</td><td>43.8</td><td>1.8</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:28%"></div></div><span class="bar-val td-g">+33.2</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Elliott Rudnicki</strong></td><td>0.0</td><td>25.4</td><td>0.6</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:27%"></div></div><span class="bar-val td-g">+32.8</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Alita Sanborn</strong></td><td>72.7</td><td>61.9</td><td>1.5</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:25%"></div></div><span class="bar-val td-g">+29.9</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Thomas Nolan</strong></td><td>42.3</td><td>70.4</td><td>0.4</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:23%"></div></div><span class="bar-val td-g">+28.1</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Asaph Park</strong></td><td>83.5</td><td>59.4</td><td>1.5</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:14%"></div></div><span class="bar-val td-g">+16.6</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Enzo Estrada</strong></td><td>19.2</td><td>28.2</td><td>0.4</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:8%"></div></div><span class="bar-val td-g">+9.0</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Victoria Leal</strong></td><td>84.4</td><td>46.4</td><td>1.6</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:5%"></div></div><span class="bar-val td-g">+6.4</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Alessia Kriete</strong></td><td>16.4</td><td>20.2</td><td>0.4</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:3%"></div></div><span class="bar-val td-g">+3.8</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+            <tr><td><strong>Lila Dawson</strong></td><td>13.1</td><td>6.3</td><td>0.6</td><td><div class="bar-row"><div class="bar-track"><div class="bar-fill bar-g" style="width:1%"></div></div><span class="bar-val td-g">+0.6</span></div></td><td><span class="badge badge-g">Gain</span></td></tr>
+
+            <tr><td colspan="6" style="background:#fef2f2;font-size:.76em;font-weight:700;color:#7f1d1d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">No Gain &mdash; 7 students (all Final ATOS 0.4)</td></tr>
+            <tr><td><strong>Emma Garcia Lerma</strong></td><td>21.9</td><td>13.8</td><td>0.5</td><td><span style="color:var(--red);font-weight:700;">&minus;4.4</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>20.0</td><td>3.6</td><td>0.6</td><td><span style="color:var(--red);font-weight:700;">&minus;9.0</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+            <tr><td><strong>Anthonella Ochoa</strong></td><td>29.8</td><td>14.9</td><td>0.4</td><td><span style="color:var(--red);font-weight:700;">&minus;14.9</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+            <tr><td><strong>Justin Wooley</strong></td><td>40.6</td><td>11.5</td><td>0.5</td><td><span style="color:var(--red);font-weight:700;">&minus;25.4</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+            <tr><td><strong>Hayden Jones</strong></td><td>31.3</td><td>5.8</td><td>0.4</td><td><span style="color:var(--red);font-weight:700;">&minus;25.5</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+            <tr><td><strong>Jamie Theunissen</strong></td><td>43.9</td><td>17.9</td><td>0.4</td><td><span style="color:var(--red);font-weight:700;">&minus;26.0</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>30.0</td><td>3.4</td><td>0.4</td><td><span style="color:var(--red);font-weight:700;">&minus;26.6</span></td><td><span class="badge badge-r">No gain</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">† Hayes Burman: Final ATOS missing; Average ATOS (2.39) used. &nbsp;|&nbsp; ‡ Emma Schipper and Geraldine Gurrola have AF data only &mdash; no Literably baseline. &nbsp;|&nbsp; Normalised to ATOS 1.0: Init Norm = Init WCPM &minus; 22.2; Final Norm = Final WCPM + 37 &times; (Final ATOS &minus; 1.0); Gain = Final Norm &minus; Init Norm.</p>
+
+      <div class="excl-box">
+        <h4>Excluded (insufficient session time &lt; 10 min)</h4>
+        <p>Alana Marin Barrios &middot; Rylan Joseph &middot; Megan Chukwura &middot; Scarlett Meyer &middot; Shailene Ferrebus &middot; Nico Blanco &middot; Savi Richardson &middot; Rafaela Almanza</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9679;</span><div><strong>78% of students showed genuine fluency growth</strong> when difficulty increase is properly accounted for. An average normalised gain of +54 WCPM is a strong signal, particularly for a pilot under three weeks old.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Ella Clark illustrates why normalisation matters.</strong> Her raw WCPM dropped from 68.4 to 61.8 &mdash; but she progressed from ATOS 0.4 to 2.5. Her normalised gain is +71 WCPM, the 9th highest in the cohort.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Theodore Dipaola recorded 90.5 WCPM at Final ATOS 0.4</strong> &mdash; the highest final WCPM in the cohort at that difficulty level. His gain of +52 points reflects real fluency improvement, but the stuck difficulty (0.4 final, 0.96 average) warrants follow-up to understand why the system hasn&rsquo;t advanced him further.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>All 7 non-gainers share the same pattern:</strong> Final ATOS at or near 0.4, and lower WCPM at the end than the start. This is consistent with accuracy problems &mdash; not fluency regression. The AF system likely kept them at easy text because of low accuracy scores.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Lila Dawson&rsquo;s +0.6 gain is technically positive but negligible.</strong> Her initial and final normalised scores are both near &minus;9 WCPM at ATOS 1.0, which reflects genuine low proficiency. She should be monitored closely.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q3: GROWTH VS LITERABLY
+══════════════════════════════════════════════════ -->
+<div id="page-q3" class="page">
+  <nav class="page-nav">
+    <a class="btn-home" href="index.html">&#8592; Home</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">3 &mdash; Growth vs. Literably</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q2')">&larr; Prev: Growth from AF Baseline</button>
+      <button class="btn-arrow" onclick="showPage('q4')">Next: Grade Target Progress &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag cyan">Question 3 &mdash; Growth vs. Literably Baseline</div>
+      <h1>Did students improve compared to their cold-read Literably scores?</h1>
+      <div class="verdict mixed">&#9679; Mixed &mdash; 3 of 30 verified gains above format-inflation threshold</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology</div>
+      <div class="method-box">
+        <h3>The format-inflation problem</h3>
+        <p>AlphaFluency reads text aloud to the student before they read it independently (<strong>heard-first</strong>). Literably presents completely unseen text (<strong>cold read</strong>). Heard-first consistently produces higher WCPM than cold read for the same student on the same text &mdash; estimated at <strong>&sim;17 WCPM</strong> in this cohort. A raw AF WCPM that exceeds a Literably WCPM is therefore not necessarily a genuine gain.</p>
+      </div>
+      <div class="method-box">
+        <h3>Normalisation and verification threshold</h3>
+        <p>Both scores are normalised to the student&rsquo;s AF Final ATOS as the common reference point:</p>
+        <p><strong>Lit (norm) = Lit WCPM + 37 &times; (Lit ATOS &minus; AF Final ATOS)</strong></p>
+        <p>A gain is <strong>verified</strong> only if: <strong>AF Final WCPM &gt; Lit (norm) + 17</strong></p>
+        <p>This means the student must beat their normalised Literably score by more than the expected heard-first inflation before the gain is considered genuine.</p>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Why so few verified gains?</strong> Many students have Literably baselines at ATOS 2.0&ndash;3.3, while their AF Final ATOS is still 0.4&ndash;2.3. Normalising Literably down to a lower ATOS inflates the Literably score (harder text &rarr; higher equivalent at easier text). Until AF difficulty catches up with Literably difficulty, the normalised comparison will remain unfavourable. This is expected at the early pilot stage &mdash; not evidence of poor outcomes.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num red">3</div><div class="stat-label">of 30 students with verified gains (above format threshold)</div></div>
+        <div class="stat-card"><div class="stat-num amber">&sim;17</div><div class="stat-label">WCPM estimated heard-first format inflation</div></div>
+        <div class="stat-card"><div class="stat-num amber">27</div><div class="stat-label">students not yet verified (mostly due to difficulty gap)</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Lit WCPM</th>
+              <th>Lit ATOS</th>
+              <th>AF Final WCPM</th>
+              <th>AF Final ATOS</th>
+              <th>Lit (Norm)</th>
+              <th>Threshold (+17)</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="8" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Verified Gains &mdash; 3 students</td></tr>
+            <tr><td><strong>Thomas Nolan</strong></td><td>11</td><td>0.8</td><td class="td-g">70.4</td><td>0.4</td><td>25.8</td><td>42.8</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Ella Clark</strong></td><td>37</td><td>2.0</td><td class="td-g">61.8</td><td>2.5</td><td>18.5</td><td>35.5</td><td><span class="badge badge-g">Verified</span></td></tr>
+            <tr><td><strong>Aleiah Jenkins</strong></td><td>24</td><td>2.0</td><td class="td-g">60.0</td><td>2.0</td><td>24.0</td><td>41.0</td><td><span class="badge badge-g">Verified</span></td></tr>
+
+            <tr><td colspan="8" style="background:#fafbfc;font-size:.76em;font-weight:700;color:var(--gray-500);letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Not Yet Verified &mdash; 27 students</td></tr>
+            <tr><td><strong>Ellis Kyung</strong></td><td>58</td><td>1.1</td><td>69.7</td><td>1.2</td><td>54.3</td><td>71.3</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Rivers Yong</strong></td><td>68</td><td>2.6</td><td>74.5</td><td>2.5</td><td>71.7</td><td>88.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Riley Rosenberg</strong></td><td>32</td><td>2.0</td><td>43.8</td><td>1.8</td><td>39.4</td><td>56.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Alita Sanborn</strong></td><td>33</td><td>2.0</td><td>61.9</td><td>1.5</td><td>51.5</td><td>68.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Enzo Estrada</strong></td><td>7</td><td>0.8</td><td>28.2</td><td>0.4</td><td>21.8</td><td>38.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Bandon Peterson</strong></td><td>46</td><td>2.0</td><td>81.2</td><td>1.0</td><td>83.0</td><td>100.0</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Aiden Richardson</strong></td><td>100</td><td>2.0</td><td>87.2</td><td>2.3</td><td>88.9</td><td>105.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Diego Bash</strong></td><td>80</td><td>2.0</td><td>68.5</td><td>2.6</td><td>57.8</td><td>74.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Victoria Leal</strong></td><td>53</td><td>2.0</td><td>46.4</td><td>1.6</td><td>67.8</td><td>84.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Nash Niccolls</strong></td><td>42</td><td>2.0</td><td>69.8</td><td>1.0</td><td>79.0</td><td>96.0</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Asaph Park</strong></td><td>44</td><td>2.0</td><td>59.4</td><td>1.5</td><td>62.5</td><td>79.5</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Theodore Dipaola</strong></td><td>39</td><td>2.0</td><td>90.5</td><td>0.4</td><td>98.2</td><td>115.2</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Anthem Thomas</strong></td><td>55</td><td>3.0</td><td>62.1</td><td>2.2</td><td>84.6</td><td>101.6</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Hayes Burman</strong> †</td><td>90</td><td>3.0</td><td>95.2</td><td>2.39 †</td><td>112.6</td><td>129.6</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Blake Price</strong></td><td>76</td><td>3.0</td><td>75.7</td><td>2.3</td><td>101.9</td><td>118.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Mya Hadnot</strong></td><td>59</td><td>3.0</td><td>69.8</td><td>1.7</td><td>107.1</td><td>124.1</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Ren Sticker</strong></td><td>84</td><td>3.3</td><td>74.8</td><td>2.1</td><td>128.4</td><td>145.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Justin Wooley</strong></td><td>14</td><td>0.2</td><td>11.5</td><td>0.5</td><td>2.9</td><td>19.9</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Alessia Kriete</strong></td><td>21</td><td>0.8</td><td>20.2</td><td>0.4</td><td>35.8</td><td>52.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Emma Garcia Lerma</strong></td><td>14</td><td>0.8</td><td>13.8</td><td>0.5</td><td>25.1</td><td>42.1</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Elliott Rudnicki</strong></td><td>33</td><td>0.8</td><td>25.4</td><td>0.6</td><td>40.4</td><td>57.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Anthonella Ochoa</strong></td><td>11</td><td>0.8</td><td>14.9</td><td>0.4</td><td>25.8</td><td>42.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>9</td><td>0.8</td><td>3.6</td><td>0.6</td><td>16.4</td><td>33.4</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Hayden Jones</strong></td><td>8</td><td>0.8</td><td>5.8</td><td>0.4</td><td>22.8</td><td>39.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>4</td><td>0.5</td><td>3.4</td><td>0.4</td><td>7.7</td><td>24.7</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Jamie Theunissen</strong></td><td>15</td><td>0.8</td><td>17.9</td><td>0.4</td><td>29.8</td><td>46.8</td><td><span class="badge badge-n">Not verified</span></td></tr>
+            <tr><td><strong>Lila Dawson</strong></td><td>23</td><td>0.6</td><td>6.3</td><td>0.6</td><td>23.0</td><td>40.0</td><td><span class="badge badge-n">Not verified</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">† Hayes Burman: Average ATOS (2.39) used as proxy for Final ATOS. &nbsp;|&nbsp; Lit (Norm) = Lit WCPM + 37 &times; (Lit ATOS &minus; AF Final ATOS). Threshold = Lit (Norm) + 17.</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9679;</span><div><strong>The 3/30 verified-gain count is expected at this pilot stage,</strong> not a cause for concern. The core issue: many students have Literably baselines at ATOS 2.0&ndash;3.3 while AF has only reached 0.4&ndash;2.3. Normalising a high-ATOS Literably score down to a low-ATOS reference pushes the Literably benchmark up significantly, making it very hard to clear the +17 threshold.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Thomas Nolan shows the clearest genuine gain.</strong> Literably: 11 WCPM at ATOS 0.8. AF Final: 70.4 WCPM at ATOS 0.4. Normalised gap = 70.4 vs threshold 42.8 &mdash; well above the inflation buffer. This is a large, credible improvement.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Ellis Kyung came closest without verifying.</strong> AF 69.7 vs threshold 71.3 &mdash; a difference of just 1.6 WCPM. Given Literably was taken Feb 13 (over a month before AF data was collected), this student may have already cleared the threshold if tested today.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>A Literably re-test is essential.</strong> Without a post-pilot cold-read, it is impossible to verify cross-format gains for most students. Recommend a Literably re-test for all cohort members after 6 weeks of AF use.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     Q4: GRADE TARGET PROGRESS
+══════════════════════════════════════════════════ -->
+<div id="page-q4" class="page">
+  <nav class="page-nav">
+    <a class="btn-home" href="index.html">&#8592; Home</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">4 &mdash; Grade Target Progress</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q3')">&larr; Prev: Growth vs. Literably</button>
+      <button class="btn-arrow" disabled>Next &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag amber">Question 4 &mdash; Grade Target Progress</div>
+      <h1>Are students closing the gap toward their grade-level reading target?</h1>
+      <div class="verdict mixed">&#9679; Mixed: 10 of 30 students show gap closure vs. Literably baseline</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology</div>
+      <div class="method-box">
+        <h3>How gap closure is measured</h3>
+        <p>The Literably baseline WCPM is normalised to the student&rsquo;s AF Final ATOS to create a common difficulty reference. If the student&rsquo;s AF Final WCPM exceeds this normalised Literably baseline, they have moved closer to their grade benchmark &mdash; their gap to target is smaller than when the pilot began.</p>
+        <p><strong>Lit (norm) = Lit WCPM + 37 &times; (Lit ATOS &minus; AF Final ATOS)</strong></p>
+        <p><strong>Gap closed if: AF Final WCPM &gt; Lit (norm)</strong></p>
+      </div>
+      <div class="method-box">
+        <h3>Why Literably is used as the baseline</h3>
+        <p>Literably is a cold read &mdash; the more conservative, harder-to-inflate measure. Using it as the starting point means any gap closure confirmed here is credible signal, not an artefact of heard-first inflation. Note that this comparison has <em>no</em> format-inflation buffer applied &mdash; unlike Q3, which required clearing +17 WCPM. Gap closure here is the lower bar: AF must simply beat the normalised Literably WCPM.</p>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Interpretation note:</strong> Many students have Literably baselines at harder ATOS levels than their current AF Final ATOS. Normalising Literably down to the lower AF ATOS inflates the Literably benchmark, making gap closure harder to show even if real growth has occurred. As AF difficulty rises to match Literably difficulty, gap closure numbers will improve.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num amber">10</div><div class="stat-label">of 30 students closed the gap vs. Literably baseline</div></div>
+        <div class="stat-card"><div class="stat-num amber">20</div><div class="stat-label">gap not yet closed (mostly due to difficulty gap)</div></div>
+        <div class="stat-card"><div class="stat-num green">3</div><div class="stat-label">also passed Q3 format-inflation threshold</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Lit WCPM (Norm)</th>
+              <th>AF Final WCPM</th>
+              <th>AF Final ATOS</th>
+              <th>Diff</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Gap Closed &mdash; 10 students</td></tr>
+            <tr><td><strong>Thomas Nolan</strong></td><td>25.8</td><td class="td-g">70.4</td><td>0.4</td><td class="td-g">+44.6</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Ella Clark</strong></td><td>18.5</td><td class="td-g">61.8</td><td>2.5</td><td class="td-g">+43.3</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Aleiah Jenkins</strong></td><td>24.0</td><td class="td-g">60.0</td><td>2.0</td><td class="td-g">+36.0</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Enzo Estrada</strong></td><td>21.8</td><td class="td-g">28.2</td><td>0.4</td><td class="td-g">+6.4</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Diego Bash</strong></td><td>57.8</td><td class="td-g">68.5</td><td>2.6</td><td class="td-g">+10.7</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Ellis Kyung</strong></td><td>54.3</td><td class="td-g">69.7</td><td>1.2</td><td class="td-g">+15.4</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Rivers Yong</strong></td><td>71.7</td><td class="td-g">74.5</td><td>2.5</td><td class="td-g">+2.8</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Riley Rosenberg</strong></td><td>39.4</td><td class="td-g">43.8</td><td>1.8</td><td class="td-g">+4.4</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Justin Wooley</strong></td><td>2.9</td><td class="td-g">11.5</td><td>0.5</td><td class="td-g">+8.6</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+            <tr><td><strong>Alita Sanborn</strong></td><td>51.5</td><td class="td-g">61.9</td><td>1.5</td><td class="td-g">+10.4</td><td><span class="badge badge-g">Gap closed</span></td></tr>
+
+            <tr><td colspan="6" style="background:#fef2f2;font-size:.76em;font-weight:700;color:#7f1d1d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Gap Not Closed &mdash; 20 students</td></tr>
+            <tr><td><strong>Aiden Richardson</strong></td><td>88.9</td><td>87.2</td><td>2.3</td><td class="td-r">&minus;1.7</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Bandon Peterson</strong></td><td>83.0</td><td>81.2</td><td>1.0</td><td class="td-r">&minus;1.8</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Asaph Park</strong></td><td>62.5</td><td>59.4</td><td>1.5</td><td class="td-r">&minus;3.1</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Victoria Leal</strong></td><td>67.8</td><td>46.4</td><td>1.6</td><td class="td-r">&minus;21.4</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Nash Niccolls</strong></td><td>79.0</td><td>69.8</td><td>1.0</td><td class="td-r">&minus;9.2</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Anthem Thomas</strong></td><td>84.6</td><td>62.1</td><td>2.2</td><td class="td-r">&minus;22.5</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Blake Price</strong></td><td>101.9</td><td>75.7</td><td>2.3</td><td class="td-r">&minus;26.2</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Hayes Burman</strong> †</td><td>112.6</td><td>95.2</td><td>2.39 †</td><td class="td-r">&minus;17.4</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Ren Sticker</strong></td><td>128.4</td><td>74.8</td><td>2.1</td><td class="td-r">&minus;53.6</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Mya Hadnot</strong></td><td>107.1</td><td>69.8</td><td>1.7</td><td class="td-r">&minus;37.3</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Theodore Dipaola</strong></td><td>98.2</td><td>90.5</td><td>0.4</td><td class="td-r">&minus;7.7</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Alessia Kriete</strong></td><td>35.8</td><td>20.2</td><td>0.4</td><td class="td-r">&minus;15.6</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Hayden Jones</strong></td><td>22.8</td><td>5.8</td><td>0.4</td><td class="td-r">&minus;17.0</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Anthonella Ochoa</strong></td><td>25.8</td><td>14.9</td><td>0.4</td><td class="td-r">&minus;10.9</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Emma Garcia Lerma</strong></td><td>25.1</td><td>13.8</td><td>0.5</td><td class="td-r">&minus;11.3</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Gael Gonzalez-Romero</strong></td><td>16.4</td><td>3.6</td><td>0.6</td><td class="td-r">&minus;12.8</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Lila Dawson</strong></td><td>23.0</td><td>6.3</td><td>0.6</td><td class="td-r">&minus;16.7</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>7.7</td><td>3.4</td><td>0.4</td><td class="td-r">&minus;4.3</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Jamie Theunissen</strong></td><td>29.8</td><td>17.9</td><td>0.4</td><td class="td-r">&minus;11.9</td><td><span class="badge badge-r">Not closed</span></td></tr>
+            <tr><td><strong>Elliott Rudnicki</strong></td><td>40.4</td><td>25.4</td><td>0.6</td><td class="td-r">&minus;15.0</td><td><span class="badge badge-r">Not closed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">† Hayes Burman: Average ATOS (2.39) used as proxy. &nbsp;|&nbsp; Lit (Norm) = Lit WCPM + 37 &times; (Lit ATOS &minus; AF Final ATOS). Diff = AF Final WCPM &minus; Lit (Norm). Positive = gap closed.</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9679;</span><div><strong>Students with lower Literably ATOS baselines are most likely to show gap closure.</strong> The 10 students who closed their gap include those with Literably at ATOS 0.2&ndash;2.0. Students with Literably at 3.0&ndash;3.3 (Ren Sticker, Mya Hadnot, Blake Price) show large negative gaps because the normalisation amplifies a high Literably score when AF hasn&rsquo;t yet reached that difficulty.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Aiden Richardson and Bandon Peterson are borderline cases</strong> &mdash; gaps of just &minus;1.7 and &minus;1.8 WCPM respectively. Both would likely show gap closure with a few more sessions. Aiden in particular has 100 minutes invested and is trending upward.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Ren Sticker&rsquo;s &minus;53.6 gap is an artefact of their very high Literably score (84 WCPM at ATOS 3.3).</strong> When normalised to AF Final ATOS 2.1, the Literably benchmark becomes 128.4 WCPM &mdash; an extremely high bar that AF is unlikely to clear until difficulty is fully matched. This does not mean Ren has declined; it means the comparison is unfair until AF reaches ATOS 3.3.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>Recommended action:</strong> Re-run Q4 at 6 weeks. As AF difficulty catches up to Literably difficulty for the advanced cohort, gap closure rates are expected to improve substantially. A Literably re-test at the same time will provide the cleanest cross-format comparison.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+const PAGES = ['home','q1','q2','q3','q4'];
+function showPage(id) {
+  PAGES.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.classList.toggle('active', p === id);
+  });
+  window.scrollTo(0, 0);
+  history.replaceState(null, '', '#' + id);
+}
+function init() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && PAGES.includes(hash)) showPage(hash);
+}
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && PAGES.includes(hash)) showPage(hash);
+});
+init();
+</script>
+</body>
+</html>

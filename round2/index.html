@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Summary | AlphaFluency Pilot — Round 2</title>
+<style>
+:root {
+  --navy: #0f2040;
+  --blue: #2563eb;
+  --green: #16a34a;
+  --green-lt: #dcfce7;
+  --amber: #d97706;
+  --amber-lt: #fef3c7;
+  --purple: #7c3aed;
+  --purple-lt: #ede9fe;
+  --cyan: #0891b2;
+  --cyan-lt: #cffafe;
+  --teal: #0d9488;
+  --teal-lt: #ccfbf1;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f8fafc;
+  color: var(--gray-900);
+  line-height: 1.5;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0f2040 0%, #1a3560 55%, #1d4fa8 100%);
+  color: white;
+  padding: 48px 40px 60px;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+.hero h1 {
+  font-size: clamp(1.8em, 4vw, 2.7em);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+  line-height: 1.1;
+}
+.hero h1 span { color: #60a5fa; }
+.hero-meta { font-size: 0.78em; opacity: 0.4; letter-spacing: 0.05em; margin-top: 8px; }
+
+/* ── VERDICT ── */
+.verdict-wrap {
+  max-width: 760px;
+  margin: -28px auto 0;
+  padding: 0 24px 32px;
+}
+.verdict-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.13);
+  padding: 26px 30px;
+  border-left: 5px solid var(--amber);
+}
+.verdict-label {
+  font-size: 0.65em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.verdict-body {
+  font-size: 0.97em;
+  color: var(--gray-700);
+  line-height: 1.65;
+}
+.verdict-body strong { color: var(--gray-900); }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 10px;
+  font-size: 0.65em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+/* ── CARDS ── */
+.cards-list {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.result-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+}
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+}
+.rc1::before { background: linear-gradient(180deg,#7c3aed,#a855f7); }
+.rc2::before { background: linear-gradient(180deg,#16a34a,#22c55e); }
+.rc3::before { background: linear-gradient(180deg,#0891b2,#06b6d4); }
+.rc4::before { background: linear-gradient(180deg,#d97706,#f59e0b); }
+
+.rc-left { min-width: 0; }
+
+.rc-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.rc-num {
+  font-size: 0.62em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.rc1 .rc-num { color: #7c3aed; }
+.rc2 .rc-num { color: #16a34a; }
+.rc3 .rc-num { color: #0891b2; }
+.rc4 .rc-num { color: #d97706; }
+
+.verdict-pill {
+  font-size: 0.62em;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.pill-green  { background: var(--green-lt);  color: var(--green);  }
+.pill-amber  { background: var(--amber-lt);  color: var(--amber);  }
+.pill-teal   { background: var(--teal-lt);   color: var(--teal);   }
+
+.rc-title {
+  font-size: 0.82em;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 5px;
+}
+.rc-summary {
+  font-size: 0.8em;
+  color: var(--gray-500);
+  line-height: 1.55;
+}
+.rc-summary strong { color: var(--gray-700); }
+
+/* Stats + link on right */
+.rc-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+.rc-stats-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.rc-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72em;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 7px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.rc1 .rc-view-btn { background: var(--purple-lt); color: var(--purple); }
+.rc2 .rc-view-btn { background: var(--green-lt);  color: var(--green);  }
+.rc3 .rc-view-btn { background: var(--cyan-lt);   color: var(--cyan);   }
+.rc4 .rc-view-btn { background: var(--amber-lt);  color: var(--amber);  }
+
+.stat-item { text-align: center; }
+.stat-num {
+  font-size: 1.35em;
+  font-weight: 900;
+  line-height: 1;
+}
+.sn-green  { color: var(--green);  }
+.sn-amber  { color: var(--amber);  }
+.sn-red    { color: #dc2626;       }
+.sn-cyan   { color: var(--cyan);   }
+.sn-teal   { color: var(--teal);   }
+.stat-lbl {
+  font-size: 0.62em;
+  color: var(--gray-400);
+  line-height: 1.3;
+  margin-top: 3px;
+  max-width: 72px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 18px;
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 580px) {
+  .result-card { grid-template-columns: 1fr; }
+  .rc-stats { justify-content: flex-start; }
+  .hero { padding: 36px 20px 52px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Executive Summary &nbsp;&middot;&nbsp; Confidential</div>
+  <h1>AlphaFluency <span>Pilot Report</span></h1>
+  <div class="hero-meta">Round 2 &nbsp;&middot;&nbsp; 40 Students &nbsp;&middot;&nbsp; 5 Campuses &nbsp;&middot;&nbsp; Grades K&ndash;2 &nbsp;&middot;&nbsp; Alpha Schools &nbsp;&middot;&nbsp; March 2026</div>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict-wrap">
+  <div class="verdict-card">
+    <div class="verdict-label">&#9679; Executive Summary</div>
+    <div class="verdict-body">
+      Across 40 students at 5 campuses, AlphaFluency showed a strong internal growth signal &mdash; <strong>25 of 32 students with sufficient session time recorded positive normalised WCPM gains, averaging +54 adjusted WCPM</strong>. With most students fewer than two weeks into the programme, <strong>13 of 30 assessable students have reached near-target reading difficulty</strong>, with the remainder still in active progression. A post-pilot Literably cold-read assessment is required to confirm these gains transfer to independent reading.
+    </div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="section-label">Research Findings</div>
+<div class="cards-list">
+
+  <!-- Q1 -->
+  <a class="result-card rc1" href="report.html#q1">
+    <div class="rc-left">
+      <div class="rc-top">
+        <span class="rc-num">Q1 &mdash; Placement Accuracy</span>
+        <span class="verdict-pill pill-amber">&#9679; In Progress</span>
+      </div>
+      <div class="rc-title">Did AlphaFluency place students at the correct reading difficulty?</div>
+      <div class="rc-summary">13 of 30 assessable students are within 0.5 ATOS of their grade target. The remaining 17 are still progressing &mdash; most have been on the programme for fewer than two weeks.</div>
+    </div>
+    <div class="rc-stats">
+      <div class="rc-stats-row">
+        <div class="stat-item"><div class="stat-num sn-amber">13/30</div><div class="stat-lbl">at correct level</div></div>
+      </div>
+      <span class="rc-view-btn">View full analysis &rarr;</span>
+    </div>
+  </a>
+
+  <!-- Q2 -->
+  <a class="result-card rc2" href="report.html#q2">
+    <div class="rc-left">
+      <div class="rc-top">
+        <span class="rc-num">Q2 &mdash; Growth from AF Baseline</span>
+        <span class="verdict-pill pill-green">&#9679; Positive</span>
+      </div>
+      <div class="rc-title">Did students improve from their own AlphaFluency starting scores?</div>
+      <div class="rc-summary">25 of 32 students showed genuine WCPM gains when scores are normalised to a common difficulty level. The 7 non-gainers were mostly students near the 10-minute session threshold.</div>
+    </div>
+    <div class="rc-stats">
+      <div class="rc-stats-row">
+        <div class="stat-item"><div class="stat-num sn-green">25/32</div><div class="stat-lbl">genuine growth</div></div>
+        <div class="stat-item"><div class="stat-num sn-green">+54</div><div class="stat-lbl">avg adjusted WCPM gain</div></div>
+      </div>
+      <span class="rc-view-btn">View full analysis &rarr;</span>
+    </div>
+  </a>
+
+  <!-- Q3 -->
+  <a class="result-card rc3" href="report.html#q3">
+    <div class="rc-left">
+      <div class="rc-top">
+        <span class="rc-num">Q3 &mdash; Growth vs. Literably Baseline</span>
+        <span class="verdict-pill pill-amber">&#9679; Mixed &mdash; Incomplete Data</span>
+      </div>
+      <div class="rc-title">Did students improve compared to their cold-read Literably scores?</div>
+      <div class="rc-summary">Only 3 of 30 students cleared the &sim;17 WCPM format-inflation threshold. Many students are still reading at a lower AF difficulty than their Literably passage, which suppresses normalised comparisons.</div>
+    </div>
+    <div class="rc-stats">
+      <div class="rc-stats-row">
+        <div class="stat-item"><div class="stat-num sn-red">3/30</div><div class="stat-lbl">verified gains</div></div>
+        <div class="stat-item"><div class="stat-num sn-amber">&minus;17</div><div class="stat-lbl">est. format inflation (WCPM)</div></div>
+      </div>
+      <span class="rc-view-btn">View full analysis &rarr;</span>
+    </div>
+  </a>
+
+  <!-- Q4 -->
+  <a class="result-card rc4" href="report.html#q4">
+    <div class="rc-left">
+      <div class="rc-top">
+        <span class="rc-num">Q4 &mdash; Grade Target Progress</span>
+        <span class="verdict-pill pill-amber">&#9679; Mixed</span>
+      </div>
+      <div class="rc-title">Are students moving toward their grade-level reading benchmarks?</div>
+      <div class="rc-summary">10 of 30 students recorded an AF WCPM (at current difficulty) above their Literably baseline when normalised to the same level &mdash; a positive cross-format signal even without the inflation buffer.</div>
+    </div>
+    <div class="rc-stats">
+      <div class="rc-stats-row">
+        <div class="stat-item"><div class="stat-num sn-amber">10/30</div><div class="stat-lbl">closing gap to target</div></div>
+      </div>
+      <span class="rc-view-btn">View full analysis &rarr;</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  AlphaFluency Pilot Report &nbsp;&middot;&nbsp; Round 2 &nbsp;&middot;&nbsp; Alpha Schools &nbsp;&middot;&nbsp; March 2026 &nbsp;&middot;&nbsp; Confidential
+</div>
+
+</body>
+</html>
