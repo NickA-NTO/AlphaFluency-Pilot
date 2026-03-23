@@ -190,7 +190,7 @@ tr:hover td{background:#f0f7ff !important;}
       <p>Comparing each student&rsquo;s current AF WCPM against their Literably baseline, normalised to the same difficulty level.</p>
       <button class="q-link">View Results &rarr;</button>
     </div>
-    <div class="q-card q5" onclick="showPage('q5')">
+    <div class="q-card q5" onclick="showPage('q5')" style="display:none;">
       <div class="q-num">Question 5</div>
       <h2>Does AlphaFluency deliver better gains than ClearFluency?</h2>
       <p>Cross-app comparison using an Effective Score formula that normalises WCPM across all text difficulty levels for a fair like-for-like assessment.</p>
@@ -223,31 +223,15 @@ tr:hover td{background:#f0f7ff !important;}
     <div class="q-header">
       <div class="q-tag purple">Question 1 &mdash; Placement Accuracy</div>
       <h1>Did AlphaFluency place students at the correct reading difficulty?</h1>
-      <div class="verdict positive">&#9679; Positive: 23 of 30 assessable students within &plusmn;0.5 ATOS of adjusted grade target</div>
     </div>
 
     <div class="section">
       <div class="section-title">Methodology</div>
-      <div class="method-box">
-        <h3>Definition of &ldquo;correct difficulty&rdquo;</h3>
-        <p>A placement is considered <strong>near-target</strong> if the student&rsquo;s AF Final ATOS is within &plusmn;0.5 of their grade reading target ATOS. All sessions begin at ATOS 0.4; the adaptive engine raises difficulty based on real-time performance.</p>
-        <ul>
-          <li><strong>Gap &le; &plusmn;0.5:</strong> Near target &mdash; green</li>
-          <li><strong>Gap 0.5&ndash;1.0:</strong> Still progressing &mdash; amber</li>
-          <li><strong>Gap &gt; 1.0:</strong> Significant gap &mdash; red</li>
-        </ul>
+      <div class="caveat-box">
+        <p>In this pilot all students began at ATOS 0.4 regardless of prior assessment. With full rollout, placement will align to each student&rsquo;s latest Literably result from the outset, eliminating this ramp-up period.</p>
       </div>
       <div class="caveat-box">
-        <p><strong>Early-stage caveat:</strong> Most students started between 4&ndash;20 March 2026, giving many fewer than two weeks of practice. AF begins conservatively at ATOS 0.4 for all students regardless of prior assessment. Some undershoot at this stage is expected and normal &mdash; it reflects the ramp-up arc, not a failure of the adaptive engine.</p>
-      </div>
-      <div class="caveat-box">
-        <p><strong>Full rollout note:</strong> In this pilot, all students began at ATOS 0.4 regardless of their Literably scores. With the full rollout of AlphaFluency, student placement will be aligned directly to their most recent Literably results. The adaptive engine will then maintain correct difficulty from the outset &mdash; eliminating the ramp-up period that artificially depresses early WCPM and placement accuracy in this dataset.</p>
-      </div>
-      <div class="caveat-box">
-        <p><strong>Literably accuracy adjustment (*):</strong> For 18 students whose initial Literably WCPM fell below 50% of the expected rate for their tested ATOS level, the placement target has been adjusted one grade lower (minimum ATOS 0.4). These students&rsquo; Literably results indicate their effective reading level is approximately one grade below their tested ATOS. Adjusted targets are marked * in the table below.</p>
-      </div>
-      <div class="caveat-box">
-        <p><strong>ATOS ceiling note:</strong> AlphaFluency&rsquo;s current content library extends to approximately <strong>ATOS 2.6 (late Grade 2)</strong>. Hayes Burman, Blake Price, and Ren Sticker (Lit ATOS 3.0&ndash;3.3) cannot reach the 3.0 grade target within the current AF library regardless of performance. Their gap-to-target figures reflect a content ceiling, not a placement or learning failure. These students are marked ‡ in the table below.</p>
+        <p>18 students whose Literably WCPM fell below 50% of expected for their tested difficulty had their target adjusted one grade lower (min 0.4), marked * below. Three students targeting Grade 3 cannot reach their full grade target within the current AF library (content tops out at late Grade 2) &mdash; their gap reflects a content ceiling, not a learning failure, marked ‡ below.</p>
       </div>
     </div>
 
@@ -316,23 +300,6 @@ tr:hover td{background:#f0f7ff !important;}
       </div>
       <p class="table-note">‡ ATOS ceiling: Hayes Burman, Blake Price, Ren Sticker have Lit baselines at ATOS 3.0&ndash;3.3 and cannot reach the 3.0 grade target within the current AF library; gap-to-target reflects a content ceiling, not a learning failure. &nbsp;|&nbsp; * Adjusted target: student&rsquo;s Literably accuracy indicated effective reading level ~1 grade below tested ATOS; target shifted one grade lower (min 0.4). &nbsp;|&nbsp; Gap = AF Final ATOS &minus; Target ATOS. Negative = AF below target.</p>
 
-      <div class="excl-box">
-        <h4>Excluded from analysis (insufficient AF session time &lt; 10 min)</h4>
-        <p>Alana Marin Barrios (8.1 min) &middot; Rylan Joseph (8.3 min) &middot; Megan Chukwura (6.1 min) &middot; Scarlett Meyer (7.2 min) &middot; Shailene Ferrebus (3.8 min) &middot; Nico Blanco (2.7 min) &middot; Savi Richardson (1.8 min) &middot; Rafaela Almanza (0.7 min)</p>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <div class="section">
-      <div class="section-title">Key Findings</div>
-      <ul class="finding-list">
-        <li><span class="fi">&#9679;</span><div><strong>After adjusting for Literably accuracy, 23 of 30 students (77%) are at or near their realistic target difficulty.</strong> The 18 students whose Literably WCPM fell below 50% of expected had their targets shifted one grade lower to reflect where they actually read accurately. Against these adjusted targets, the adaptive engine is placing students correctly in the majority of cases.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>Rivers Yong reached near-target in just 15 minutes and 4 books</strong> &mdash; the fastest adapter in the cohort. Starting at ATOS 0.4, they reached 2.5 against a 3.0 target, suggesting strong underlying fluency that the system detected quickly.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>The 6 students stuck at ATOS 0.4 are now correctly placed.</strong> Hayden Jones, Thomas Nolan, Jamie Theunissen, Anthonella Ochoa, Enzo Estrada, and Faustina Ngambo-Kialengele all had Literably scores indicating Grade K-level reading (effective ATOS ~0.4). AF holding them at 0.4 reflects accurate difficulty calibration, not a system failure. Their adjusted target is ATOS 0.4, which they have met.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>Theodore Dipaola is the clearest remaining outlier.</strong> His adjusted target is ATOS 1.0 but he remains at Final ATOS 0.4. His high Final WCPM (90.5) at that level suggests he can read the texts fluently &mdash; something else is preventing AF from advancing him in difficulty. Warrants individual follow-up.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>Grade 3-targeting students (Hayes Burman, Aiden Richardson, Blake Price, Ren Sticker) are all progressing</strong> within 0.7&ndash;0.9 ATOS of the 3.0 target with 100&ndash;177 minutes invested. These are ceiling-limited (‡) &mdash; continued practice will reach ~ATOS 2.6 but the current library does not extend to the full 3.0 target. Anthem Thomas, similarly targeting Grade 3, is now Near Target at ATOS 2.2 against an adjusted target of 2.0.</div></li>
-        <li><span class="fi">&#9679;</span><div><strong>The pilot is still early.</strong> With most students under three weeks in, re-assessment at 6 weeks will be needed before drawing firm conclusions about the adaptive ceiling for advanced readers.</div></li>
-      </ul>
     </div>
   </div>
 </div>
