@@ -145,6 +145,7 @@ body {
 .rc2::before { background: linear-gradient(180deg,#16a34a,#22c55e); }
 .rc3::before { background: linear-gradient(180deg,#0891b2,#06b6d4); }
 .rc4::before { background: linear-gradient(180deg,#d97706,#f59e0b); }
+.rc5::before { background: linear-gradient(180deg,#0d9488,#14b8a6); }
 
 .rc-title {
   font-size: 0.84em;
@@ -170,6 +171,7 @@ body {
 .sn-red    { color: #dc2626;       }
 .sn-cyan   { color: var(--cyan);   }
 .sn-teal   { color: var(--teal);   }
+.sn-purple { color: var(--purple); }
 .stat-lbl {
   font-size: 0.62em;
   color: var(--gray-400);
@@ -251,6 +253,16 @@ body {
     <div class="rc-title">Are students moving toward their grade-level reading benchmarks?</div>
     <div class="rc-stats">
       <div class="stat-item"><div class="stat-num sn-amber">10/30</div><div class="stat-lbl">closing gap to target</div></div>
+    </div>
+  </a>
+
+  <!-- Q5 -->
+  <a class="result-card rc5" href="report.html#q5" style="grid-column: span 2;">
+    <div class="rc-title">Does AlphaFluency deliver better gains than ClearFluency?</div>
+    <div class="rc-stats">
+      <div class="stat-item"><div class="stat-num sn-teal">17/20</div><div class="stat-lbl">students: AF outperforms</div></div>
+      <div class="stat-item"><div class="stat-num sn-green">+29.6</div><div class="stat-lbl">avg AF effective score gain</div></div>
+      <div class="stat-item"><div class="stat-num sn-amber">+4.5</div><div class="stat-lbl">avg CF effective score gain</div></div>
     </div>
   </a>
 

@@ -36,8 +36,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .q-card.q2::before{background:linear-gradient(180deg,#16a34a,#22c55e);}
 .q-card.q3::before{background:linear-gradient(180deg,#0891b2,#06b6d4);}
 .q-card.q4::before{background:linear-gradient(180deg,#d97706,#f59e0b);}
+.q-card.q5::before{background:linear-gradient(180deg,#0d9488,#14b8a6);}
 .q-num{font-size:.72em;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
-.q1 .q-num{color:#7c3aed;}.q2 .q-num{color:#16a34a;}.q3 .q-num{color:#0891b2;}.q4 .q-num{color:#d97706;}
+.q1 .q-num{color:#7c3aed;}.q2 .q-num{color:#16a34a;}.q3 .q-num{color:#0891b2;}.q4 .q-num{color:#d97706;}.q5 .q-num{color:#0d9488;}
 .q-card h2{font-size:1em;font-weight:700;color:var(--gray-800);line-height:1.45;margin-bottom:12px;}
 .q-card p{font-size:.85em;color:var(--gray-500);line-height:1.55;margin-bottom:22px;}
 .q-link{display:inline-flex;align-items:center;gap:6px;font-size:.84em;font-weight:700;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;transition:filter .15s;}
@@ -46,6 +47,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .q2 .q-link{background:var(--green-lt);color:var(--green);}
 .q3 .q-link{background:var(--cyan-lt);color:var(--cyan);}
 .q4 .q-link{background:var(--amber-lt);color:var(--amber);}
+.q5 .q-link{background:var(--teal-lt);color:var(--teal);}
 .landing-note{max-width:860px;margin:0 auto;padding:24px 28px 48px;font-size:.82em;color:var(--gray-500);line-height:1.7;border-top:1px solid var(--gray-200);}
 .landing-note strong{color:var(--gray-700);}
 
@@ -186,6 +188,12 @@ tr:hover td{background:#f0f7ff !important;}
       <div class="q-num">Question 4</div>
       <h2>Are students closing the gap toward their grade-level reading target?</h2>
       <p>Comparing each student&rsquo;s current AF WCPM against their Literably baseline, normalised to the same difficulty level.</p>
+      <button class="q-link">View Results &rarr;</button>
+    </div>
+    <div class="q-card q5" onclick="showPage('q5')">
+      <div class="q-num">Question 5</div>
+      <h2>Does AlphaFluency deliver better gains than ClearFluency?</h2>
+      <p>Cross-app comparison using an Effective Score formula that normalises WCPM across all text difficulty levels for a fair like-for-like assessment.</p>
       <button class="q-link">View Results &rarr;</button>
     </div>
   </div>
@@ -576,7 +584,7 @@ tr:hover td{background:#f0f7ff !important;}
     <span class="nav-current">4 &mdash; Grade Target Progress</span>
     <div class="nav-arrows">
       <button class="btn-arrow" onclick="showPage('q3')">&larr; Prev: Growth vs. Literably</button>
-      <button class="btn-arrow" disabled>Next &rarr;</button>
+      <button class="btn-arrow" onclick="showPage('q5')">Next: AF vs ClearFluency &rarr;</button>
     </div>
   </nav>
 
@@ -677,8 +685,158 @@ tr:hover td{background:#f0f7ff !important;}
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════
+     Q5: AF VS CLEARFLUENCY
+══════════════════════════════════════════════════ -->
+<div id="page-q5" class="page">
+  <nav class="page-nav">
+    <a class="btn-home" href="index.html">&#8592; Home</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-label">Question</span>
+    <span class="nav-current">5 &mdash; AF vs ClearFluency</span>
+    <div class="nav-arrows">
+      <button class="btn-arrow" onclick="showPage('q4')">&larr; Prev: Grade Target Progress</button>
+      <button class="btn-arrow" disabled>Next &rarr;</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="q-header">
+      <div class="q-tag" style="background:var(--teal-lt);color:var(--teal);">Question 5 &mdash; AF vs ClearFluency</div>
+      <h1>Does AlphaFluency deliver better fluency gains than ClearFluency?</h1>
+      <div class="verdict positive">&#9679; AF Advantage &mdash; AlphaFluency outperformed ClearFluency in 17 of 20 matched students</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Methodology</div>
+      <div class="method-box">
+        <h3>The Effective Score formula</h3>
+        <p>Raw WCPM cannot be compared across different text difficulty levels &mdash; a student reading 80 WCPM at ATOS 0.4 and one reading 80 WCPM at ATOS 2.5 are performing very differently. The Effective Score places every observation on a single normalised scale:</p>
+        <p><strong>Effective Score = (expected&thinsp;WCPM(ATOS) + actual&thinsp;WCPM) &divide; 2</strong></p>
+        <p>where <strong>expected&thinsp;WCPM(ATOS) = 37 &times; ATOS + 16</strong> (derived from Acadience ORF norms: 37 WCPM per 1.0 ATOS level, anchored at ATOS 1.0 = 53 WCPM). The 0.5 shrinkage factor positions a student&rsquo;s ability halfway between the norm and their observed score &mdash; a Bayesian regression-to-mean approach that reduces noise from single-session variance.</p>
+      </div>
+      <div class="method-box">
+        <h3>Gain calculation</h3>
+        <p><strong>AF Effective Score Gain</strong> = ES(AF Final ATOS, Adj. Final WCPM) &minus; ES(0.4, Init WCPM)<br>
+        <strong>CF Effective Score Gain</strong> = ES(CF Last ATOS, CF Last WCPM) &minus; ES(CF Prior ATOS, CF Prior WCPM)</p>
+        <p>Both AlphaFluency and ClearFluency use a warm-read format (text read aloud before the student reads it). No format-inflation adjustment is needed between the two systems &mdash; they are directly comparable on this metric.</p>
+      </div>
+      <div class="caveat-box">
+        <p><strong>Time window note:</strong> The AF comparison covers the Round 2 pilot period (~3 weeks). The CF comparison uses each student&rsquo;s most recent reading versus the reading approximately 1 month prior. AF gains are therefore achieved in a shorter window &mdash; this favours AlphaFluency in rate-of-gain terms. Only the 20 students with usable data in both systems are included.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Results</div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num" style="color:var(--teal);">17/20</div><div class="stat-label">students: AlphaFluency outperformed ClearFluency</div></div>
+        <div class="stat-card"><div class="stat-num green">+29.6</div><div class="stat-label">avg AF Effective Score gain (all 20 students)</div></div>
+        <div class="stat-card"><div class="stat-num amber">+4.5</div><div class="stat-label">avg CF Effective Score gain (all 20 students)</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:var(--teal);">+25.1</div><div class="stat-label">avg AF advantage per student</div></div>
+      </div>
+
+      <div class="section-title" style="margin-top:24px;">Grade-Level Summary</div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label" style="font-weight:700;font-size:.8em;margin-bottom:6px;">Grade K &nbsp;(2 students)</div>
+          <div style="display:flex;gap:18px;justify-content:center;">
+            <div style="text-align:center;"><div class="stat-num green" style="font-size:1.3em;">+10.4</div><div class="stat-label">AF avg</div></div>
+            <div style="text-align:center;"><div class="stat-num amber" style="font-size:1.3em;">+4.3</div><div class="stat-label">CF avg</div></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" style="font-weight:700;font-size:.8em;margin-bottom:6px;">Grade 1 &nbsp;(11 students)</div>
+          <div style="display:flex;gap:18px;justify-content:center;">
+            <div style="text-align:center;"><div class="stat-num green" style="font-size:1.3em;">+22.5</div><div class="stat-label">AF avg</div></div>
+            <div style="text-align:center;"><div class="stat-num amber" style="font-size:1.3em;">+5.7</div><div class="stat-label">CF avg</div></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" style="font-weight:700;font-size:.8em;margin-bottom:6px;">Grade 2 &nbsp;(7 students)</div>
+          <div style="display:flex;gap:18px;justify-content:center;">
+            <div style="text-align:center;"><div class="stat-num green" style="font-size:1.3em;">+46.3</div><div class="stat-label">AF avg</div></div>
+            <div style="text-align:center;"><div class="stat-num amber" style="font-size:1.3em;">+2.8</div><div class="stat-label">CF avg</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:24px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Grade</th>
+              <th>AF ES Gain</th>
+              <th>CF ES Gain</th>
+              <th>AF Advantage</th>
+              <th>Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade K</td></tr>
+            <tr><td><strong>Elliott Rudnicki</strong></td><td>K</td><td class="td-g">+24.3</td><td class="td-r">&minus;2.5</td><td class="td-g">+26.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Faustina Ngambo-Kialengele</strong></td><td>K</td><td class="td-r">&minus;3.6</td><td class="td-g">+11.1</td><td class="td-r">&minus;14.7</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
+            <tr style="background:#f8fafc;font-size:.85em;font-weight:700;">
+              <td colspan="2" style="padding-left:13px;">Grade K Average</td>
+              <td class="td-g">+10.4</td><td class="td-g">+4.3</td><td class="td-g">+6.1</td><td></td>
+            </tr>
+
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade 1</td></tr>
+            <tr><td><strong>Ellis Kyung</strong></td><td>1</td><td class="td-g">+25.4</td><td class="td-g">+8.8</td><td class="td-g">+16.7</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Alita Sanborn</strong></td><td>1</td><td class="td-g">+15.0</td><td class="td-g">+4.6</td><td class="td-g">+10.4</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Riley Rosenberg</strong></td><td>1</td><td class="td-g">+16.6</td><td class="td-g">+33.1</td><td class="td-r">&minus;16.5</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
+            <tr><td><strong>Ella Clark</strong></td><td>1</td><td class="td-g">+38.9</td><td class="td-g">+9.4</td><td class="td-g">+29.5</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Bandon Peterson</strong></td><td>1</td><td class="td-g">+37.9</td><td class="td-g">+2.1</td><td class="td-g">+35.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Theodore Dipaola</strong></td><td>1</td><td class="td-g">+26.0</td><td class="td-g">+13.0</td><td class="td-g">+13.0</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Victoria Leal</strong></td><td>1</td><td class="td-g">+4.2</td><td class="td-g">+15.3</td><td class="td-r">&minus;11.1</td><td><span class="badge" style="background:#fef3c7;color:#92400e;">CF</span></td></tr>
+            <tr><td><strong>Alessia Kriete</strong></td><td>1</td><td class="td-g">+6.9</td><td class="td-r">&minus;8.1</td><td class="td-g">+15.0</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Nash Niccolls</strong></td><td>1</td><td class="td-g">+34.5</td><td class="td-g">+24.6</td><td class="td-g">+9.9</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Asaph Park</strong></td><td>1</td><td class="td-g">+13.7</td><td class="td-r">&minus;18.1</td><td class="td-g">+31.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Aleiah Jenkins</strong></td><td>1</td><td class="td-g">+28.2</td><td class="td-r">&minus;22.1</td><td class="td-g">+50.3</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr style="background:#f8fafc;font-size:.85em;font-weight:700;">
+              <td colspan="2" style="padding-left:13px;">Grade 1 Average</td>
+              <td class="td-g">+22.5</td><td class="td-g">+5.7</td><td class="td-g">+16.8</td><td></td>
+            </tr>
+
+            <tr><td colspan="6" style="background:#f0fdf4;font-size:.76em;font-weight:700;color:#14532d;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;">Grade 2</td></tr>
+            <tr><td><strong>Anthem Thomas</strong></td><td>2</td><td class="td-g">+31.7</td><td class="td-r">&minus;6.0</td><td class="td-g">+37.7</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Aiden Richardson</strong></td><td>2</td><td class="td-g">+46.9</td><td class="td-g">+37.8</td><td class="td-g">+9.1</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Diego Bash</strong></td><td>2</td><td class="td-g">+52.2</td><td class="td-g">+4.7</td><td class="td-g">+47.5</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Ren Sticker</strong></td><td>2</td><td class="td-g">+40.7</td><td class="td-r">&minus;9.7</td><td class="td-g">+50.4</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Blake Price</strong></td><td>2</td><td class="td-g">+47.1</td><td class="td-r">&minus;0.7</td><td class="td-g">+47.8</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Hayes Burman</strong></td><td>2</td><td class="td-g">+59.1</td><td class="td-g">+8.2</td><td class="td-g">+50.9</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr><td><strong>Mya Hadnot</strong></td><td>2</td><td class="td-g">+46.6</td><td class="td-r">&minus;15.0</td><td class="td-g">+61.6</td><td><span class="badge badge-g">AF</span></td></tr>
+            <tr style="background:#f8fafc;font-size:.85em;font-weight:700;">
+              <td colspan="2" style="padding-left:13px;">Grade 2 Average</td>
+              <td class="td-g">+46.3</td><td class="td-g">+2.8</td><td class="td-g">+43.5</td><td></td>
+            </tr>
+
+            <tr style="background:#f0fdf4;font-size:.88em;font-weight:800;border-top:2px solid var(--green);">
+              <td colspan="2" style="padding:10px 13px;">Overall Average (20 students)</td>
+              <td class="td-g">+29.6</td><td class="td-g">+4.5</td><td class="td-g">+25.1</td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">AF ES Gain = ES(AF Final ATOS, Adj. Final WCPM) &minus; ES(0.4, Init WCPM). CF ES Gain = ES(CF Last ATOS, CF Last WCPM) &minus; ES(CF Prior ATOS, CF Prior WCPM). ES(atos, wcpm) = (37 &times; atos + 16 + wcpm) &div; 2. CF prior = reading ~1 month before last. 8 students excluded (insufficient AF session data).</p>
+    </div>
+
+    <hr class="divider">
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <ul class="finding-list">
+        <li><span class="fi">&#9679;</span><div><strong>AlphaFluency outperforms ClearFluency across all three grade bands,</strong> with the advantage growing at higher grade levels. At Grade 2, AF averages +46.3 effective score points vs ClearFluency&rsquo;s +2.8 &mdash; a 16&times; difference. At Grade 1, the margin is +22.5 vs +5.7 (4&times;). Even at Grade K (only 2 students), AF leads +10.4 vs +4.3.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>5 of 7 Grade 2 ClearFluency students showed flat or declining effective scores</strong> despite progressing to harder text. Ren Sticker (127 &rarr; 104 WCPM at ATOS 2.1&ndash;2.2), Anthem Thomas (101 &rarr; 89 WCPM, same ATOS level), and Mya Hadnot (99 &rarr; 69 WCPM at same ATOS 2.4) all declined on CF. In contrast, all 7 Grade 2 students showed strong AF gains (average +46.3).</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>The 3 ClearFluency wins involve specific circumstances:</strong> Riley Rosenberg made a large ATOS jump in CF (1.0 &rarr; 2.3) that inflates the ES gain via normalisation; Victoria Leal had an unusually high AF initial WCPM at ATOS 0.4 that compresses her AF gain; Faustina Ngambo-Kialengele shows limited AF progress (stuck at ATOS 0.4) while CF progressed to ATOS 1.2. None represent CF as a systematically superior outcome.</div></li>
+        <li><span class="fi">&#9679;</span><div><strong>The time-window difference favours AlphaFluency further.</strong> AF gains are achieved over approximately 3 weeks of pilot usage; CF gains are measured over approximately 1 month. On a per-week basis, AF&rsquo;s effective score gain rate is roughly twice that of ClearFluency across the matched cohort.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <script>
-const PAGES = ['home','q1','q2','q3','q4'];
+const PAGES = ['home','q1','q2','q3','q4','q5'];
 function showPage(id) {
   PAGES.forEach(p => {
     const el = document.getElementById('page-' + p);
